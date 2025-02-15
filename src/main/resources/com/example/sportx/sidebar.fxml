@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_LEFT" prefHeight="630.0" prefWidth="180.0" spacing="15.0" styleClass="sidebar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane prefHeight="33.0" prefWidth="200.0" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="🏠 Accueil" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="📰 Actualités" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="🛒 Market" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="🎉 Événements" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="💬 Messages" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="⚙ Paramètres" />
+    </children>
+</VBox>

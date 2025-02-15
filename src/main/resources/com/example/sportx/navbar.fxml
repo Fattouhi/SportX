@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1100.0" spacing="20.0" styleClass="navbar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../img/SportX.png" />
+            </image>
+        </ImageView>
+        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="30.0" />
+        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/filter.png" />
+                    </image>
+                </ImageView>
+                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" spacing="10.0" styleClass="round-layout" stylesheets="@../../../css/styles.css">
+                    <children>
+                        <TextField prefHeight="25.0" prefWidth="200.0" promptText="Search" styleClass="transparent" stylesheets="@../../../css/styles.css" />
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../img/search-icon-png-5.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="230.0" spacing="20.0">
+            <children>
+                <Label prefHeight="30.0" prefWidth="120.0" text="User User">
+                    <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="30.0" />
+                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/user.png" />
+                    </image>
+                </ImageView>
+                <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="30.0" />
+            </children>
+        </HBox>
+        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../img/cart.png" />
+            </image>
+        </ImageView>
+    </children>
+    <padding>
+        <Insets left="20.0" right="20.0" />
+    </padding>
+</HBox>

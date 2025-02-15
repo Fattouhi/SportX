@@ -1,0 +1,53 @@
+/* Style for the navbar */
+.navbar {
+    -fx-background-color: linear-gradient(to right, #D8BFD8, #90EE90);
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+/* Style for the sidebar */
+.sidebar {
+    -fx-background-color: linear-gradient(to right, #9370DB, #20B2AA);
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+/* Base style for the search bar */
+.transparent {
+   -fx-background-color: transparent;
+}
+
+/* Rounded layout */
+.round-layout {
+    -fx-background-color: white;
+    -fx-border-radius: 15;
+    -fx-border-color: #D7D7D7;
+    -fx-border-width: 1px;
+    -fx-background-radius: 15;
+}
+
+/* Style for all buttons in the root */
+.root .button {
+    -fx-background-color: #800080; /* Purple color */
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+
+/* Hover effect for buttons */
+.root .button:hover {
+    -fx-background-color: #9932CC;
+}
+
+/* Pressed effect for buttons */
+.root .button:pressed {
+    -fx-background-color: #4B0082;
+}
+
+/* Shadow effect */
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 10);
+}
