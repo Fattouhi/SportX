@@ -33,6 +33,6 @@ public class CartController {
         ownerName.setText(item.getOwner());
 
         // Set a random background color from the palette
-        box.setStyle("-fx-background-color: #" + colors[(int) (Math.random() * colors.length)] + ";");
+        box.setStyle("-fx-background-color: #" + colors[(int) (Math.random() * colors.length)] + "; -fx-background-radius : 15; -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1),10,0,10,0);");
     }
 }

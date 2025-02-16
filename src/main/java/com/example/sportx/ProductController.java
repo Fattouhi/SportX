@@ -1,4 +1,4 @@
-package com.example.sportx.controllers;
+package com.example.sportx;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -16,9 +16,12 @@ public class ProductController {
     @FXML
     private Label ownerName;
 
-    public void setData(Item item){
+    public void setData(Item item) {
+        // Load the image from the resource path
         Image image = new Image(getClass().getResourceAsStream(item.getImageSrc()));
         imageName.setImage(image);
+
+        // Set the text for the labels
         itemName.setText(item.getName());
         ownerName.setText(item.getOwner());
     }
