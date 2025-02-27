@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.CheckoutFormController">
+    <children>
+        <Label text="Checkout Form" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+        <ComboBox fx:id="cityComboBox" promptText="Select City" />
+        <TextField fx:id="addressField" promptText="Address" />
+        <TextField fx:id="phoneNumberField" promptText="Phone Number" />
+        <Button fx:id="placeOrderButton" text="Place Order" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" onAction="#placeOrder" />
+    </children>
+</VBox>

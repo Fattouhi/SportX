@@ -10,8 +10,13 @@ module com.example.sportx {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.example.sportx to javafx.fxml;
+
+    exports com.example.sportx.DAO;
+    opens com.example.sportx.DAO to javafx.fxml;
     exports com.example.sportx;
+
 
 }

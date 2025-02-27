@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1333.0" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+
+        <!--      <ImageView fitHeight="614.0" fitWidth="970.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">-->
+        <!--         <image>-->
+        <!--            <Image url="@images/back.png" />-->
+        <!--         </image>-->
+        <!--      </ImageView>-->
+
+
+        <!-- Sidebar -->
+        <AnchorPane layoutX="0" layoutY="74.0" prefHeight="550.0" prefWidth="240.0" style="-fx-background-color: #66000000;" styleClass="sidebar">
+            <children>
+                <Rectangle arcHeight="20" arcWidth="20" fill="#a3e3eb80" height="814.0" layoutY="-77.0" width="260" />
+                <AnchorPane layoutX="29.0" layoutY="153.0" prefHeight="543.0" prefWidth="220.0">
+                    <children>
+                        <Button fx:id="btnUserManagement" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="👤 Gestion utilisateurs">
+                            <stylesheets>
+                                <URL value="@dark-mode.css" />
+                                <URL value="@style.css" />
+                            </stylesheets>
+                        </Button>
+                        <Button fx:id="btnGroupManagement" layoutY="77.80000305175781" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="💬 Gestion groupes" />
+                        <Button fx:id="btnEventManagement" layoutY="157.60000610351562" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="🎉 Gestion événements" />
+                        <Button fx:id="btnContentManagement" layoutY="229.39999389648438" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="📜 Gestion contenu" />
+                        <Button fx:id="btnMarketplaceManagement" layoutY="305.20001220703125" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="🛒 Gestion MarketPlace" />
+                        <Button fx:id="btnStatistics" layoutY="380.0" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="📊 Statistiques" />
+                        <Button fx:id="btnNotifications" layoutY="450.79998779296875" prefHeight="50.0" prefWidth="200.0" styleClass="sidebar-button" text="🔔 Notifications" />
+                    </children>
+                </AnchorPane>
+                <Label layoutX="69.0" layoutY="107.4" styleClass="sidebar-title" text="Dashboard Admin" textFill="#333333" AnchorPane.topAnchor="107.4" />
+                <ImageView fitHeight="86.0" fitWidth="82.0" layoutX="84.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/SportX.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <!-- Header -->
+        <AnchorPane prefWidth="970.0">
+
+            <!-- Menu déroulant des notifications -->
+            <VBox fx:id="notificationBox" layoutX="740" layoutY="60" managed="false" prefWidth="220" spacing="10" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 5px; -fx-padding: 10;                  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);" visible="false">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Notifications" />
+                <Separator />
+                <ScrollPane fitToWidth="true" prefHeight="150">
+                    <VBox fx:id="notificationList" spacing="5" />
+                </ScrollPane>
+            </VBox>
+
+            <!-- Menu déroulant du profil -->
+            <VBox fx:id="profileMenu" layoutX="780" layoutY="60" managed="false" prefWidth="170" spacing="10" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 5px; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);" visible="false">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Mon Profil" />
+                <Separator />
+                <Button styleClass="menu-item" text="👤 Voir le profil" />
+                <Button styleClass="menu-item" text="🔑 Changer de mot de passe" />
+                <Button styleClass="menu-item" text="⚙️ Paramètres" />
+                <Button styleClass="menu-item" text="🌙 Mode sombre" />
+                <Separator />
+                <Button style="-fx-text-fill: red;" text="🚪 Se déconnecter" />
+            </VBox>
+
+        </AnchorPane>
+
+        <!-- Main Content -->
+        <VBox layoutX="337.0" layoutY="114.0" prefHeight="268.0" prefWidth="649.0" spacing="20">
+            <Label style="-fx-font-size: 24px;" text="Modération" textFill="#333333" />
+            <Label style="-fx-font-size: 14px;" text="Accès rapide" textFill="#666666" />
+
+            <HBox spacing="20">
+                <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                    <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="👤 Gestion utilisateurs" />
+                    <Button layoutX="50" layoutY="60" styleClass="quick-access-button" text="Gérer" />
+                </AnchorPane>
+
+                <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                    <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="📊 Statistiques" />
+                    <Button layoutX="50" layoutY="60" styleClass="quick-access-button" text="Analyser" />
+                </AnchorPane>
+
+                <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                    <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="📅 Événements" />
+                    <Button layoutX="50" layoutY="60"  styleClass="quick-access-button" text="Contrôler" />
+                </AnchorPane>
+            </HBox>
+
+            <!--Comment intégrer des améliorations -->
+            <StackPane fx:id="mainContent" layoutX="250" layoutY="80" prefHeight="500" prefWidth="700" />
+            <HBox layoutX="250" layoutY="50" spacing="20" />
+        </VBox>
+        <Pane layoutX="29.0" layoutY="16.0" prefHeight="50.0" prefWidth="1302.0">
+            <children>
+
+                <!-- Logo -->
+                <ImageView fitHeight="50.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/SportX.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </ImageView> <!-- Permet d'espacer les éléments -->
+
+                <!-- Barre de recherche -->
+                <TextField layoutX="533.799976348877" layoutY="8.799999237060547" prefWidth="220" promptText="Rechercher..." style="-fx-border-color: #CCCCCC; -fx-background-color: #F9F9F9; -fx-border-radius: 5px;" />
+
+                <!-- Icône de Notification -->
+                <ImageView fx:id="iconNotification" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="30.0" layoutX="1164.2000007629395" layoutY="6.0" onMouseClicked="#toggleNotifications" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/SportX.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+
+                <!-- Icône de profil -->
+                <ImageView fx:id="profileIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="30.0" layoutX="1221.799976348877" layoutY="6.0" onMouseClicked="#toggleProfileMenu" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../img/SportX.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </children>
+        </Pane>
+
+        <Region layoutX="115.0" layoutY="14.0" />
+        <HBox layoutX="1629.0" layoutY="20.0" />
+    </children>
+</AnchorPane>

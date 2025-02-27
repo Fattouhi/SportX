@@ -1,5 +1,6 @@
 package com.example.sportx;
 
+import com.example.sportx.DAO.ProductDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +12,6 @@ import models.Item;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -20,13 +20,14 @@ public class Controller implements Initializable {
     private HBox cardLayout;
     @FXML
     private GridPane itemContainer;
+
     private List<Item> recentlyAdded;
     private List<Item> products;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        recentlyAdded = new ArrayList<>(recentlyAdded());
-        products = new ArrayList<>(items());
+        recentlyAdded = ProductDAO.getAllProducts(); // Fetch all products
+        products = ProductDAO.getAllProducts(); // Fetch all products
 
         itemContainer.getChildren().clear();
         itemContainer.getRowConstraints().clear();
@@ -40,12 +41,8 @@ public class Controller implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("cart-view.fxml"));
                 HBox cardBox = fxmlLoader.load();
                 CartController cartController = fxmlLoader.getController();
-                if (cartController == null) {
-                    System.err.println("CartController is null!");
-                } else {
-                    cartController.setItem(item);
-                    cardLayout.getChildren().add(cardBox);
-                }
+                cartController.setItem(item);
+                cardLayout.getChildren().add(cardBox);
             }
             for (Item item : products) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product.fxml"));
@@ -66,105 +63,5 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private List<Item> recentlyAdded() {
-        List<Item> ls = new ArrayList<>();
-        Item item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        return ls;
-    }
-
-    private List<Item> items() {
-        List<Item> ls = new ArrayList<>();
-        Item item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        item = new Item();
-        item.setName("Messi T shirt");
-        item.setImageSrc("/img/products/p1.png");
-        item.setOwner("Messi");
-        ls.add(item);
-        item = new Item();
-        item.setName("Sport shirt");
-        item.setImageSrc("/img/products/p2.png");
-        item.setOwner("Decatlon");
-        ls.add(item);
-        return ls;
     }
 }

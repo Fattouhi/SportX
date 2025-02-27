@@ -1,33 +1,41 @@
 package models;
 
-import javafx.scene.image.Image;
-
 public class Item {
+    private int id;
     private String name;
-    private String ImageSrc;
-    private String Owner;
+    private int ownerId;
+    private String type;
+    private String thumbnailImage;
+    private String description;
+    private double price;
+    private int stockQuantity;
+    private String status;
 
-    public String getName() {
-        return name;
-    }
+    // Getters and Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getImageSrc() {
-        return ImageSrc;
-    }
+    public int getOwnerId() { return ownerId; }
+    public void setOwnerId(int ownerId) { this.ownerId = ownerId; }
 
-    public void setImageSrc(String imageSrc) {
-        ImageSrc = imageSrc;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public String getOwner() {
-        return Owner;
-    }
+    public String getThumbnailImage() { return thumbnailImage; }
+    public void setThumbnailImage(String thumbnailImage) { this.thumbnailImage = thumbnailImage; }
 
-    public void setOwner(String owner) {
-        Owner = owner;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+
+    public int getStockQuantity() { return stockQuantity; }
+    public void setStockQuantity(int stockQuantity) { this.stockQuantity = stockQuantity; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

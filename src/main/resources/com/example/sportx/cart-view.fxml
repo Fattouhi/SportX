@@ -5,19 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" spacing="15.0" style="-fx-border-radius: 15;" styleClass="shadow" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.CartController">
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" spacing="15.0" style="-fx-border-radius: 15;" styleClass="shadow" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.CartController" onMouseClicked="#handleClick">
    <children>
-      <ImageView fx:id="imageName" fitHeight="155.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../img/products/p1.png" />
-      </ImageView>
+      <ImageView fx:id="imageName" fitHeight="155.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" />
       <VBox prefHeight="185.0" prefWidth="200.0">
          <children>
-            <Label fx:id="itemName" alignment="CENTER" prefHeight="69.0" prefWidth="211.0" text="Messi T-shirt" textFill="WHITE">
+            <Label fx:id="itemName" alignment="CENTER" prefHeight="69.0" prefWidth="211.0" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="ownerName" layoutX="10.0" layoutY="10.0" prefHeight="75.0" prefWidth="200.0" text="By Messi" textFill="WHITE" />
+            <Label fx:id="ownerName" layoutX="10.0" layoutY="10.0" prefHeight="75.0" prefWidth="200.0" textFill="WHITE" />
          </children>
       </VBox>
    </children>

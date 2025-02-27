@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1100.0" spacing="20.0" styleClass="navbar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1100.0" spacing="20.0" styleClass="navbar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.NavbarController">
     <children>
         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -42,15 +42,24 @@
                     </font>
                 </Label>
                 <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="30.0" />
-                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../img/user.png" />
-                    </image>
-                </ImageView>
+                <MenuButton text="" graphicTextGap="10.0" styleClass="profile-menu">
+                    <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../img/user.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem text="Profile" styleClass="menu-item" />
+                        <MenuItem text="Settings" styleClass="menu-item" />
+                        <MenuItem text="Logout" styleClass="menu-item" />
+                    </items>
+                </MenuButton>
                 <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="30.0" />
             </children>
         </HBox>
-        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openCart">
             <image>
                 <Image url="@../../../img/cart.png" />
             </image>
