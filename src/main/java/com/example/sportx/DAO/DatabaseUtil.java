@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseUtil {
     private static final String URL = "jdbc:mysql://mysql-196aef4e-esprim-b42e.b.aivencloud.com:21836/defaultdb";
     private static final String USER = "avnadmin";
-    private static final String PASSWORD = "AVNS_DIenDKhRpZUhC8F0A1M";
+    private static final String PASSWORD = "";
 
     public static Connection getConnection() throws SQLException {
         try {
