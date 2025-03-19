@@ -22,6 +22,9 @@ public class ShoppingCartController {
     @FXML
     private Label totalPriceLabel;
 
+    @FXML
+    private Button checkoutButton; // Added to control the button
+
     private List<Item> cartItems;
     private Map<Integer, Integer> itemQuantities = new HashMap<>(); // productId -> quantity
 
@@ -30,6 +33,7 @@ public class ShoppingCartController {
         cartItems = CartDAO.getCartItems(1); // User ID 1 for testing
         populateCartItems();
         updateTotalPrice();
+        updateCheckoutButtonState(); // Update button state on initialization
     }
 
     private void populateCartItems() {
@@ -61,6 +65,7 @@ public class ShoppingCartController {
             hbox.getChildren().addAll(nameLabel, qtyLabel, increaseBtn, decreaseBtn, removeBtn);
             cartItemsList.getItems().add(hbox);
         }
+        updateCheckoutButtonState(); // Update button state after populating
     }
 
     private void adjustQuantity(int productId, int change, Label qtyLabel) {
@@ -78,6 +83,8 @@ public class ShoppingCartController {
                 .filter(item -> item.getId() == productId)
                 .findFirst()
                 .ifPresent(item -> item.setQuantity(newQty));
+
+        updateCheckoutButtonState(); // Update button state after quantity change
     }
 
     private void removeItem(int productId) {
@@ -86,6 +93,7 @@ public class ShoppingCartController {
         itemQuantities.remove(productId); // Remove from map
         populateCartItems(); // Refresh view
         updateTotalPrice();
+        updateCheckoutButtonState(); // Update button state after removal
     }
 
     private void updateTotalPrice() {
@@ -96,14 +104,20 @@ public class ShoppingCartController {
         totalPriceLabel.setText("Total: $" + String.format("%.2f", total));
     }
 
+    private void updateCheckoutButtonState() {
+        checkoutButton.setDisable(cartItems.isEmpty()); // Disable if cart is empty
+    }
+
     @FXML
     private void checkout() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("checkout-form-view.fxml"));
-        Parent root = loader.load();
-        CheckoutFormController controller = loader.getController();
-        controller.setCartItems(cartItems);
+        if (!cartItems.isEmpty()) { // Double-check to ensure cart isn't empty
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("checkout-form-view.fxml"));
+            Parent root = loader.load();
+            CheckoutFormController controller = loader.getController();
+            controller.setCartItems(cartItems);
 
-        // Update the current scene
-        cartItemsList.getScene().setRoot(root);
+            // Update the current scene
+            cartItemsList.getScene().setRoot(root);
+        }
     }
 }
