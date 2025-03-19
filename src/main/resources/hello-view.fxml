@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Separator?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.sportxnews.controller.HelloViewController">
+<!--            stylesheets="@/css/style.css">-->
+
+   <!-- Top: Header -->
+   <top>
+      <HBox alignment="CENTER_RIGHT" prefHeight="60.0" spacing="20.0" styleClass="hbox">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/sportx_transparent.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <TextField prefWidth="250.0" promptText="Rechercher..." />
+            <Label text="Profil">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/sportx_transparent.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+
+   <!-- Left: Navigation -->
+   <left>
+      <VBox alignment="TOP_LEFT" prefWidth="250.0" spacing="15.0" styleClass="vbox">
+         <children>
+            <Pane prefHeight="33.0" prefWidth="200.0" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Accueil" />
+            <Button fx:id="actualitesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Actualités" onAction="#gotoActualite" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Market" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Événements" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Messages" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Paramètres" />
+         </children>
+      </VBox>
+   </left>
+
+   <!-- Center: Main Content -->
+   <center>
+      <VBox alignment="TOP_CENTER" spacing="20.0" styleClass="vbox">
+         <children>
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Fil d'actualité" />
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Poste 1 : Une grande annonce !" />
+                  <Label text="Poste 2 : Dernières nouvelles du monde." />
+                  <Label text="Poste 3 : Vidéo virale du jour." />
+               </children>
+            </VBox>
+            <Separator />
+
+            <!-- Tendances -->
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Tendances du moment" />
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="#Innovation" />
+                  <Label text="#Technologie" />
+                  <Label text="#Sport" />
+               </children>
+            </VBox>
+            <Separator />
+
+            <!-- Événements sportifs communautaires -->
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Événements à venir" />
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Tournoi de Football - 15 Février 2025 - Stade Municipal" />
+                  <Label text="Marathon de la Ville - 22 Mars 2025 - Parc Central" />
+                  <Label text="Course de VTT en Montagne - 10 Avril 2025 - Sentier des Alpes" />
+                  <Label text="Tournoi de Basketball 3v3 - 30 Avril 2025 - Gymnase Local" />
+                  <Label text="Compétition de Natation - 5 Mai 2025 - Piscine Olympique" />
+               </children>
+            </VBox>
+            <!-- Ajouter la section des partenaires -->
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Partenaires" />
+            <VBox fx:id="partnersContainer" spacing="10.0">
+               <!-- Les partenaires seront ajoutés dynamiquement ici -->
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+
+   <!-- Right: Suggestions -->
+   <!-- Right: Suggestions -->
+   <right>
+      <VBox alignment="TOP_RIGHT" spacing="20.0" styleClass="vbox">
+         <children>
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Groupes populaires" />
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="Groupe Innovation" />
+                  <Label text="Fans de Sport" />
+               </children>
+            </VBox>
+
+
+<!--            <Button text="Ajouter un partenaire" onAction="#openAddPartnerDialog" />-->
+         </children>
+      </VBox>
+   </right>
+
+
+</BorderPane>
+
+

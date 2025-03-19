@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.sportxnews.controller.MainScreenController">
+<!--            stylesheets="@/css/style.css">-->
+
+    <!-- Top: Header -->
+    <top>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10;" text="Sport News" />
+    </top>
+
+    <!-- Left: ListView for filtering sports -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f4f4f4;">
+            <!-- Barre de recherche -->
+            <TextField fx:id="searchField" promptText="Rechercher une catégorie..." />
+            <!-- Liste des catégories -->
+            <ListView fx:id="categoryListView" />
+            <Button fx:id="homeButton" text="Accueil" style="-fx-font-size: 14px;" onAction="#goToHome"/>
+            <Button text="Live Scores" onAction="#goToLiveScores" style="-fx-font-size: 14px;" />
+        </VBox>
+    </left>
+
+    <!-- Center: ScrollPane to display news -->
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="20" style="-fx-padding: 20;">
+<!--                &lt;!&ndash; Section Scores en Direct &ndash;&gt;-->
+<!--                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Scores en Direct" />-->
+<!--                <VBox fx:id="liveScoresContainer" spacing="10">-->
+<!--                    &lt;!&ndash; Les scores en direct seront ajoutés dynamiquement ici &ndash;&gt;-->
+<!--                </VBox>-->
+
+                <!-- Section Actualités -->
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Fil d'actualité" />
+                <VBox fx:id="newsContainer" spacing="15">
+                    <!-- Les cartes d'actualités seront ajoutées dynamiquement ici -->
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
