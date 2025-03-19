@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml" spacing="20" styleClass="header" fx:controller="com.example.sportx.controller.abir.NavbarController">
+    <stylesheets>
+        <URL value="@/CommunityStyle.css"/>
+    </stylesheets>
+    <HBox spacing="30" styleClass="header-content">
+        <!-- Logo -->
+        <ImageView fitWidth="60" preserveRatio="true" styleClass="icon">
+            <Image url="icon.png"/>
+        </ImageView>
+        <!-- Spacer to push icons to the right -->
+        <HBox HBox.hgrow="ALWAYS"></HBox>
+        <!-- Notification and Profile Icons -->
+        <HBox alignment="CENTER" spacing="20" styleClass="icons-container">
+            <!-- Notification Icon -->
+            <Button styleClass="Notification-icon-button" onAction="#handleNotificationButtonClick">
+                <graphic>
+                    <ImageView fitWidth="20" preserveRatio="true">
+                        <Image url="notification_icon.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <!-- Messages Icon -->
+            <Button styleClass="messages-icon-button" onAction="#handleMessagesButtonClick">
+                <graphic>
+                    <ImageView fitWidth="20" preserveRatio="true">
+                        <Image url="messages_icon.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <!-- Profile Icon -->
+            <Button styleClass="profile-icon-button">
+                <graphic>
+                    <ImageView fitWidth="20" preserveRatio="true">
+                        <Image url="profile_icon.png"/>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </HBox>
+
+</VBox>

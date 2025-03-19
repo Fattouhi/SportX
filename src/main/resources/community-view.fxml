@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.fxml.FXML?>
+<?import javafx.fxml.FXMLLoader?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.sportx.controller.abir.CommunityController">
+    <stylesheets>
+        <URL value="@/CommunityStyle.css"/>
+    </stylesheets>
+
+    <!-- Include Navbar and sidebar -->
+    <top>
+        <fx:include source="navbar.fxml" fx:id="navbar"/>
+    </top>
+    <left>
+        <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+    </left>
+
+    <!-- Main Content in the Center -->
+    <center>
+        <VBox spacing="10" alignment="TOP_CENTER">
+            <!-- Title -->
+            <Label styleClass="main-title" text="Discover your next community"/>
+
+            <!-- Search Bar -->
+            <HBox alignment="CENTER">
+                <TextField fx:id="searchBar" prefHeight="40.0" prefWidth="800.0" promptText="Filter for fabulous forums..." styleClass="search-bar" onAction="#handleSearch"/>
+            </HBox>
+
+            <!-- Start Community Link and Category Filter -->
+            <VBox spacing="10" alignment="TOP_CENTER">
+                <Hyperlink text="Start Your Community" styleClass="start-community-link" onAction="#handleStartCommunityClick"/>
+                <VBox prefWidth="135.0" spacing="10" styleClass="sidebar">
+                    <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryFilter">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="All"/>
+                                <String fx:value="Game Analysis and Strategies"/>
+                                <String fx:value="Training and Performance"/>
+                                <String fx:value="Sports News and Updates"/>
+                                <String fx:value="Fan Communities"/>
+                                <String fx:value="Health and Recovery"/>
+                                <String fx:value="Esports"/>
+                                <String fx:value="Equipment"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                </VBox>
+            </VBox>
+
+            <!-- Welcome Label -->
+            <Label fx:id="welcomeLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+            <!-- Community Container -->
+            <TilePane fx:id="communityContainer" hgap="20" prefColumns="3" styleClass="content" vgap="20">
+                <!-- Group cards will be dynamically added here by the controller -->
+            </TilePane>
+        </VBox>
+    </center>
+</BorderPane>

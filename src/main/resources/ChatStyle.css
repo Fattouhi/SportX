@@ -1,0 +1,250 @@
+/* General Styles */
+.root {
+    -fx-background-color: #181818;
+    -fx-text-fill: white;
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+/* Header Styles */
+.header {
+    -fx-alignment: center;
+    -fx-padding: 0 0 60 0;
+}
+.header-content{
+    -fx-background-color: white;
+    -fx-padding: 0 20 10 0;
+}
+
+.Notification-icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+    -fx-border-width: 0;
+    -fx-shape: "M0,0 L1,0 L1,1 L0,1 Z";
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    position: relative;
+    -fx-effect: none; /* No effect initially */
+}
+
+.Notification-icon-button:hover {
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
+    -fx-scale-x: 1.2; /* Enlarge horizontally on hover */
+    -fx-scale-y: 1.2; /* Enlarge vertically on hover */
+}
+
+.Notification-icon-button:pressed {
+    -fx-background-color: transparent; /* No background when pressed */
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Stronger blue shadow on click */
+    -fx-scale-x: 1; /* Reset scale to original on click */
+    -fx-scale-y: 1; /* Reset scale to original on click */
+}
+
+.messages-icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+    -fx-border-width: 0;
+    -fx-shape: "M0,0 L1,0 L1,1 L0,1 Z";
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    position: relative;
+    -fx-effect: none; /* No effect initially */
+}
+
+.messages-icon-button:hover {
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
+    -fx-scale-x: 1.2; /* Enlarge horizontally on hover */
+    -fx-scale-y: 1.2; /* Enlarge vertically on hover */
+}
+
+.messages-icon-button:pressed {
+    -fx-background-color: transparent; /* No background when pressed */
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Stronger blue shadow on click */
+    -fx-scale-x: 1; /* Reset scale to original on click */
+    -fx-scale-y: 1; /* Reset scale to original on click */
+}
+
+.profile-icon-button {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+    -fx-border-width: 0;
+    -fx-shape: "M0,0 L1,0 L1,1 L0,1 Z";
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    position: relative;
+    -fx-effect: none; /* No effect initially */
+}
+
+.profile-icon-button:hover {
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
+    -fx-scale-x: 1.2; /* Enlarge horizontally on hover */
+    -fx-scale-y: 1.2; /* Enlarge vertically on hover */
+}
+
+.profile-icon-button:pressed {
+    -fx-background-color: transparent; /* No background when pressed */
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Stronger blue shadow on click */
+    -fx-scale-x: 1; /* Reset scale to original on click */
+    -fx-scale-y: 1; /* Reset scale to original on click */
+}
+
+.logo {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-alignment: left;
+    -fx-padding: 10px;
+}
+
+.main-title {
+    -fx-font-size: 45px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+.search-bar {
+    -fx-background-color: #2E2E2E;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #B0B0B0;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-alignment: left;
+
+}
+.search-bar:hover {
+    -fx-background-color: #2E2E2E;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #B0B0B0;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
+    -fx-scale-x: 1.1; /* Enlarge horizontally on hover */
+    -fx-scale-y: 1.1; /* Enlarge vertically on hover */
+}
+
+.search-bar:pressed {
+    -fx-background-color: #2E2E2E;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #B0B0B0;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for pressed effect */
+    -fx-scale-x: 1.1; /* Enlarge horizontally when pressed */
+    -fx-scale-y: 1.1; /* Enlarge vertically when pressed */
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-pref-width: 300px;
+    -fx-padding: 20 20 20 80;
+}
+
+
+
+.category-button {
+    -fx-background-color: #2E2E2E;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 5px;
+    -fx-border-color: #3A3A3A;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+    -fx-font-size: 18px;
+    -fx-pref-width: 180; /* Adjust based on desired button width */
+    -fx-max-width: Double.MAX_VALUE; /* Allows button to grow and fill VBox width */
+    -fx-alignment: CENTER; /* Centers text within the button */
+
+}
+
+.category-button:hover {
+    -fx-background-color: #3A3A3A;
+}
+
+/* Start Your Community link */
+.start-community-link {
+    -fx-text-fill: #3498db;
+}
+
+
+.start-community-link:hover {
+    -fx-background-color: #3A3A3A;
+}
+
+/* Content Styles */
+.content {
+    -fx-padding: 20px;
+}
+
+.card {
+    -fx-background-color: #2E2E2E;
+    -fx-background-radius: 10px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+}
+
+.community-image {
+    -fx-background-radius: 5px;
+}
+
+.card-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.card-description {
+    -fx-text-fill: #B0B0B0;
+}
+
+.community-stats {
+    -fx-spacing: 15px;
+}
+
+.community-stats > Label {
+    -fx-text-fill: #B0B0B0;
+}
+
+/* Accent Colors */
+.accent-red {
+    -fx-background-color: #E53935;
+}
+
+.accent-green {
+    -fx-background-color: #4CAF50;
+}
+
+.accent-blue {
+    -fx-background-color: #2196F3;
+}
+
+.accent-orange {
+    -fx-background-color: #FF9800;
+}
+
+.accent-pink {
+    -fx-background-color: #F06292;
+}
+
+.accent-purple {
+    -fx-background-color: #9C27B0;
+}
+
+/* Footer Styles */
+.footer {
+    -fx-background-color: #202020;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.footer-text {
+    -fx-text-fill: #B0B0B0;
+    -fx-font-size: 12px;
+}

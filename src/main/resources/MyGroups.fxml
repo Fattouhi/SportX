@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.fxml.FXML?>
+<?import javafx.fxml.FXMLLoader?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.sportx.controller.abir.MyGroupsController" prefHeight="400.0" prefWidth="600.0">
+    <!-- Add Navbar to the Top Section -->
+    <top>
+        <fx:include source="navbar.fxml" fx:id="navbar"/>
+    </top>
+
+    <!-- Existing Content in the Center Section -->
+    <center>
+        <VBox spacing="10" alignment="CENTER" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0"
+              AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+            <Label text="Mes Groupes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <ListView fx:id="groupListView"/>
+            <Button text="Rejoindre un Groupe" onAction="#handleJoinGroup"/>
+        </VBox>
+    </center>
+</BorderPane>

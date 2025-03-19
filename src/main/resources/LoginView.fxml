@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.controller.abir.LoginController">
+    <Label text="Login" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <!-- Email Field -->
+    <Label text="Email:"/>
+    <TextField fx:id="emailField" promptText="Enter your email"/>
+
+    <!-- Password Field -->
+    <Label text="Password:"/>
+    <PasswordField fx:id="passwordField" promptText="Enter your password"/>
+
+    <!-- Login Button -->
+    <Button text="Login" onAction="#handleLogin" style="-fx-font-size: 14px;"/>
+
+    <!-- Error Message Label -->
+    <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+</VBox>

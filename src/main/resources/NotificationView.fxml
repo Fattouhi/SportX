@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.fxml.FXML?>
+<?import javafx.fxml.FXMLLoader?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.controller.abir.NotificationController">
+    <!-- Add Navbar to the Top Section -->
+    <top>
+        <fx:include source="navbar.fxml" fx:id="navbar"/>
+    </top>
+
+    <!-- Existing Content in the Center Section -->
+    <center>
+        <VBox>
+            <Label text="Notifications" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <ListView fx:id="notificationListView" onMouseClicked="#handleNotificationClick"/>
+        </VBox>
+    </center>
+</BorderPane>

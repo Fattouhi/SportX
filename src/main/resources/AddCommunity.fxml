@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.sportx.controller.abir.GroupController">
+    <stylesheets>
+        <URL value="@/AddCommunityStyle.css"/>
+    </stylesheets>
+    <!-- Add Navbar to the Top Section -->
+    <top>
+        <fx:include source="navbar.fxml" fx:id="navbar"/>
+    </top>
+    <center>
+        <StackPane fx:id="centerContainer" styleClass="center-container">
+            <VBox spacing="15" styleClass="form-container" alignment="CENTER">
+                <Label text="Créer un Nouveau Groupe" styleClass="title-label"/>
+                <Label text="Nom du groupe :"/>
+                <TextField fx:id="groupNameField" promptText="Entrez le nom du groupe"/>
+                <Label text="Description du groupe :"/>
+                <TextArea fx:id="groupDescriptionField" promptText="Ajoutez une description"/>
+                <Label text="Catégorie du groupe :"/>
+                <ComboBox fx:id="groupCategoryField"/>
+                <Label text="Image du groupe :"/>
+                <HBox spacing="10" alignment="CENTER" styleClass="hbox-layout">
+                    <Button text="Choisir une image" onAction="#handleUploadImage" styleClass="image-button"/>
+                    <ImageView fx:id="groupImageView" fitWidth="100" fitHeight="100" preserveRatio="true"/>
+                </HBox>
+                <HBox spacing="10" alignment="CENTER" styleClass="hbox-layout">
+                    <Button text="Créer" onAction="#handleCreateGroup" styleClass="action-button"/>
+                    <Button text="Annuler" onAction="#handleCancel" styleClass="cancel-button"/>
+                </HBox>
+                <ListView fx:id="groupListView" /> <!-- Add this line -->
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>
