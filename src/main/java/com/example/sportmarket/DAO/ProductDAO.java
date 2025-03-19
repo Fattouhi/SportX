@@ -1,4 +1,4 @@
-package com.example.sportx.DAO;
+package com.example.sportmarket.DAO;
 
 import models.Item;
 import java.sql.Connection;

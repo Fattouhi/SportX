@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="700.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.CheckoutFormController">
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="700.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.CheckoutFormController">
     <children>
         <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Checkout Form" />
         <ComboBox fx:id="cityComboBox" promptText="Select City" />

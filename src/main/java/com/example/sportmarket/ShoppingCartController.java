@@ -1,6 +1,6 @@
-package com.example.sportx;
+package com.example.sportmarket;
 
-import com.example.sportx.DAO.CartDAO;
+import com.example.sportmarket.DAO.CartDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

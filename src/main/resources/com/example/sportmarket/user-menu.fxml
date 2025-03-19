@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.NavbarController" spacing="10">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.NavbarController" spacing="10">
    <children>
       <Button text="View Profile" onAction="#viewProfile"/>
       <Button text="Logout" onAction="#logout"/>

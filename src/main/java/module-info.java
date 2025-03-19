@@ -1,4 +1,4 @@
-module com.example.sportx {
+module com.example.sportmarket {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -12,11 +12,11 @@ module com.example.sportx {
     requires com.almasb.fxgl.all;
     requires java.sql;
 
-    opens com.example.sportx to javafx.fxml;
+    opens com.example.sportmarket to javafx.fxml;
 
-    exports com.example.sportx.DAO;
-    opens com.example.sportx.DAO to javafx.fxml;
-    exports com.example.sportx;
+    exports com.example.sportmarket.DAO;
+    opens com.example.sportmarket.DAO to javafx.fxml;
+    exports com.example.sportmarket;
 
 
 }

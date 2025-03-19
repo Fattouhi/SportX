@@ -1,4 +1,4 @@
-package com.example.sportx;
+package com.example.sportmarket;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

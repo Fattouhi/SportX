@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.ShoppingCartController">
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.ShoppingCartController">
     <children>
         <Label text="Shopping Cart" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
         <ListView fx:id="cartItemsList" prefHeight="400.0" prefWidth="600.0" />

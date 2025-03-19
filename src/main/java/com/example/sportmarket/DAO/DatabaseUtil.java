@@ -1,4 +1,4 @@
-package com.example.sportx.DAO;
+package com.example.sportmarket.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

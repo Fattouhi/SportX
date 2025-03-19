@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1100.0" spacing="20.0" styleClass="navbar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.NavbarController">
+<HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="1100.0" spacing="20.0" styleClass="navbar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.NavbarController">
     <children>
         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <image>

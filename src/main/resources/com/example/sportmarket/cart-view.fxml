@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" spacing="15.0" style="-fx-border-radius: 15;" styleClass="shadow" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.CartController" onMouseClicked="#handleClick">
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" spacing="15.0" style="-fx-border-radius: 15;" styleClass="shadow" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.CartController" onMouseClicked="#handleClick">
    <children>
       <ImageView fx:id="imageName" fitHeight="155.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" />
       <VBox prefHeight="185.0" prefWidth="200.0">

@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="productDetailBox" alignment="CENTER" prefHeight="700.0" prefWidth="444.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportx.ProductDetailController">
+<VBox fx:id="productDetailBox" alignment="CENTER" prefHeight="700.0" prefWidth="444.0" spacing="20" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.ProductDetailController">
     <children>
         <ImageView fx:id="productImage" fitHeight="300" fitWidth="300" />
         <Label fx:id="productName" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
