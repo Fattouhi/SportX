@@ -19,4 +19,20 @@ module com.example.sportmarket {
     exports com.example.sportmarket;
 
 
+    requires org.json;
+    requires java.desktop;
+    requires mysql.connector.java;
+    requires org.jsoup;
+
+    opens com.example.sportxnews to javafx.fxml;
+    exports com.example.sportxnews;
+    exports com.example.sportxnews.controller;
+    opens com.example.sportxnews.controller to javafx.fxml;
+    exports com.example.sportxnews.dao;
+    opens com.example.sportxnews.dao to javafx.fxml;
+    exports com.example.sportxnews.models;
+    opens com.example.sportxnews.models to javafx.fxml;
+
+
+
 }
