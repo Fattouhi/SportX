@@ -10,6 +10,7 @@ public class Item {
     private double price;
     private int stockQuantity;
     private String status;
+    private int quantity;
 
     // Getters and Setters
     public int getId() { return id; }
@@ -38,4 +39,7 @@ public class Item {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 }
