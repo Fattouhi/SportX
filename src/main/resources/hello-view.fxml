@@ -19,27 +19,7 @@
 
    <!-- Top: Header -->
    <top>
-      <HBox alignment="CENTER_RIGHT" prefHeight="60.0" spacing="20.0" styleClass="hbox">
-         <children>
-            <ImageView fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/sportx_transparent.png" />
-               </image>
-            </ImageView>
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <TextField prefWidth="250.0" promptText="Rechercher..." />
-            <Label text="Profil">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/sportx_transparent.png" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
+      <fx:include source="navbar.fxml" />
    </top>
 
    <!-- Left: Navigation -->
