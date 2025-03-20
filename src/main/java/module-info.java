@@ -26,6 +26,7 @@ module com.example.sportmarket {
 =======
 >>>>>>> e31bfcfa386b87aa155d8ac0c82c228e11f981cf
 
+
     opens com.example.sportxnews to javafx.fxml;
     exports com.example.sportxnews;
     exports com.example.sportxnews.controller;
@@ -35,6 +36,15 @@ module com.example.sportmarket {
     exports com.example.sportxnews.models;
     opens com.example.sportxnews.models to javafx.fxml;
 
+<<<<<<< HEAD
     // Open the package containing NavbarController to javafx.fxml
     opens com.example.sportx.controller.abir to javafx.fxml;
+=======
+    // Export the package containing the CommunityController
+    exports com.example.sportx.controller.abir to javafx.fxml;
+
+    // Open the package to allow FXML loading
+    opens com.example.sportx.controller.abir to javafx.fxml ;
+
+>>>>>>> d742d22f54706f12aa81e7e6a0d807ac391aead8
 }
