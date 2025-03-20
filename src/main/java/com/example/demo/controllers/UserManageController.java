@@ -25,6 +25,7 @@ public class UserManageController {
     @FXML private TableColumn<Users, String> colLastName;
     @FXML private TableColumn<Users, String> colEmail;
     @FXML private TableColumn<Users, String> colCountry;
+    @FXML private TableColumn<Users, String> colGender; // Nouvelle colonne pour genre
     @FXML private TableColumn<Users, String> colBan;
     @FXML private TextField searchField;
     @FXML private AnchorPane mainLayoutContainer;
@@ -41,13 +42,15 @@ public class UserManageController {
         colFirstName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirstName()));
         colLastName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastName()));
         colEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
-        colCountry.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCountry())));
+        colCountry.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCountry()));
+        colGender.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGender())); // Ajout de la colonne gender
 
         // Configurer la colonne d'action (bouton Bannir)
         colBan.setCellFactory(param -> new ButtonTableCell<>("Bannir", user -> {
             banUser((Users) user);
             return null; // Retour explicite null pour correspondre à Void
         }));
+
         // Initialiser le filtre par statut
         if (statusFilterChoiceBox.getItems().isEmpty()) {
             statusFilterChoiceBox.setItems(FXCollections.observableArrayList("Tous", "Active", "Banned"));
@@ -101,8 +104,8 @@ public class UserManageController {
         TextField firstNameField = new TextField();
         TextField lastNameField = new TextField();
         TextField emailField = new TextField();
-        PasswordField passwordField = new PasswordField();
         TextField countryField = new TextField();
+        TextField genderField = new TextField();
 
         grid.add(new Label("Téléphone:"), 0, 0);
         grid.add(phoneField, 1, 0);
@@ -112,10 +115,10 @@ public class UserManageController {
         grid.add(lastNameField, 1, 2);
         grid.add(new Label("Email:"), 0, 3);
         grid.add(emailField, 1, 3);
-        grid.add(new Label("Mot de passe:"), 0, 4);
-        grid.add(passwordField, 1, 4);
-        grid.add(new Label("Pays:"), 0, 5);
-        grid.add(countryField, 1, 5);
+        grid.add(new Label("Pays:"), 0, 4);
+        grid.add(countryField, 1, 4);
+        grid.add(new Label("Genre:"), 0, 5);
+        grid.add(genderField, 1, 5);
 
         dialog.getDialogPane().setContent(grid);
 
@@ -124,12 +127,12 @@ public class UserManageController {
             String firstName = firstNameField.getText().trim();
             String lastName = lastNameField.getText().trim();
             String email = emailField.getText().trim();
-            String password = passwordField.getText().trim();
             String country = countryField.getText().trim();
+            String gender = genderField.getText().trim();
 
             if (!phone.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() &&
-                    !email.isEmpty() && !password.isEmpty() && !country.isEmpty()) {
-                Users newUser = new Users(0, Integer.parseInt(phone), firstName, lastName, email, password, Integer.parseInt(country));
+                    !email.isEmpty() && !country.isEmpty() && !gender.isEmpty()) {
+                Users newUser = new Users(0, Integer.parseInt(phone), firstName, lastName, email, country, gender);
                 UsersDAO.addUser(newUser);
 
                 loadUsers();
@@ -156,13 +159,13 @@ public class UserManageController {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        TextField userIdField = new TextField(String.valueOf(selectedUser.getUserId()));
+        TextField userIdField = new TextField(String.valueOf(selectedUser.getId()));
         TextField phoneField = new TextField(String.valueOf(selectedUser.getPhone()));
         TextField firstNameField = new TextField(selectedUser.getFirstName());
         TextField lastNameField = new TextField(selectedUser.getLastName());
         TextField emailField = new TextField(selectedUser.getEmail());
-        PasswordField passwordField = new PasswordField();
-        TextField countryField = new TextField(String.valueOf(selectedUser.getCountry()));
+        TextField countryField = new TextField(selectedUser.getCountry());
+        TextField genderField = new TextField(selectedUser.getGender());
 
         grid.add(new Label("ID:"), 0, 0);
         grid.add(userIdField, 1, 0);
@@ -174,15 +177,15 @@ public class UserManageController {
         grid.add(lastNameField, 1, 3);
         grid.add(new Label("Email:"), 0, 4);
         grid.add(emailField, 1, 4);
-        grid.add(new Label("Mot de passe:"), 0, 5);
-        grid.add(passwordField, 1, 5);
-        grid.add(new Label("Pays:"), 0, 6);
-        grid.add(countryField, 1, 6);
+        grid.add(new Label("Pays:"), 0, 5);
+        grid.add(countryField, 1, 5);
+        grid.add(new Label("Genre:"), 0, 6);
+        grid.add(genderField, 1, 6);
 
         dialog.getDialogPane().setContent(grid);
 
         dialog.showAndWait().ifPresent(response -> {
-            selectedUser.setUserId(Integer.parseInt(userIdField.getText().trim()));
+            selectedUser.setId(Integer.parseInt(userIdField.getText().trim()));
             if (!phoneField.getText().trim().isEmpty()) {
                 selectedUser.setPhone(Integer.parseInt(phoneField.getText().trim()));
             }
@@ -195,11 +198,11 @@ public class UserManageController {
             if (!emailField.getText().trim().isEmpty()) {
                 selectedUser.setEmail(emailField.getText().trim());
             }
-            if (!passwordField.getText().trim().isEmpty()) {
-                selectedUser.setPassword(passwordField.getText().trim());
-            }
             if (!countryField.getText().trim().isEmpty()) {
-                selectedUser.setCountry(Integer.parseInt(countryField.getText().trim()));
+                selectedUser.setCountry(countryField.getText().trim());
+            }
+            if (!genderField.getText().trim().isEmpty()) {
+                selectedUser.setGender(genderField.getText().trim());
             }
 
             UsersDAO.updateUser(selectedUser);
@@ -208,7 +211,6 @@ public class UserManageController {
         });
     }
 
-    // Dans la méthode deleteUser() de UserManageController.java
     @FXML
     private void deleteUser() {
         Users selectedUser = userTable.getSelectionModel().getSelectedItem();
@@ -220,7 +222,7 @@ public class UserManageController {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous vraiment supprimer cet utilisateur ?", ButtonType.YES, ButtonType.NO);
         confirmation.showAndWait().ifPresent(response -> {
             if (response == ButtonType.YES) {
-                UsersDAO.deleteUser(selectedUser.getUserId()); // Utilise userId au lieu de email
+                UsersDAO.deleteUser(selectedUser.getId()); // Utilise id au lieu de UserId
                 loadUsers();
                 showAlert("Succès", "Utilisateur supprimé avec succès !");
             }
@@ -236,7 +238,9 @@ public class UserManageController {
             boolean matches = user.getFirstName().toLowerCase().contains(keyword) ||
                     user.getLastName().toLowerCase().contains(keyword) ||
                     user.getEmail().toLowerCase().contains(keyword) ||
-                    String.valueOf(user.getPhone()).contains(keyword);
+                    String.valueOf(user.getPhone()).contains(keyword) ||
+                    user.getCountry().toLowerCase().contains(keyword) ||
+                    user.getGender().toLowerCase().contains(keyword);
 
             if (matches) {
                 filteredList.add(user);
@@ -246,14 +250,13 @@ public class UserManageController {
         userTable.setItems(filteredList);
     }
 
-    // Filtrer les utilisateurs par statut (Active/Banned)
     @FXML
     private void filterUsersByStatus() throws SQLException {
         String status = statusFilterChoiceBox.getValue();
         ObservableList<Users> filteredList = FXCollections.observableArrayList();
 
         for (Users user : userList) {
-            boolean isBanned = UsersDAO.isUserBanned(user.getUserId());
+            boolean isBanned = UsersDAO.isUserBanned(user.getId());
             if ("Tous".equals(status) ||
                     ("Active".equals(status) && !isBanned) ||
                     ("Banned".equals(status) && isBanned)) {
@@ -263,9 +266,7 @@ public class UserManageController {
         userTable.setItems(filteredList);
     }
 
-    // Méthode pour bannir un utilisateur
     private void banUser(Users user) {
-        // Demander la raison du bannissement via une boîte de dialogue
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Bannir Utilisateur");
         dialog.setHeaderText("Bannir " + user.getFirstName() + " " + user.getLastName());
@@ -274,10 +275,10 @@ public class UserManageController {
         dialog.showAndWait().ifPresent(banReason -> {
             if (!banReason.trim().isEmpty()) {
                 int adminId = 1; // Remplacez par l'ID de l'administrateur connecté (à implémenter)
-                int userId = user.getUserId();
+                int userId = user.getId();
 
                 // Bannir l'utilisateur dans banned_users
-                BannedUsersDAO bannedUsersDAO = null;
+                BannedUsersDAO bannedUsersDAO;
                 try {
                     bannedUsersDAO = new BannedUsersDAO(DatabaseConnection.getConnection());
                 } catch (SQLException e) {
@@ -289,7 +290,7 @@ public class UserManageController {
                 UsersDAO.resetPasswordOnBan(userId);
 
                 // Enregistrer l'action dans admin_actions
-                AdminActionDAO adminActionDAO = null;
+                AdminActionDAO adminActionDAO;
                 try {
                     adminActionDAO = new AdminActionDAO(DatabaseConnection.getConnection());
                 } catch (SQLException e) {
@@ -298,11 +299,11 @@ public class UserManageController {
                 boolean logged = adminActionDAO.logAdminAction(adminId, "ban_user", userId);
 
                 if (banned && logged) {
-                    user.setBanned(true); // Mise à jour locale (optionnel)
+                    user.setBanned(true); // Mise à jour locale
                     showAlert("Succès", "Utilisateur banni avec succès ! Son mot de passe a été supprimé.");
-                    loadUsers(); // Rafraîchir la liste
+                    loadUsers();
                     try {
-                        filterUsersByStatus(); // Appliquer le filtre après la mise à jour
+                        filterUsersByStatus();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
@@ -347,6 +348,4 @@ public class UserManageController {
             }
         }
     }
-
-
 }

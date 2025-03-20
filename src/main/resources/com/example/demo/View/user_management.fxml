@@ -64,7 +64,8 @@
             <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
             <TableColumn fx:id="colPhone" text="Téléphone" prefWidth="150"/>
             <TableColumn fx:id="colCountry" text="Pays" prefWidth="150"/>
-            <TableColumn fx:id="colBan" text="Action" prefWidth="100"/> <!-- Supprimé <cellFactory> -->
+            <TableColumn fx:id="colGender" text="Genre" prefWidth="100"/> <!-- Ajout de la colonne Gender -->
+            <TableColumn fx:id="colBan" text="Action" prefWidth="100"/>
         </columns>
     </TableView>
 

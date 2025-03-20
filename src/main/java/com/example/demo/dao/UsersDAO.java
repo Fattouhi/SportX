@@ -9,25 +9,25 @@ public class UsersDAO {
     private static final String URL = "jdbc:mysql://localhost:3306/sportx_bd";
     private static final String USER = "root";
     private static final String PASSWORD = "";
-    private static final String UPDATE_PASSWORD = "UPDATE Users SET Password = NULL WHERE UserID = ?";
+    private static final String UPDATE_PASSWORD = "UPDATE Users SET Password = NULL WHERE id = ?";
 
     // Récupérer tous les utilisateurs
     public static List<Users> getAllUsers() {
         List<Users> usersList = new ArrayList<>();
-        String query = "SELECT UserID, Phone, FirstName, LastName, Email, Password, Contry FROM Users";
+        String query = "SELECT id, telephone, prenom, nom, email, pays, genre FROM Users";
 
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 usersList.add(new Users(
-                        rs.getInt("UserID"),
-                        rs.getInt("Phone"),
-                        rs.getString("FirstName"),
-                        rs.getString("LastName"),
-                        rs.getString("Email"),
-                        rs.getString("Password"),
-                        rs.getInt("Contry")
+                        rs.getInt("id"),           // Correspond à UserID
+                        rs.getInt("telephone"),    // Correspond à Phone
+                        rs.getString("prenom"),    // Correspond à FirstName
+                        rs.getString("nom"),       // Correspond à LastName
+                        rs.getString("email"),     // Correspond à Email
+                        rs.getString("pays"),      // Correspond à Country (comme String ici)
+                        rs.getString("genre")      // Correspond à Gender
                 ));
             }
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class UsersDAO {
 
     // Ajouter un utilisateur
     public static void addUser(Users user) {
-        String query = "INSERT INTO Users (Phone, FirstName, LastName, Email, Password, Contry) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Users (telephone, prenom, nom, email, pays, genre) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -46,8 +46,8 @@ public class UsersDAO {
             stmt.setString(2, user.getFirstName());
             stmt.setString(3, user.getLastName());
             stmt.setString(4, user.getEmail());
-            stmt.setString(5, user.getPassword());
-            stmt.setInt(6, user.getCountry());
+            stmt.setString(5, user.getCountry());
+            stmt.setString(6, user.getGender());
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -62,15 +62,16 @@ public class UsersDAO {
 
     // Mettre à jour un utilisateur
     public static void updateUser(Users user) {
-        String query = "UPDATE Users SET Phone = ?, FirstName = ?, LastName = ?, Password = ? WHERE Email = ?";
+        String query = "UPDATE Users SET telephone = ?, prenom = ?, nom = ?, pays = ?, genre = ? WHERE email = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setInt(1, user.getPhone());
             stmt.setString(2, user.getFirstName());
             stmt.setString(3, user.getLastName());
-            stmt.setString(4, user.getPassword());
-            stmt.setString(5, user.getEmail());
+            stmt.setString(4, user.getCountry());
+            stmt.setString(5, user.getGender());
+            stmt.setString(6, user.getEmail());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -79,12 +80,12 @@ public class UsersDAO {
     }
 
     // Supprimer un utilisateur (optionnel, mais pas recommandé si l'utilisateur est banni)
-    public static void deleteUser(int UserID) {
-        String query = "DELETE FROM Users WHERE UserID = ?";
+    public static void deleteUser(int userId) {
+        String query = "DELETE FROM Users WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setInt(1, UserID);
+            stmt.setInt(1, userId);
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("✅ Utilisateur supprimé avec succès !");
@@ -123,5 +124,4 @@ public class UsersDAO {
             e.printStackTrace();
         }
     }
-
 }

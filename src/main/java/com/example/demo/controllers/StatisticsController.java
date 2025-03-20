@@ -71,7 +71,7 @@ public class StatisticsController {
         int bannedUsers = 0;
         BannedUsersDAO bannedUsersDAO = new BannedUsersDAO(DatabaseConnection.getConnection());
         for (Users user : users) {
-            if (bannedUsersDAO.isUserBanned(user.getUserId())) {
+            if (bannedUsersDAO.isUserBanned(user.getId())) { // Changé de getUserId() à getId()
                 bannedUsers++;
             } else {
                 activeUsers++;

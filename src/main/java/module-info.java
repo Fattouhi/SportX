@@ -24,6 +24,9 @@ module com.example.sportmarket {
     opens com.example.sportmarket.DAO to javafx.fxml;
     exports com.example.sportmarket;
 
+    opens com.example.demo.controllers to javafx.fxml, javafx.base; // Ouvre le package aux modules nécessaires
+    exports com.example.demo; // Exporte le package principal si nécessaire
+
     requires org.json;
     //requires mysql.connector.java;
     requires org.jsoup;
@@ -41,11 +44,8 @@ module com.example.sportmarket {
     opens com.example.sportxnews.models to javafx.fxml;
 
 
-    // Allow JavaFX to access the package where your Application class is located
-    exports com.example.demo to javafx.graphics, javafx.fxml;
 
     // Open if reflection access is needed
     opens com.example.demo to javafx.fxml;
 
-    opens com.example.demo.controllers to javafx.fxml;
 }
