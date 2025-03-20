@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.GetHistorique">
+   <children>
+      <ImageView fitHeight="622.0" fitWidth="647.0" layoutX="276.0">
+         <image>
+            <Image url="@images/SportConnect (9).jpg" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="mainScrollPane" layoutX="289.0" layoutY="124.0" prefHeight="498.0" prefWidth="634.0" style="-fx-background-color: transparent;">
+         <content>
+            <VBox fx:id="scrollContent" style="-fx-background-color: transparent;">
+               <!-- Header -->
+
+
+               <!-- Order 1 -->
+               <VBox prefHeight="166.0" prefWidth="760.0" style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                  <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="March 16, 2021 | Order number 3014577620" />
+                  <Label style="-fx-font-size: 14px;" text="Microsoft Surface Duo" />
+                  <Label style="-fx-font-size: 14px;" text="hhhhh" />
+                  <Label style="-fx-font-size: 12px;" text="Total $1,399.99 | Paid with Mastercard = 6985" />
+                  <Label style="-fx-font-size: 12px;" text="In transit: Estimated delivery April 10, 2021" />
+                  <HBox spacing="10">
+                     <Button style="-fx-background-color: lightblue;" text="Track order" />
+                     <Button style="-fx-background-color: lightblue;" text="Request return" />
+                  </HBox>
+                  <Button style="-fx-background-color: lightgray;" text="Show details" />
+               </VBox>
+
+               <!-- Order 2 -->
+               <VBox style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                  <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="March 10, 2021 | Order number 3014577619" />
+                  <Label style="-fx-font-size: 14px;" text="Mafia City Exclusive Bundle" />
+                  <Label style="-fx-font-size: 14px;" text="hhhh" />
+                  <Label style="-fx-font-size: 12px;" text="Bundle includes:" />
+                  <Label style="-fx-font-size: 12px;" text="Total $499.99 | Paid with Mastercard = 6985" />
+                  <Label style="-fx-font-size: 12px;" text="Other than 1 month:" />
+                  <Label style="-fx-font-size: 12px;" text="Mafia Cart Edition 6 - $574.00" />
+                  <Label style="-fx-font-size: 12px;" text="Total $70.00 | Paid with Microsoft Account" />
+                  <Button style="-fx-background-color: lightgray;" text="Show details" />
+               </VBox>
+
+               <!-- Completed Orders -->
+               <VBox style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                  <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Completed | Expires on March 12, 2022" />
+                  <Button style="-fx-background-color: lightblue;" text="Buy again" />
+                  <Button style="-fx-background-color: lightgray;" text="Show details" />
+               </VBox>
+
+               <VBox style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                  <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Completed | Continues on May 1, 2022" />
+                  <Button style="-fx-background-color: lightblue;" text="Buy again" />
+                  <Button style="-fx-background-color: lightgray;" text="Show details" />
+               </VBox>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Text fill="#fff8f8" layoutX="299.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historique">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="filterChoiceBox" layoutX="331.0" layoutY="84.0" prefHeight="20.0" prefWidth="90.0" />
+      <ChoiceBox fx:id="sortChoiceBox" layoutX="563.0" layoutY="84.0" prefHeight="16.0" prefWidth="89.0" />
+      <Text fill="WHITE" layoutX="299.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All :" />
+      <Text fill="WHITE" layoutX="459.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commandé dans :" />
+      <Pane cache="true" cacheHint="QUALITY" layoutY="38.0" prefHeight="584.0" prefWidth="278.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <DropShadow height="0.0" radius="5.335" width="23.34" />
+         </effect>
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="177.0">
+               <image>
+                  <Image url="@images/shopping_cart_checkout_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="14.0" layoutY="520.0" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Connect links">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="22.0">
+               <image>
+                  <Image url="@images/home_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="facebook" layoutX="11.0" layoutY="530.0" prefHeight="35.0" prefWidth="82.0" style="-fx-background-color: #000FFF;" text="Facebook" />
+            <Button fx:id="instagramme" layoutX="104.0" layoutY="530.0" prefHeight="36.0" prefWidth="88.0" style="-fx-background-color: #305CDE;" text="Instagram" />
+            <Button fx:id="snapchat" layoutX="197.0" layoutY="529.0" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: #ADD8E6;" text="Snapchat" />
+            <Button fx:id="getgroups" layoutX="228.0" layoutY="172.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="getConnection" layoutX="228.0" layoutY="136.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Acheter" layoutX="228.0" layoutY="99.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="messages" layoutX="228.0" layoutY="59.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="home" layoutX="228.0" layoutY="17.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="getgroups1" layoutX="228.0" layoutY="209.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="24.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: #66000000;" text="Home                                                     " />
+            <Button layoutX="14.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: #66000000;" text="Messages                                            " />
+            <Button layoutX="14.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: #66000000;" text="Profil utilisateur                                    " />
+            <Button layoutX="14.0" layoutY="138.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: #66000000;" text="Mes inscriptions                                    " />
+            <Button layoutX="22.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: #66000000;" text="Marketplace                                                 " />
+            <Button layoutX="14.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: #66000000;" text="Historique                                             " />
+            <Button layoutX="14.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" style="-fx-background-color: #66000000;" text="Se déconnecter                                     " />
+            <Button fx:id="getgroups11" layoutX="228.0" layoutY="244.0" minWidth="43.0" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: #66000000;" text="&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <AnchorPane prefHeight="46.0" prefWidth="923.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Button fx:id="submit11111" defaultButton="true" layoutX="214.0" layoutY="22.0" style="-fx-background-color: #66000000;" text="Marketplace" />
+            <Button fx:id="submit1112" defaultButton="true" layoutX="313.0" layoutY="22.0" style="-fx-background-color: #66000000;" text="Actualités" />
+            <Button fx:id="submit1111" defaultButton="true" layoutX="164.0" layoutY="21.0" style="-fx-background-color: #66000000;" text="Groups" />
+            <Button fx:id="submit111" defaultButton="true" layoutX="84.0" layoutY="21.0" style="-fx-background-color: #66000000;" text="Evénements" />
+            <ImageView fx:id="refrech" fitHeight="39.0" fitWidth="54.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@SportConnect-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="Authentfier1" defaultButton="true" layoutX="612.0" layoutY="18.0" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #FFF324;" text="Ajoutez votre évènement" />
+            <SplitMenuButton layoutX="801.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="117.0" text=" Mon espace">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </SplitMenuButton>
+         </children>
+      </AnchorPane>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
