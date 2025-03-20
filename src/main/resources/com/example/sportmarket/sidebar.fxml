@@ -6,11 +6,11 @@
 <VBox alignment="TOP_LEFT" prefHeight="630.0" prefWidth="180.0" spacing="15.0" styleClass="sidebar" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.sidebar" >
     <children>
         <Pane prefHeight="33.0" prefWidth="200.0" />
-        <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="accueil" onAction="#goToHome"/>
-        <Button fx:id="actualitesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Actualités" onAction="#gotoActualite" />
-        <Button fx:id="marketButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Market" onAction="#gotoMarket" />
-        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Événements" />
-        <Button fx:id="messagesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Messages" onAction="#gotoMessages" />
-        <Button fx:id="chatbotButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="chatbot" onAction="#gotoChatbot" />
+        <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="accueil" onAction="#goToHome"/>
+        <Button fx:id="actualitesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Actualités" onAction="#gotoActualite" />
+        <Button fx:id="marketButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Market" onAction="#gotoMarket" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Événements" />
+        <Button fx:id="messagesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Messages" onAction="#gotoMessages" />
+        <Button fx:id="chatbotButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="chatbot" onAction="#gotoChatbot" />
     </children>
 </VBox>
