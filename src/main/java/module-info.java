@@ -17,11 +17,14 @@ module com.example.sportmarket {
     requires mysql.connector.java;
     requires org.jsoup;
     requires org.slf4j;
+<<<<<<< HEAD
 
     opens com.example.sportmarket to javafx.fxml;
     exports com.example.sportmarket.DAO;
     opens com.example.sportmarket.DAO to javafx.fxml;
     exports com.example.sportmarket;
+=======
+>>>>>>> e31bfcfa386b87aa155d8ac0c82c228e11f981cf
 
     opens com.example.sportxnews to javafx.fxml;
     exports com.example.sportxnews;

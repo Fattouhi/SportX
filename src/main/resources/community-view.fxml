@@ -17,8 +17,9 @@
         <fx:include source="navbar.fxml" fx:id="navbar"/>
     </top>
     <left>
-        <fx:include source="sidebar.fxml" fx:id="sidebar"/>
+        <fx:include source="com/example/sportmarket/sidebar.fxml" fx:id="sidebar"/>
     </left>
+
 
     <!-- Main Content in the Center -->
     <center>

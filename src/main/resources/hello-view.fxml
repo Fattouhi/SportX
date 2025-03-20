@@ -24,18 +24,9 @@
 
    <!-- Left: Navigation -->
    <left>
-      <VBox alignment="TOP_LEFT" prefWidth="250.0" spacing="15.0" styleClass="vbox">
-         <children>
-            <Pane prefHeight="33.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Accueil" />
-            <Button fx:id="actualitesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Actualités" onAction="#gotoActualite" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Market" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Événements" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Messages" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Paramètres" />
-         </children>
-      </VBox>
+      <fx:include source="com/example/sportmarket/sidebar.fxml" fx:id="sidebar"/>
    </left>
+
 
    <!-- Center: Main Content -->
    <center>
