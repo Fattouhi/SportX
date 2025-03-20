@@ -1,6 +1,8 @@
 module com.example.sportmarket {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
+    requires java.sql;
     requires javafx.web;
 
     requires org.controlsfx.controls;
@@ -23,13 +25,11 @@ module com.example.sportmarket {
     exports com.example.sportmarket;
 
     requires org.json;
-    requires mysql.connector.java;
+    //requires mysql.connector.java;
     requires org.jsoup;
     requires org.slf4j;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
-    requires java.sql;
-    requires java.desktop;
 
     opens com.example.sportxnews to javafx.fxml;
     exports com.example.sportxnews;
@@ -40,4 +40,12 @@ module com.example.sportmarket {
     exports com.example.sportxnews.models;
     opens com.example.sportxnews.models to javafx.fxml;
 
+
+    // Allow JavaFX to access the package where your Application class is located
+    exports com.example.demo to javafx.graphics, javafx.fxml;
+
+    // Open if reflection access is needed
+    opens com.example.demo to javafx.fxml;
+
+    opens com.example.demo.controllers to javafx.fxml;
 }

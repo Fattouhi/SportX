@@ -1,0 +1,258 @@
+/* Style général */
+* {
+    -fx-font-family: 'Arial';
+}
+
+#AnchorPane {
+    -fx-background-image: url("../images/colorfulBackgd.jpeg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.hbox-header {
+    -fx-background-color: #a15f7b;
+    -fx-padding: 10;
+    -fx-alignment: center-left;
+    -fx-spacing: 20;
+    -fx-pref-width: 100%;
+}
+
+/* Barre latérale */
+.sidebar {
+    -fx-background-color: rgba(27, 26, 85, 0.9); /* Bleu foncé semi-transparent */
+}
+
+
+/* Contenu du VBox */
+.vbox {
+    -fx-padding: 20px;
+}
+
+.sidebar-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Boutons de la barre latérale */
+.sidebar-button {
+    -fx-background-color: linear-gradient(to bottom, #1B1A55, #3D56B2); /* Dégradé bleu marine vers bleu clair */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+}
+
+/* Effet hover */
+.sidebar-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #3D56B2, #5C78D4); /* Bleu plus clair au survol */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Effet lorsqu'on clique */
+.sidebar-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #5DAAB9, #488D9A);
+    -fx-border-color: #E9DA8C;
+    -fx-translate-y: 2px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 12, 0, 0, 5);
+}
+
+/* Effet lorsqu'un bouton est sélectionné */
+.sidebar-button:selected {
+    -fx-background-color: linear-gradient(to bottom, #77C8D6, #5DAAB9);
+    -fx-border-color: #E9DA8C;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 6);
+}
+
+/* Header */
+.hbox {
+    -fx-padding: 10px;
+}
+
+/* Barre de recherche */
+.textfield {
+    -fx-border-color: #AAAAAA;
+    -fx-background-color: #F8F9FA;
+    -fx-border-radius: 8px;
+    -fx-padding: 5px;
+}
+
+/* Contenu principal */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #fcf7f7;
+}
+
+/* Boutons d'accès rapide */
+.quick-access {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-radius: 10px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 2, 2);
+}
+
+/* Effet au survol */
+.quick-access:hover {
+    -fx-background-color: rgba(100, 170, 180, 0.9);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 4, 4);
+    -fx-cursor: hand;
+}
+
+/* Texte et icônes */
+.quick-access-title {
+    -fx-font-size: 16px;
+    -fx-text-fill: #f7fff8;
+    -fx-font-weight: bold;
+}
+
+/* Boutons d’accès rapide */
+.quick-access-button {
+    -fx-background-color: linear-gradient(to bottom, #1B1A55, #3D56B2); /* Dégradé bleu */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+}
+
+/* Effet au survol */
+.quick-access-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #3D56B2, #5C78D4); /* Bleu moyen à bleu clair */
+    -fx-border-color: #3D56B2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 8, 0, 0, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Effet lorsqu'on clique */
+.quick-access-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #1B1A55, #3D56B2); /* Bleu foncé à bleu moyen */
+    -fx-border-color: #1B1A55;
+    -fx-translate-y: 2px;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 12, 0, 0, 5);
+}
+
+/* Effet lorsqu'un bouton est sélectionné */
+.quick-access-button:selected {
+    -fx-background-color: linear-gradient(to bottom, #5C78D4, #3D56B2); /* Bleu clair à bleu moyen */
+    -fx-border-color: #5C78D4;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 6);
+}
+
+
+/* Titre principal */
+.sportx-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Panneau droit (style semblable à la barre latérale) */
+.sidebar-like-panel {
+    -fx-background-color: rgba(27, 26, 85, 0.9); /* Bleu foncé semi-transparent, comme la sidebar */
+    -fx-padding: 15;
+    -fx-border-radius: 10px; /* Bordures arrondies comme la sidebar */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 15, 0, 0, 5); /* Ombre similaire à la sidebar */
+}
+
+/* Titre dans le panneau droit, style similaire à sidebar-title */
+.sidebar-like-panel .sidebar-title {
+    -fx-font-size: 18px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+/* Section météo dans le panneau droit, style cohérent avec la sidebar */
+.weather-section-sidebar {
+    -fx-background-color: rgba(61, 86, 178, 0.8); /* Bleu moyen semi-transparent, cohérent avec la sidebar */
+    -fx-padding: 12;
+    -fx-border-radius: 8px; /* Bordures arrondies comme la sidebar */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 3); /* Ombre légère */
+}
+
+/* Labels dans la section météo, style cohérent avec la sidebar */
+.weather-section-sidebar .sidebar-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.weather-section-sidebar .sidebar-label.secondary {
+    -fx-font-size: 14px;
+    -fx-text-fill: #E0E0E0; /* Gris clair pour le texte secondaire, cohérent avec la sidebar */
+}
+
+/* Hyperlink dans la section météo, style cohérent avec la sidebar */
+.sidebar-hyperlink {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+}
+
+.sidebar-hyperlink:hover {
+    -fx-text-fill: #E9DA8C; /* Jaune doré, cohérent avec les effets de la sidebar */
+    -fx-cursor: hand;
+}
+
+/* Icône météo dans la section météo */
+.weather-section-sidebar .image-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2); /* Ombre légère sur l’icône */
+}
+
+
+
+/* Style général pour le graphique des utilisateurs */
+#userStatsChart .chart-bar {
+    -fx-bar-fill: #FFA500; /* Orange par défaut (actuel, pour référence) */
+}
+
+/* Barre pour "Total" (jaune) */
+#userStatsChart .default-color0.chart-bar {
+    -fx-bar-fill: #5dd6d1; /* vertTriquoise */
+}
+
+/* Barre pour "Actifs" (vert) */
+#userStatsChart .default-color1.chart-bar {
+    -fx-bar-fill: #00FF00; /* Vert */
+}
+
+/* Barre pour "Bannis" (rouge) */
+#userStatsChart .default-color2.chart-bar {
+    -fx-bar-fill: #FF0000; /* Rouge */
+}
+
+/* Style pour le fond du graphique */
+#userStatsChart {
+    -fx-background-color: white;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5px;
+}
+
+/* Style pour les légendes et axes */
+#userStatsChart .chart-legend {
+    -fx-text-fill: #333333;
+}
+
+#userStatsChart .axis {
+    -fx-tick-label-fill: #333333;
+}
+
+.hyperlink {
+    -fx-text-fill: #1a73e8; /* Couleur bleue Google */
+    -fx-underline: true; /* Garder le soulignement */
+    -fx-font-size: 12px;
+}
+.hyperlink:hover {
+    -fx-text-fill: #ff6200; /* Couleur orange au survol */
+}
