@@ -25,6 +25,7 @@ module com.example.sportmarket {
     requires org.jsoup;
     requires org.slf4j;
 
+
     opens com.example.sportxnews to javafx.fxml;
     exports com.example.sportxnews;
     exports com.example.sportxnews.controller;
@@ -34,6 +35,10 @@ module com.example.sportmarket {
     exports com.example.sportxnews.models;
     opens com.example.sportxnews.models to javafx.fxml;
 
+    // Export the package containing the CommunityController
+    exports com.example.sportx.controller.abir to javafx.fxml;
 
+    // Open the package to allow FXML loading
+    opens com.example.sportx.controller.abir to javafx.fxml ;
 
 }
