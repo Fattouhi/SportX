@@ -1,0 +1,33 @@
+/* Style des boutons */
+.button {
+    -fx-background-color: #EFBF04;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 0;
+    -fx-transition: all 0.3s;
+}
+
+/* Effet de survol pour les boutons */
+.button:hover {
+    -fx-background-color: #ffcc00; /* Couleur légèrement plus claire */
+    -fx-effect: dropshadow(gaussian, rgba(255, 200, 0, 0.8), 10, 0.3, 2, 2);
+    -fx-underline: true; /* Ajoute un soulignement */
+}
+
+/* Style des éléments de la liste */
+.list-cell {
+    -fx-padding: 8px;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1px 0; /* Ligne séparatrice */
+    -fx-font-size: 14px;
+}
+
+/* Effet de survol pour les éléments de la liste */
+.list-cell:hover {
+    -fx-background-color: #ffe680; /* Fond plus clair */
+    -fx-border-color: #EFBF04; /* Trait jaune sous l'élément */
+    -fx-border-width: 0 0 2px 0;
+    -fx-font-weight: bold;
+}

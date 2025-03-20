@@ -16,7 +16,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 import javafx.geometry.Pos;
-
+import javafx.fxml.FXML;
+import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,26 @@ public class LiveScoresController {
 
     private ObservableList<String> categories = FXCollections.observableArrayList();
     private Map<String, String[]> staticScores = new HashMap<>();
+    @FXML
+    private VBox scoreCard;
+
+    @FXML
+    private void handleMouseEntered() {
+        scoreCard.setStyle("-fx-background-color: linear-gradient(to bottom, #ffffff, #f8f8f8);"
+                + "-fx-padding: 15px; -fx-spacing: 10px;"
+                + "-fx-border-radius: 10px; -fx-border-color: #ddd; -fx-border-width: 1px;"
+                + "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 16, 0.3, 6, 6);"
+                + "-fx-translate-y: -2px;");
+    }
+
+    @FXML
+    private void handleMouseExited() {
+        scoreCard.setStyle("-fx-background-color: linear-gradient(to bottom, #ffffff, #f8f8f8);"
+                + "-fx-padding: 15px; -fx-spacing: 10px;"
+                + "-fx-border-radius: 10px; -fx-border-color: #ddd; -fx-border-width: 1px;"
+                + "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 12, 0.2, 4, 4),"
+                + "innershadow(gaussian, rgba(0, 0, 0, 0.15), 6, 0.3, -2, -2);");
+    }
 
     @FXML
     private void initialize() {
@@ -53,7 +74,7 @@ public class LiveScoresController {
     }
 
     private void initializeStaticScores() {
-        staticScores.put("Football", new String[]{
+        staticScores.put("⚽ Football", new String[]{
                 "Match 1: Real Madrid 2 - 1 FC Barcelona",               // Célèbre
                 "Match 2: Union Saint-Gilloise 3 - 2 KV Mechelen",      // Moyen
                 "Match 3: River Town 1 - 0 Hill City",                  // Inconnu
@@ -76,7 +97,7 @@ public class LiveScoresController {
                 "Match 20: Rapid Vienna 2 - 2 Sturm Graz",            // Moyen
                 "Match 21: North Valley 1 - 0 East Bridge"            // Inconnu
         });
-        staticScores.put("Basketball", new String[]{
+        staticScores.put("🏀 Basketball", new String[]{
                 "Match 1: Lakers 89 - 78 Warriors",                   // Célèbre
                 "Match 2: Basket Zaragoza 95 - 90 Bilbao Basket",     // Moyen
                 "Match 3: Skyhawks 102 - 98 Thunderbolts",           // Inconnu
@@ -99,7 +120,7 @@ public class LiveScoresController {
                 "Match 20: Levski Sofia 86 - 84 Rilski Sportist",// Moyen
                 "Match 21: Hawks 103 - 100 Owls"               // Inconnu
         });
-        staticScores.put("Tennis", new String[]{
+        staticScores.put("🎾 Tennis", new String[]{
                 "Match 1: Novak Djokovic 6-4 3-6 7-5 Rafael Nadal",      // Célèbre
                 "Match 2: Thiago Monteiro 6-2 6-3 Tallon Griekspoor",   // Moyen
                 "Match 3: Alex Porter 7-6 6-4 Jamie Carter",           // Inconnu
@@ -122,7 +143,7 @@ public class LiveScoresController {
                 "Match 20: Viktoriya Tomova 6-2 6-3 Lesia Tsurenko",   // Moyen
                 "Match 21: Zoe Parker 6-1 6-2 Ella Ford"             // Inconnu
         });
-        staticScores.put("Volleyball", new String[]{
+        staticScores.put("🏐 Volleyball", new String[]{
                 "Match 1: Brazil 3 - 2 USA",                          // Célèbre
                 "Match 2: OK Vojvodina 3 - 1 Partizan Belgrade",     // Moyen
                 "Match 3: Team Alpha 3 - 0 Team Beta",              // Inconnu
@@ -145,7 +166,7 @@ public class LiveScoresController {
                 "Match 20: Zenit St. Petersburg 3 - 2 Lokomotiv Novosibirsk", // Moyen
                 "Match 21: Urban Diggers 3 - 0 Rural Spikers"   // Inconnu
         });
-        staticScores.put("Baseball", new String[]{
+        staticScores.put("⚾ Baseball", new String[]{
                 "Match 1: Yankees 5 - 3 Red Sox",                    // Célèbre
                 "Match 2: Hiroshima Toyo Carp 4 - 2 Chunichi Dragons", // Moyen
                 "Match 3: Green Bats 6 - 5 Blue Caps",              // Inconnu
@@ -168,7 +189,7 @@ public class LiveScoresController {
                 "Match 20: Yomiuri Giants 5 - 3 Osaka Kintetsu Buffaloes", // Moyen
                 "Match 21: Teal Swingers 6 - 5 Navy Bats"     // Inconnu
         });
-        staticScores.put("Cricket", new String[]{
+        staticScores.put("🏏 Cricket", new String[]{
                 "Match 1: India 245/5 (50) - Australia 230/8 (50)",        // Célèbre
                 "Match 2: Otago Volts 300/7 (50) - Canterbury Kings 290/9 (50)", // Moyen
                 "Match 3: Plains XI 320/6 (50) - Hills XI 310/8 (50)",    // Inconnu
@@ -191,7 +212,7 @@ public class LiveScoresController {
                 "Match 20: Durham Dynamos 240/7 (50) - Sussex Sharks 235/10 (49.5)", // Moyen
                 "Match 21: Urban Legends 290/6 (50) - Rural Giants 285/10 (49.2)" // Inconnu
         });
-        staticScores.put("Rugby", new String[]{
+        staticScores.put("🏉 Rugby", new String[]{
                 "Match 1: New Zealand 24 - 18 South Africa",          // Célèbre
                 "Match 2: Toyota Verblitz 30 - 25 Kubota Spears",    // Moyen
                 "Match 3: Northern Bulls 28 - 22 Southern Rams",    // Inconnu
@@ -216,7 +237,7 @@ public class LiveScoresController {
         });
 
 
-        staticScores.put("Golf", new String[]{
+        staticScores.put("⛳ Golf", new String[]{
                 "Tournament 1: Tiger Woods - Score: -12",            // Célèbre
                 "Tournament 2: Matt Wallace - Score: -10",          // Moyen
                 "Tournament 3: Mark Evans - Score: -9",            // Inconnu
@@ -239,7 +260,7 @@ public class LiveScoresController {
                 "Tournament 20: Marcus Armitage - Score: -8",    // Moyen
                 "Tournament 21: Sam Brooks - Score: -10"         // Inconnu
         });
-        staticScores.put("Table Tennis", new String[]{
+        staticScores.put("🏓 Table Tennis", new String[]{
                 "Match 1: Ma Long 4 - 2 Fan Zhendong",              // Célèbre
                 "Match 2: Quadri Aruna 4 - 1 Omar Assar",          // Moyen
                 "Match 3: Leo Chang 4 - 3 Kai Lin",               // Inconnu
@@ -262,7 +283,7 @@ public class LiveScoresController {
                 "Match 20: Mattias Falck 4 - 1 Patrick Franziska", // Moyen
                 "Match 21: Lars Berg 4 - 3 Paul Fritz"        // Inconnu
         });
-        staticScores.put("Badminton", new String[]{
+        staticScores.put("🏸 Badminton", new String[]{
                 "Match 1: Kento Momota 21-18 21-15 Viktor Axelsen",      // Célèbre
                 "Match 2: Hans-Kristian Vittinghus 21-19 21-17 Rajiv Ouseph", // Moyen
                 "Match 3: Hiro Tan 21-16 21-14 Vikram Sen",             // Inconnu
@@ -285,7 +306,7 @@ public class LiveScoresController {
                 "Match 20: Fitriani Fitriani 21-12 21-10 Gregoria Mariska", // Moyen
                 "Match 21: Kana Yuki 21-18 21-16 Lena Suri"        // Inconnu
         });
-        staticScores.put("Handball", new String[]{
+        staticScores.put("🤾 Handball", new String[]{
                 "Match 1: France 28 - 24 Denmark",                   // Célèbre
                 "Match 2: Tatabánya KC 30 - 25 Balatonfüredi KSE",  // Moyen
                 "Match 3: Blue Waves 32 - 28 Red Flames",          // Inconnu
@@ -308,7 +329,7 @@ public class LiveScoresController {
                 "Match 20: HC Odorhei 19 - 17 Steaua București", // Moyen
                 "Match 21: Teal Shadows 24 - 18 Gray Clouds"   // Inconnu
         });
-        staticScores.put("Boxing", new String[]{
+        staticScores.put("🥊 Boxing", new String[]{
                 "Fight 1: Canelo Alvarez def. Gennady Golovkin (UD)",      // Célèbre
                 "Fight 2: David Lemieux def. Gary O’Sullivan (TKO)",      // Moyen
                 "Fight 3: Jack Reed def. Tom Kane (UD)",                 // Inconnu
@@ -331,7 +352,7 @@ public class LiveScoresController {
                 "Fight 20: Chris Algieri def. Mikkel LesPierre (TKO)", // Moyen
                 "Fight 21: Vic Lane def. Tim Ross (UD)"         // Inconnu
         });
-        staticScores.put("Wrestling", new String[]{
+        staticScores.put("🤼 Wrestling", new String[]{
                 "Match 1: USA 5 - 3 Russia",                     // Célèbre
                 "Match 2: Poland 4 - 2 Ukraine",                // Moyen
                 "Match 3: Northern Grapplers 6 - 5 Southern Pins", // Inconnu
@@ -354,7 +375,7 @@ public class LiveScoresController {
                 "Match 20: Latvia 4 - 2 Estonia",       // Moyen
                 "Match 21: Urban Clinchers 7 - 1 Rural Takedowns" // Inconnu
         });
-        staticScores.put("Judo", new String[]{
+        staticScores.put("🥋 Judo", new String[]{
                 "Match 1: Shohei Ono def. Hifumi Abe (Ippon)",          // Célèbre
                 "Match 2: An Chang-rim def. Rustam Orujov (Waza-ari)", // Moyen
                 "Match 3: Ken Ito def. Ryu Sato (Ippon)",             // Inconnu
@@ -377,7 +398,7 @@ public class LiveScoresController {
                 "Match 20: Matthias Casse def. Saeid Mollaei (Waza-ari)", // Moyen
                 "Match 21: Kai Berg def. Leo Falk (Ippon)"      // Inconnu
         });
-        staticScores.put("Karate", new String[]{
+        staticScores.put("🥋 Karate", new String[]{
                 "Match 1: Ryo Kiyuna def. Damian Quintero (5-0)",      // Célèbre
                 "Match 2: Ali Sofuoğlu def. Emre Vefa Göktaş (3-2)",  // Moyen
                 "Match 3: Riku Naka def. Juan Toro (4-1)",          // Inconnu
@@ -400,7 +421,7 @@ public class LiveScoresController {
                 "Match 20: Alexandra Recchia def. Merve Çoban (3-2)", // Moyen
                 "Match 21: Nia Soto def. Eva Pohl (4-1)"       // Inconnu
         });
-        staticScores.put("Taekwondo", new String[]{
+        staticScores.put("🥋 Taekwondo", new String[]{
                 "Match 1: Jang Jun def. Kim Tae-hun (25-20)",          // Célèbre
                 "Match 2: Bradly Sinden def. Carlos Sansores (30-25)", // Moyen
                 "Match 3: Jin Ho def. Tae Min (28-22)",              // Inconnu
@@ -423,7 +444,7 @@ public class LiveScoresController {
                 "Match 20: Hatice Kübra İlgün def. Skylar Park (40-38)", // Moyen
                 "Match 21: Lara Volk def. Tina Berg (19-17)"    // Inconnu
         });
-        staticScores.put("Mixed Martial Arts", new String[]{
+        staticScores.put("🥋 Mixed Martial Arts", new String[]{
                 "Fight 1: Khabib Nurmagomedov def. Justin Gaethje (Submission)", // Célèbre
                 "Fight 2: Yaroslav Amosov def. Logan Storley (UD)",     // Moyen
                 "Fight 3: Zane Holt def. Cole Nash (TKO)",            // Inconnu
@@ -446,7 +467,7 @@ public class LiveScoresController {
                 "Fight 20: Aaron Pico def. John de Jesus (UD)",    // Moyen
                 "Fight 21: Kade Voss def. Ty Bell (TKO)"          // Inconnu
         });
-        staticScores.put("Swimming", new String[]{
+        staticScores.put("🏊 Swimming", new String[]{
                 "Event 1: Caeleb Dressel - 100m Freestyle: 47.02s",      // Célèbre
                 "Event 2: Gregorio Paltrinieri - 100m Breaststroke: 57.37s", // Moyen
                 "Event 3: Eli Wade - 800m Freestyle: 8:04.79",          // Inconnu
@@ -469,7 +490,7 @@ public class LiveScoresController {
                 "Event 20: Hugo González - 50m Freestyle: 24.89s", // Moyen
                 "Event 21: Rex Pool - 200m Backstroke: 1:55.34"   // Inconnu
         });
-        staticScores.put("Water Polo", new String[]{
+        staticScores.put("🤽 Water Polo", new String[]{
                 "Match 1: Hungary 10 - 8 Serbia",                   // Célèbre
                 "Match 2: VK Jug Dubrovnik 12 - 11 CN Barceloneta", // Moyen
                 "Match 3: Aqua Blues 9 - 7 Wave Reds",            // Inconnu
@@ -492,7 +513,7 @@ public class LiveScoresController {
                 "Match 20: NC Vouliagmeni 11 - 10 Dinamo Moscow", // Moyen
                 "Match 21: Spray Grays 8 - 6 Swell Navies"  // Inconnu
         });
-        staticScores.put("Diving", new String[]{
+        staticScores.put("🏊‍♂️ Diving", new String[]{
                 "Event 1: Tom Daley - 10m Platform: 570.50",          // Célèbre
                 "Event 2: Patrick Hausding - 3m Springboard: 558.75", // Moyen
                 "Event 3: Sam Cliff - 10m Platform: 383.50",         // Inconnu
@@ -515,7 +536,7 @@ public class LiveScoresController {
                 "Event 20: Anabelle Smith - 3m Springboard: 370.85", // Moyen
                 "Event 21: Nia Fall - 10m Platform: 362.40"         // Inconnu
         });
-        staticScores.put("Rowing", new String[]{
+        staticScores.put("🚣 Rowing", new String[]{
                 "Event 1: Single Sculls - Oliver Zeidler: 6:40.12",      // Célèbre
                 "Event 2: Single Sculls - Damir Martin: 6:08.90",       // Moyen
                 "Event 3: Single Sculls - Max Oar: 5:32.03",           // Inconnu
@@ -538,7 +559,7 @@ public class LiveScoresController {
                 "Event 20: Single Sculls - Emma Twigg: 6:13.88",    // Moyen
                 "Event 21: Single Sculls - Ella Row: 7:23.98"       // Inconnu
         });
-        staticScores.put("Surfing", new String[]{
+        staticScores.put("🏄 Surfing", new String[]{
                 "Event 1: Gabriel Medina - Wave Score: 18.93",        // Célèbre
                 "Event 2: Owen Wright - Wave Score: 18.34",          // Moyen
                 "Event 3: Zane Wave - Wave Score: 17.50",           // Inconnu
@@ -561,7 +582,7 @@ public class LiveScoresController {
                 "Event 20: Tyler Wright - Wave Score: 15.98",    // Moyen
                 "Event 21: Sam Foam - Wave Score: 15.75"         // Inconnu
         });
-        staticScores.put("Sailing", new String[]{
+        staticScores.put("⛵ Sailing", new String[]{
                 "Event 1: Laser - Robert Scheidt: 1st Place",           // Célèbre
                 "Event 2: Laser - Pavlos Kontides: 1st Place",         // Moyen
                 "Event 3: Laser - Tim Hull: 1st Place",               // Inconnu
@@ -584,7 +605,7 @@ public class LiveScoresController {
                 "Event 20: Kiteboarding - Daniela Moroz: 1st Place", // Moyen
                 "Event 21: Kiteboarding - Sky Solo: 1st Place"  // Inconnu
         });
-        staticScores.put("Kayaking", new String[]{
+        staticScores.put("🛶 Kayaking", new String[]{
                 "Event 1: K1 200m - Lisa Carrington: 39.39s",         // Célèbre
                 "Event 2: K1 200m - Marta Walczykiewicz: 39.45s",    // Moyen
                 "Event 3: K1 200m - Mia Paddle: 39.50s",            // Inconnu
@@ -607,7 +628,7 @@ public class LiveScoresController {
                 "Event 20: C1 1000m - Martin Fuksa: 3:48.56",   // Moyen
                 "Event 21: C1 1000m - Kai Blade: 3:49.12"       // Inconnu
         });
-        staticScores.put("Skiing", new String[]{
+        staticScores.put("⛷️ Skiing", new String[]{
                 "Event 1: Slalom - Marcel Hirscher: 1:38.45",         // Célèbre
                 "Event 2: Slalom - Clément Noël: 1:39.12",          // Moyen
                 "Event 3: Slalom - Max Slope: 1:40.23",            // Inconnu
@@ -630,7 +651,7 @@ public class LiveScoresController {
                 "Event 20: Freestyle - Perrine Laffont: 85.12",   // Moyen
                 "Event 21: Freestyle - Zane Flip: 84.23"         // Inconnu
         });
-        staticScores.put("Snowboarding", new String[]{
+        staticScores.put("🏂 Snowboarding", new String[]{
                 "Event 1: Halfpipe - Shaun White: 97.75",            // Célèbre
                 "Event 2: Halfpipe - Scotty James: 96.45",          // Moyen
                 "Event 3: Halfpipe - Rex Pipe: 95.12",             // Inconnu
@@ -653,7 +674,7 @@ public class LiveScoresController {
                 "Event 20: Alpine - Andrey Sobolev: 1:48.56",    // Moyen
                 "Event 21: Alpine - Sam Slide: 1:49.67"          // Inconnu
         });
-        staticScores.put("Ice Hockey", new String[]{
+        staticScores.put("🏒 Ice Hockey", new String[]{
                 "Match 1: Canada 4 - 3 USA",                     // Célèbre
                 "Match 2: HC Davos 5 - 2 EV Zug",               // Moyen
                 "Match 3: Frost Blades 3 - 1 Ice Stingers",     // Inconnu
@@ -676,7 +697,7 @@ public class LiveScoresController {
                 "Match 20: HC Vityaz 5 - 4 Avtomobilist Yekaterinburg", // Moyen
                 "Match 21: Winter Foxes 2 - 1 Chill Panthers" // Inconnu
         });
-        staticScores.put("Figure Skating", new String[]{
+        staticScores.put("⛸️ Figure Skating", new String[]{
                 "Event 1: Men's Singles - Yuzuru Hanyu: 300.45",         // Célèbre
                 "Event 2: Men's Singles - Jason Brown: 299.12",         // Moyen
                 "Event 3: Men's Singles - Kai Spin: 298.23",           // Inconnu
@@ -699,7 +720,7 @@ public class LiveScoresController {
                 "Event 20: Ladies' Free Skate - Loena Hendrickx: 209.12", // Moyen
                 "Event 21: Ladies' Free Skate - Tara Twirl: 208.23" // Inconnu
         });
-        staticScores.put("Speed Skating", new String[]{
+        staticScores.put("⏩ Speed Skating", new String[]{
                 "Event 1: 500m - Pavel Kulizhnikov: 34.45s",          // Célèbre
                 "Event 2: 500m - Laurent Dubreuil: 34.56s",         // Moyen
                 "Event 3: 500m - Leo Dash: 34.67s",                // Inconnu
@@ -722,7 +743,7 @@ public class LiveScoresController {
                 "Event 20: Team Pursuit - Norway: 3:38.12",    // Moyen
                 "Event 21: Team Pursuit - Chill Trio: 3:39.23" // Inconnu
         });
-        staticScores.put("Curling", new String[]{
+        staticScores.put("🥌 Curling", new String[]{
                 "Match 1: Canada 8 - 7 Sweden",                   // Célèbre
                 "Match 2: Team Hasselborg 6 - 5 Team Tirinzoni", // Moyen
                 "Match 3: Rock Sliders 9 - 8 Stone Sweepers",    // Inconnu
@@ -745,7 +766,7 @@ public class LiveScoresController {
                 "Match 20: Team Roth 9 - 8 Team Sinclair",  // Moyen
                 "Match 21: Sweep Legends 6 - 5 Curl Champs" // Inconnu
         });
-        staticScores.put("Formula One", new String[]{
+        staticScores.put("🏎️ Formula One", new String[]{
                 "Race 1: Lewis Hamilton - 1st Place",            // Célèbre
                 "Race 2: Esteban Ocon - 1st Place",             // Moyen
                 "Race 3: Jack Speed - 1st Place",              // Inconnu
@@ -764,7 +785,7 @@ public class LiveScoresController {
                 "Race 16: Daniel Ricciardo - 1st Place", // Célèbre
                 "Race 17: Sergio Pérez - 1st Place",    // Moyen
         });
-        staticScores.put("MotoGP", new String[]{
+        staticScores.put("🏍️ MotoGP", new String[]{
                 "Race 1: Marc Márquez - 1st Place",
                 "Race 2: Valentino Rossi - 1st Place",
                 "Race 3: Maverick Viñales - 1st Place",
@@ -779,7 +800,7 @@ public class LiveScoresController {
                 "Race 12: Johann Zarco - 1st Place",
                 "Race 13: Brad Binder - 1st Place"
         });
-        staticScores.put("Rally", new String[]{
+        staticScores.put("🚗 Rally", new String[]{
                 "Race 1: Sébastien Ogier - 1st Place",
                 "Race 2: Ott Tänak - 1st Place",
                 "Race 3: Thierry Neuville - 1st Place",
@@ -794,7 +815,7 @@ public class LiveScoresController {
                 "Race 12: Mads Østberg - 1st Place",
                 "Race 13: Oliver Solberg - 1st Place"
         });
-        staticScores.put("NASCAR", new String[]{
+        staticScores.put("🏁 NASCAR", new String[]{
                 "Race 1: Kyle Busch - 1st Place",
                 "Race 2: Kevin Harvick - 1st Place",
                 "Race 3: Martin Truex Jr. - 1st Place",
@@ -809,7 +830,7 @@ public class LiveScoresController {
                 "Race 12: Alex Bowman - 1st Place",
                 "Race 13: Ryan Blaney - 1st Place"
         });
-        staticScores.put("Athletics", new String[]{
+        staticScores.put("🏃 Athletics", new String[]{
                 "Event 1: 100m - Usain Bolt: 9.58s",
                 "Event 2: 200m - Usain Bolt: 19.19s",
                 "Event 3: 400m - Wayde van Niekerk: 43.03s",
@@ -824,7 +845,7 @@ public class LiveScoresController {
                 "Event 12: Marathon - Abdi Nageeye: 2:01:39",
                 "Event 13: Long Jump - Miltiadis Tentoglou: 8.95m"
         });
-        staticScores.put("Cycling", new String[]{
+        staticScores.put("🚴 Cycling", new String[]{
                 "Event 1: Tour de France - Tadej Pogačar: 1st Place",
                 "Event 2: Giro d'Italia - Egan Bernal: 1st Place",
                 "Event 3: Vuelta a España - Primož Roglič: 1st Place",
@@ -839,7 +860,7 @@ public class LiveScoresController {
                 "Event 12: Tour de Wallonie - Quinn Simmons: 1st Place",
                 "Event 13: Clásica San Sebastián - Neilson Powless: 1st Place"
         });
-        staticScores.put("Gymnastics", new String[]{
+        staticScores.put("🤸 Gymnastics", new String[]{
                 "Event 1: All-Around - Simone Biles: 58.700",
                 "Event 2: Floor Exercise - Simone Biles: 15.133",
                 "Event 3: Vault - Simone Biles: 15.400",
@@ -854,7 +875,7 @@ public class LiveScoresController {
                 "Event 12: Rings - Liu Yang: 15.300",
                 "Event 13: Parallel Bars - You Hao: 16.000"
         });
-        staticScores.put("Archery", new String[]{
+        staticScores.put("🏹 Archery", new String[]{
                 "Event 1: Men's Individual - Brady Ellison: 1st Place",
                 "Event 2: Women's Individual - Kang Chae-young: 1st Place",
                 "Event 3: Men's Team - South Korea: 1st Place",
@@ -869,7 +890,7 @@ public class LiveScoresController {
                 "Event 12: Recurve - Steve Wijler: 1st Place",
                 "Event 13: Compound - Mike Schloesser: 1st Place"
         });
-        staticScores.put("Equestrian", new String[]{
+        staticScores.put("🐎 Equestrian", new String[]{
                 "Event 1: Dressage - Isabell Werth: 1st Place",
                 "Event 2: Show Jumping - Steve Guerdat: 1st Place",
                 "Event 3: Eventing - Michael Jung: 1st Place",
@@ -884,7 +905,7 @@ public class LiveScoresController {
                 "Event 12: Team Show Jumping - USA: 1st Place",
                 "Event 13: Team Eventing - Australia: 1st Place"
         });
-        staticScores.put("Fencing", new String[]{
+        staticScores.put("🤺 Fencing", new String[]{
                 "Event 1: Men's Foil - Daniele Garozzo: 1st Place",
                 "Event 2: Women's Foil - Inna Deriglazova: 1st Place",
                 "Event 3: Men's Sabre - Áron Szilágyi: 1st Place",
@@ -899,7 +920,7 @@ public class LiveScoresController {
                 "Event 12: Women's Épée - Ana Maria Popescu: 1st Place",
                 "Event 13: Team Foil - Italy: 1st Place"
         });
-        staticScores.put("Weightlifting", new String[]{
+        staticScores.put("🏋️ Weightlifting", new String[]{
                 "Event 1: Men's 61kg - Li Fabin: 1st Place",
                 "Event 2: Women's 49kg - Hou Zhihui: 1st Place",
                 "Event 3: Men's 73kg - Shi Zhiyong: 1st Place",
@@ -914,7 +935,7 @@ public class LiveScoresController {
                 "Event 12: Women's 64kg - Maude Charron: 1st Place",
                 "Event 13: Men's 96kg - Fares El-Bakh: 1st Place"
         });
-        staticScores.put("Shooting", new String[]{
+        staticScores.put("🔫 Shooting", new String[]{
                 "Event 1: Men's 10m Air Rifle - Yang Haoran: 1st Place",
                 "Event 2: Women's 10m Air Rifle - Apurvi Chandela: 1st Place",
                 "Event 3: Men's 50m Rifle 3 Positions - Zhang Changhong: 1st Place",
@@ -929,7 +950,7 @@ public class LiveScoresController {
                 "Event 12: Women's 10m Air Pistol - Zorana Arunović: 1st Place",
                 "Event 13: Mixed Team 10m Air Rifle - India: 1st Place"
         });
-        staticScores.put("Skateboarding", new String[]{
+        staticScores.put("🛹 Skateboarding", new String[]{
                 "Event 1: Men's Street - Yuto Horigome: 1st Place",
                 "Event 2: Women's Street - Rayssa Leal: 1st Place",
                 "Event 3: Men's Park - Keegan Palmer: 1st Place",
@@ -944,7 +965,7 @@ public class LiveScoresController {
                 "Event 12: Women's Vert - Jordyn Barratt: 1st Place",
                 "Event 13: Men's Freestyle - Isamu Yamamoto: 1st Place"
         });
-        staticScores.put("Climbing", new String[]{
+        staticScores.put("🧗 Climbing", new String[]{
                 "Event 1: Men's Lead - Adam Ondra: 1st Place",
                 "Event 2: Women's Lead - Janja Garnbret: 1st Place",
                 "Event 3: Men's Speed - Bassa Mawem: 1st Place",
@@ -959,7 +980,7 @@ public class LiveScoresController {
                 "Event 12: Women's Bouldering - Natalia Grossman: 1st Place",
                 "Event 13: Combined - Sean McColl: 1st Place"
         });
-        staticScores.put("Triathlon", new String[]{
+        staticScores.put("🏊‍♀️ Triathlon", new String[]{
                 "Event 1: Men's Individual - Kristian Blummenfelt: 1st Place",
                 "Event 2: Women's Individual - Flora Duffy: 1st Place",
                 "Event 3: Men's Relay - France: 1st Place",

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.collections.FXCollections;
@@ -38,8 +39,10 @@ public class MainScreenController {
     @FXML
     private Button homeButton;
 
-    @FXML
-    private VBox newsContainer;
+//    @FXML
+//    private VBox newsContainer;
+   @FXML
+   private GridPane newsContainer; // Déclarez newsContainer comme GridPane
 
     @FXML
     private VBox liveScoresContainer;
@@ -92,17 +95,18 @@ public class MainScreenController {
         }
     }
     @FXML
-    public void initialize() {
-        categories.addAll(
-                "Football", "Basketball", "Tennis", "Volleyball", "Baseball", "Cricket",
-                "Rugby", "Golf", "Table Tennis", "Badminton", "Handball", "Boxing",
-                "Wrestling", "Judo", "Karate", "Taekwondo", "Mixed Martial Arts",
-                "Swimming", "Water Polo", "Diving", "Rowing", "Surfing", "Sailing",
-                "Kayaking", "Skiing", "Snowboarding", "Ice Hockey", "Figure Skating",
-                "Speed Skating", "Curling", "Formula One", "MotoGP", "Rally", "NASCAR",
-                "Athletics", "Cycling", "Gymnastics", "Archery", "Equestrian", "Fencing",
-                "Weightlifting", "Shooting", "Skateboarding", "Climbing", "Triathlon"
-        );
+    public void initialize() {categories.addAll(
+            "⚽ Football", "🏀 Basketball", "🎾 Tennis", "🏐 Volleyball", "⚾ Baseball", "🏏 Cricket",
+            "🏉 Rugby", "⛳ Golf", "🏓 Table Tennis", "🏸 Badminton", "🤾 Handball", "🥊 Boxing",
+            "🤼 Wrestling", "🥋 Judo", "🥋 Karate", "🥋 Taekwondo", "🥋 Mixed Martial Arts",
+            "🏊 Swimming", "🤽 Water Polo", "🏊‍♂️ Diving", "🚣 Rowing", "🏄 Surfing", "⛵ Sailing",
+            "🛶 Kayaking", "⛷️ Skiing", "🏂 Snowboarding", "🏒 Ice Hockey", "⛸️ Figure Skating",
+            "⏩ Speed Skating", "🥌 Curling", "🏎️ Formula One", "🏍️ MotoGP", "🚗 Rally", "🏁 NASCAR",
+            "🏃 Athletics", "🚴 Cycling", "🤸 Gymnastics", "🏹 Archery", "🐎 Equestrian", "🤺 Fencing",
+            "🏋️ Weightlifting", "🔫 Shooting", "🛹 Skateboarding", "🧗 Climbing", "🏊‍♀️ Triathlon"
+    );
+
+
 
         categoryListView.setItems(categories);
 
@@ -193,21 +197,33 @@ public class MainScreenController {
     private void addNewsCards(String category, String news) {
         if (news != null && !news.isEmpty()) {
             String[] newsLines = news.split("\n");
-            for (String line : newsLines) {
+
+            for (int i = 0; i < newsLines.length; i++) {
+                String line = newsLines[i];
                 String[] parts = line.split(":", 3); // Split into 3 parts only
 
                 if (parts.length == 3) {
                     String title = parts[0].trim();
-                    String link = parts[1].trim() + ":" + parts[2].substring(0, parts[2].indexOf(":")).trim(); // Fix broken link
+                    String link = parts[1].trim() + ":" + parts[2].substring(0, parts[2].indexOf(":"));
                     String imageUrl = parts[2].substring(parts[2].indexOf(":") + 1).trim(); // Extract image URL
 
                     // Fix malformed URLs (e.g., prepend "https:" if missing)
-                    if (imageUrl.startsWith("//")) {
+                    if (imageUrl.startsWith("/")) {
                         imageUrl = "https:" + imageUrl;
                     }
 
                     VBox card = createNewsCard(category, title, link, imageUrl);
-                    newsContainer.getChildren().add(card);
+
+                    // Adjust card size for the first card
+                    if (i == 0) {
+                        card.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #CCCCCC; -fx-border-radius: 10px; -fx-padding: 15px; -fx-min-width: 600px; -fx-min-height: 300px;");
+                        newsContainer.add(card, 0, 0, 2, 1); // First card spans two columns
+                    } else {
+                        card.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #CCCCCC; -fx-border-radius: 10px; -fx-padding: 15px; -fx-min-width: 300px; -fx-min-height: 150px;");
+                        int row = (i + 1) / 2;
+                        int col = (i + 1) % 2;
+                        newsContainer.add(card, col, row);
+                    }
                 }
             }
         }

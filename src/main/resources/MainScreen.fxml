@@ -7,7 +7,7 @@
 <BorderPane xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.sportxnews.controller.MainScreenController">
-<!--            stylesheets="@/css/style.css">-->
+<!--        stylesheets="@/css/css.css">-->
 
     <!-- Top: Header -->
     <top>
@@ -29,19 +29,9 @@
     <!-- Center: ScrollPane to display news -->
     <center>
         <ScrollPane fitToWidth="true">
-            <VBox spacing="20" style="-fx-padding: 20;">
-<!--                &lt;!&ndash; Section Scores en Direct &ndash;&gt;-->
-<!--                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Scores en Direct" />-->
-<!--                <VBox fx:id="liveScoresContainer" spacing="10">-->
-<!--                    &lt;!&ndash; Les scores en direct seront ajoutés dynamiquement ici &ndash;&gt;-->
-<!--                </VBox>-->
-
-                <!-- Section Actualités -->
-                <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Fil d'actualité" />
-                <VBox fx:id="newsContainer" spacing="15">
-                    <!-- Les cartes d'actualités seront ajoutées dynamiquement ici -->
-                </VBox>
-            </VBox>
+            <GridPane fx:id="newsContainer" hgap="10" vgap="10" style="-fx-padding: 20;">
+                <!-- Les cartes d'actualités seront ajoutées dynamiquement ici -->
+            </GridPane>
         </ScrollPane>
     </center>
 </BorderPane>
