@@ -19,7 +19,8 @@ public class CommunityApplication extends Application {
         SceneManager.setPrimaryStage(primaryStage);
 
         // Load the FXML and start the JavaFX application
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/LoginView.fxml")));
+        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/LoginView.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/chatboot_interface.fxml")));
         primaryStage.setTitle("Discover your next community");
         primaryStage.setScene(new Scene(root, 1350, 750));
         primaryStage.show();
