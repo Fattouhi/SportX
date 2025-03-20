@@ -6,10 +6,11 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportmarket.Controller">
    <top>
-      <fx:include source="navbar.fxml" />
+      <fx:include source="../../../navbar.fxml" />
    </top>
+   <!-- Left: Navigation -->
    <left>
-      <fx:include source="sidebar.fxml" />
+      <fx:include source="sidebar.fxml" fx:id="sidebar"/>
    </left>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">

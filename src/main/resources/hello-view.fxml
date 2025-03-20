@@ -19,43 +19,14 @@
 
    <!-- Top: Header -->
    <top>
-      <HBox alignment="CENTER_RIGHT" prefHeight="60.0" spacing="20.0" styleClass="hbox">
-         <children>
-            <ImageView fitHeight="80.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/sportx_transparent.png" />
-               </image>
-            </ImageView>
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <TextField prefWidth="250.0" promptText="Rechercher..." />
-            <Label text="Profil">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="16.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="40.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/sportx_transparent.png" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
+      <fx:include source="navbar.fxml" />
    </top>
 
    <!-- Left: Navigation -->
    <left>
-      <VBox alignment="TOP_LEFT" prefWidth="250.0" spacing="15.0" styleClass="vbox">
-         <children>
-            <Pane prefHeight="33.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Accueil" />
-            <Button fx:id="actualitesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Actualités" onAction="#gotoActualite" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Market" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Événements" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Messages" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Paramètres" />
-         </children>
-      </VBox>
+      <fx:include source="com/example/sportmarket/sidebar.fxml" fx:id="sidebar"/>
    </left>
+
 
    <!-- Center: Main Content -->
    <center>

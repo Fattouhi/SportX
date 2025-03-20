@@ -41,6 +41,11 @@
                     </ImageView>
                 </graphic>
             </Button>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openCart">
+                <image>
+                    <Image url="@img/cart.png" />
+                </image>
+            </ImageView>
         </HBox>
     </HBox>
 

@@ -15,14 +15,12 @@ module com.example.sportmarket {
     opens com.example.sportx to javafx.graphics;
     opens com.example.sportx.controller.abir to javafx.fxml;
 
-
     exports com.example.chatboot to javafx.fxml;
     opens com.example.chatboot to javafx.fxml;
 
     exports com.example.sportmarket.DAO;
     opens com.example.sportmarket.DAO to javafx.fxml;
     exports com.example.sportmarket;
-
 
     requires org.json;
     requires mysql.connector.java;
@@ -33,7 +31,6 @@ module com.example.sportmarket {
     requires java.sql;
     requires java.desktop;
 
-
     opens com.example.sportxnews to javafx.fxml;
     exports com.example.sportxnews;
     exports com.example.sportxnews.controller;
@@ -42,7 +39,5 @@ module com.example.sportmarket {
     opens com.example.sportxnews.dao to javafx.fxml;
     exports com.example.sportxnews.models;
     opens com.example.sportxnews.models to javafx.fxml;
-
-
 
 }
