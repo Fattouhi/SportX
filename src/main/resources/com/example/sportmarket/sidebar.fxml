@@ -11,6 +11,6 @@
         <Button fx:id="marketButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Market" onAction="#gotoMarket" />
         <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Événements" />
         <Button fx:id="messagesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Messages" onAction="#gotoMessages" />
-        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="chatbot" />
+        <Button fx:id="chatbotButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="chatbot" onAction="#gotoChatbot" />
     </children>
 </VBox>
