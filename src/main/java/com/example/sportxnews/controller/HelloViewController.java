@@ -24,7 +24,50 @@ public class HelloViewController {
 
     @FXML
     private VBox partenairesContainer; // Conteneur pour afficher les partenaires
+    @FXML
+    private Button marketButton; // Ajoutez cette ligne pour référencer le bouton Market
+    @FXML
+    private Button messagesButton; // Ajoutez cette ligne pour référencer le bouton Messages
 
+    @FXML
+    private void gotoMessages() {
+        try {
+            // Charger community-view.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/community-view.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Stage stage = new Stage();
+            stage.setTitle("SportX - Messages");
+            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.show();
+
+            // Fermer la fenêtre actuelle (optionnel)
+            ((Stage) messagesButton.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void gotoMarket() {
+        try {
+            // Charger store-view.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sportmarket/store-view.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Stage stage = new Stage();
+            stage.setTitle("SportX - Market");
+            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.show();
+
+            // Fermer la fenêtre actuelle (optionnel)
+            ((Stage) marketButton.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void initialize() {
         // Ajouter un gestionnaire d'événements pour le bouton des actualités
@@ -34,8 +77,20 @@ public class HelloViewController {
             System.out.println("actualitesButton is null in initialize()");
         }
 
+        // Ajouter un gestionnaire d'événements pour le bouton Market
+        if (marketButton != null) {
+            marketButton.setOnAction(event -> gotoMarket());
+        } else {
+            System.out.println("marketButton is null in initialize()");
+        }
+// Ajouter un gestionnaire d'événements pour le bouton Messages
+        if (messagesButton != null) {
+            messagesButton.setOnAction(event -> gotoMessages());
+        } else {
+            System.out.println("messagesButton is null in initialize()");
+        }
         // Charger les partenaires au démarrage
-//        loadPartenaires();
+        // loadPartenaires();
     }
 
     /**

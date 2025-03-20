@@ -8,8 +8,9 @@
    <top>
       <fx:include source="navbar.fxml" />
    </top>
+   <!-- Left: Navigation -->
    <left>
-      <fx:include source="sidebar.fxml" />
+      <fx:include source="sidebar.fxml" fx:id="sidebar"/>
    </left>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">

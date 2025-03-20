@@ -23,6 +23,7 @@ module com.example.sportmarket {
     requires java.desktop;
     requires mysql.connector.java;
     requires org.jsoup;
+    requires org.slf4j;
 
     opens com.example.sportxnews to javafx.fxml;
     exports com.example.sportxnews;
