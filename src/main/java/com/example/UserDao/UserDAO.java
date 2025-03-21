@@ -1,6 +1,6 @@
-package com.example.login.UserDao;
+package com.example.UserDao;
 
-import model.User;
+import com.example.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
