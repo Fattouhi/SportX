@@ -11,24 +11,28 @@ import java.util.List;
 public class ProductDAO {
     public static List<Item> getAllProducts() {
         List<Item> products = new ArrayList<>();
-        String query = "SELECT * FROM products";
+        String query = "SELECT * FROM products WHERE request_status = ?";
 
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
-            while (resultSet.next()) {
-                Item item = new Item();
-                item.setId(resultSet.getInt("id"));
-                item.setName(resultSet.getString("name"));
-                item.setOwnerId(resultSet.getInt("owner_id"));
-                item.setType(resultSet.getString("type"));
-                item.setThumbnailImage(resultSet.getString("thumbnail_image"));
-                item.setDescription(resultSet.getString("description"));
-                item.setPrice(resultSet.getDouble("price"));
-                item.setStockQuantity(resultSet.getInt("stock_quantity"));
-                item.setStatus(resultSet.getString("status"));
-                products.add(item);
+            // Set the parameter BEFORE executing the query
+            statement.setString(1, "approved");
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Item item = new Item();
+                    item.setId(resultSet.getInt("id"));
+                    item.setName(resultSet.getString("name"));
+                    item.setOwnerId(resultSet.getInt("owner_id"));
+                    item.setType(resultSet.getString("type"));
+                    item.setThumbnailImage(resultSet.getString("thumbnail_image"));
+                    item.setDescription(resultSet.getString("description"));
+                    item.setPrice(resultSet.getDouble("price"));
+                    item.setStockQuantity(resultSet.getInt("stock_quantity"));
+                    item.setStatus(resultSet.getString("status"));
+                    products.add(item);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

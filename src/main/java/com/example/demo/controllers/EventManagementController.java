@@ -1,10 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.AdminApplication;
 import com.example.demo.dao.EventDAO;
 import com.example.demo.model.EventRequest;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,191 +22,131 @@ import java.util.Objects;
 
 public class EventManagementController {
 
-    @FXML
-    private TableColumn<EventRequest, Number> colIndex;
+    @FXML private TableColumn<EventRequest, Number> colIndex;
+    @FXML private TableView<EventRequest> eventRequestTable;
+    @FXML private TableColumn<EventRequest, String> colEventName; // À renommer en colTitle
+    @FXML private TableColumn<EventRequest, String> colSport; // Nouvelle colonne pour sport
+    @FXML private TableColumn<EventRequest, String> colLocation; // À renommer depuis addressField
+    @FXML private TableColumn<EventRequest, String> colDate;
+    @FXML private TableColumn<EventRequest, String> colDescription;
+    @FXML private TableColumn<EventRequest, String> colStatus; // Nouvelle colonne pour status
+    @FXML private TextArea eventDetails;
+    @FXML private Button btnAccept;
+    @FXML private Button btnReject;
+    @FXML private TextField searchField;
+    @FXML private ChoiceBox<String> filterChoiceBox;
 
-    @FXML
-    private TableView<EventRequest> eventRequestTable;
-
-    @FXML
-    private TableColumn<EventRequest, String> colEventName;
-
-    @FXML
-    private TableColumn<EventRequest, String> colDescription;
-    @FXML
-    private TableColumn<EventRequest, String> addressField;
-
-
-    @FXML
-    private TableColumn<EventRequest, String> colDate;
-
-    @FXML
-    private TableColumn<EventRequest, String> colOrganizer;
-
-    @FXML
-    private TextArea eventDetails;
-
-    @FXML
-    private Button btnAccept;
-
-    @FXML
-    private Button btnReject;
-
-    @FXML
-    private TextField searchField; // Assurez-vous que ce champ est bien lié dans le FXML
-
-    // Liste complète des événements (on la garde en mémoire)
     private final ObservableList<EventRequest> fullEventList = FXCollections.observableArrayList();
-
-    @FXML
-    private ChoiceBox<String> filterChoiceBox;
-
-    private final ObservableList<EventRequest> allEventRequests = FXCollections.observableArrayList();
-    private final ObservableList<EventRequest> eventRequests = FXCollections.observableArrayList();
+    private final ObservableList<EventRequest> allEvents = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
         // Initialisation des colonnes
-        colEventName.setCellValueFactory(cellData -> cellData.getValue().eventNameProperty());
-        colDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        colDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEventDate().toString()));
-        colOrganizer.setCellValueFactory(cellData -> cellData.getValue().organizerProperty());
         colIndex.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(eventRequestTable.getItems().indexOf(cellData.getValue()) + 1));
-        addressField.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+        colEventName.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+        colSport.setCellValueFactory(cellData -> cellData.getValue().sportProperty());
+        colLocation.setCellValueFactory(cellData -> cellData.getValue().locationProperty());
+        colDate.setCellValueFactory(cellData -> cellData.getValue().eventDateProperty().asString());
+        colDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
+        colStatus.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
 
+        // Chargement des données
+        loadEvents();
 
-
-        // Chargement des données réelles depuis la base de données
-        EventDAO eventDAO = new EventDAO();
-        List<EventRequest> events = eventDAO.getAllEventRequests();
-        eventRequestTable.getItems().setAll(events);
-        loadEventRequests();
-
-
-        // Listener pour filtrer dynamiquement
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> searchEvent());
-        searchField.setOnKeyReleased(event -> filterEvents());
-        filterChoiceBox.setOnAction(event -> filterEvents());
+        // Configuration du ChoiceBox pour le filtrage
+        filterChoiceBox.getItems().setAll("Tous", "pending", "approved", "rejected");
         filterChoiceBox.setValue("Tous");
-        fullEventList.setAll(eventRequestTable.getItems());
 
-
-
-        // Affichage des détails au clic sur une ligne
+        // Listeners
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> searchEvent());
+        filterChoiceBox.setOnAction(event -> filterEvents());
         eventRequestTable.setOnMouseClicked(this::displayEventDetails);
     }
 
-    private void loadEventRequests() {
+    private void loadEvents() {
         EventDAO eventDAO = new EventDAO();
-        List<EventRequest> events = eventDAO.getAllEventRequests();
-        allEventRequests.setAll(events);
-        eventRequestTable.setItems(allEventRequests);
+        List<EventRequest> events = eventDAO.getAllEvents();
+        allEvents.setAll(events);
+        eventRequestTable.setItems(allEvents);
+        fullEventList.setAll(events);
     }
 
-
     private void displayEventDetails(MouseEvent event) {
-        EventRequest selectedRequest = eventRequestTable.getSelectionModel().getSelectedItem();
-        if (selectedRequest != null) {
+        EventRequest selectedEvent = eventRequestTable.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
             eventDetails.setText(
-                    "Nom: " + selectedRequest.getEventName() + "\n" +
-                            "Description: " + selectedRequest.getDescription() + "\n" +
-                            "Date: " + selectedRequest.getEventDate() + "\n" +
-                            "Organisateur: " + selectedRequest.getOrganizer() + "\n" +
-                            "Adresse: " + selectedRequest.getAddress() // Ajout de l'adresse
+                    "ID: " + selectedEvent.getId() + "\n" +
+                            "Titre: " + selectedEvent.getTitle() + "\n" +
+                            "Sport: " + selectedEvent.getSport() + "\n" +
+                            "Lieu: " + selectedEvent.getLocation() + "\n" +
+                            "Date: " + selectedEvent.getEventDate() + "\n" +
+                            "Description: " + selectedEvent.getDescription() + "\n" +
+                            "Statut: " + selectedEvent.getStatus()
             );
+        } else {
+            eventDetails.clear();
         }
     }
 
     @FXML
     private void filterEvents() {
         String selectedFilter = filterChoiceBox.getValue();
-
-        // Vérifier si selectedFilter est null
         if (selectedFilter == null) {
-            selectedFilter = "Tous"; // Valeur par défaut
+            selectedFilter = "Tous";
         }
 
-        // Recharger la liste complète avant d'appliquer le filtre
         EventDAO eventDAO = new EventDAO();
-        List<EventRequest> allEvents = eventDAO.getAllEventRequests();
-
-        ObservableList<EventRequest> filteredList = FXCollections.observableArrayList();
-
+        List<EventRequest> filteredList;
         if (selectedFilter.equals("Tous")) {
-            filteredList.setAll(allEvents);  // Afficher tous les événements
+            filteredList = eventDAO.getAllEvents();
         } else {
-            for (EventRequest event : allEvents) {
-                if (event.getStatus().equalsIgnoreCase(selectedFilter)) {
-                    filteredList.add(event);
-                }
-            }
+            filteredList = eventDAO.getEventsByStatus(selectedFilter.toLowerCase());
         }
 
-        eventRequestTable.setItems(filteredList);
-        eventRequestTable.refresh();  // Mettre à jour l'affichage
+        eventRequestTable.setItems(FXCollections.observableArrayList(filteredList));
+        eventRequestTable.refresh();
     }
-
 
     @FXML
     private void acceptEvent() {
-        EventRequest selectedRequest = eventRequestTable.getSelectionModel().getSelectedItem();
-        if (selectedRequest != null) {
+        EventRequest selectedEvent = eventRequestTable.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
             EventDAO eventDAO = new EventDAO();
-
-            // Mettre à jour le statut de l'événement en 'approved'
-            boolean success = eventDAO.updateEventStatus(selectedRequest.getEventName(), "approved");
-
+            boolean success = eventDAO.updateEventStatus(selectedEvent.getTitle(), "approved");
             if (success) {
-                // Afficher un message de confirmation
-                Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                        "Demande d'événement acceptée : " + selectedRequest.getEventName(), ButtonType.OK);
-                alert.showAndWait();
-
+                showAlert("Succès", "Événement accepté : " + selectedEvent.getTitle());
+                loadEvents();
+                eventDetails.clear();
             } else {
-                // Afficher un message d'erreur si la mise à jour échoue
-                Alert alert = new Alert(Alert.AlertType.ERROR,
-                        "Échec de l'acceptation de l'événement : " + selectedRequest.getEventName(), ButtonType.OK);
-                alert.showAndWait();
+                showAlert("Erreur", "Échec de l'acceptation de l'événement : " + selectedEvent.getTitle());
             }
         } else {
-            // Si aucun événement n'est sélectionné
-            Alert alert = new Alert(Alert.AlertType.WARNING,
-                    "Veuillez sélectionner un événement à accepter.", ButtonType.OK);
-            alert.showAndWait();
+            showAlert("Avertissement", "Veuillez sélectionner un événement à accepter.");
         }
     }
 
     @FXML
     private void rejectEvent() {
-        EventRequest selectedRequest = eventRequestTable.getSelectionModel().getSelectedItem();
-        if (selectedRequest != null) {
-            // Mise à jour du statut dans la base de données
+        EventRequest selectedEvent = eventRequestTable.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
             EventDAO eventDAO = new EventDAO();
-            boolean success = eventDAO.updateEventStatus(selectedRequest.getEventName(), "rejected");
-
+            boolean success = eventDAO.updateEventStatus(selectedEvent.getTitle(), "rejected");
             if (success) {
-                eventRequests.remove(selectedRequest); // Retirer de l'affichage
+                showAlert("Succès", "Événement refusé : " + selectedEvent.getTitle());
+                loadEvents();
                 eventDetails.clear();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Demande d'événement refusée et masquée.", ButtonType.OK);
-                alert.showAndWait();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Échec de la mise à jour du statut.", ButtonType.OK);
-                alert.showAndWait();
+                showAlert("Erreur", "Échec du refus de l'événement : " + selectedEvent.getTitle());
             }
+        } else {
+            showAlert("Avertissement", "Veuillez sélectionner un événement à refuser.");
         }
     }
-
 
     @FXML
     private void searchEvent() {
         String searchText = searchField.getText().trim().toLowerCase();
-
-        // Vérifier si la liste complète est bien chargée
-        if (fullEventList.isEmpty()) {
-            fullEventList.setAll(eventRequestTable.getItems());
-        }
-
         ObservableList<EventRequest> filteredList = FXCollections.observableArrayList();
 
         if (searchText.isEmpty()) {
@@ -217,41 +155,33 @@ public class EventManagementController {
         }
 
         for (EventRequest eventRequest : fullEventList) {
-            // Recherche insensible à la casse pour le nom, la description, l'organisateur, le statut, la date et l'adresse
-            if ((eventRequest.getEventName() != null && eventRequest.getEventName().toLowerCase().contains(searchText)) ||
+            if ((eventRequest.getTitle() != null && eventRequest.getTitle().toLowerCase().contains(searchText)) ||
+                    (eventRequest.getSport() != null && eventRequest.getSport().toLowerCase().contains(searchText)) ||
+                    (eventRequest.getLocation() != null && eventRequest.getLocation().toLowerCase().contains(searchText)) ||
+                    (eventRequest.getEventDate() != null && eventRequest.getEventDate().toString().contains(searchText)) ||
                     (eventRequest.getDescription() != null && eventRequest.getDescription().toLowerCase().contains(searchText)) ||
-                    (eventRequest.getOrganizer() != null && eventRequest.getOrganizer().toLowerCase().contains(searchText)) ||
-                    (eventRequest.getStatus() != null && eventRequest.getStatus().toLowerCase().contains(searchText)) ||
-                    (eventRequest.getAddress() != null && eventRequest.getAddress().toLowerCase().contains(searchText)) || // Ajout de la recherche par adresse
-                    (eventRequest.getEventDate() != null && eventRequest.getEventDate().toString().contains(searchText))) { // Ajout de la recherche par date
-
+                    (eventRequest.getStatus() != null && eventRequest.getStatus().toLowerCase().contains(searchText))) {
                 filteredList.add(eventRequest);
             }
         }
         eventRequestTable.setItems(filteredList);
     }
 
-
     @FXML
     private void openCalendar() {
         try {
-            // Ouvre un lien externe vers Google Calendar
-            String calendarUrl = "https://calendar.google.com/";
-            Desktop.getDesktop().browse(new URI(calendarUrl));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            showAlert("Erreur", "URL du calendrier invalide.");
-        } catch (IOException e) {
+            Desktop.getDesktop().browse(new URI("https://calendar.google.com/"));
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
             showAlert("Erreur", "Impossible d’ouvrir le lien du calendrier : " + e.getMessage());
         }
     }
+
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, content, ButtonType.OK);
         alert.setTitle(title);
         alert.showAndWait();
     }
-
 
     @FXML
     private void goToDashboard() {
@@ -261,9 +191,7 @@ public class EventManagementController {
             stage.setScene(new javafx.scene.Scene(root));
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Erreur lors du chargement du dashboard : " + e.getMessage());
+            showAlert("Erreur", "Erreur lors du chargement du dashboard : " + e.getMessage());
         }
     }
-
-
 }

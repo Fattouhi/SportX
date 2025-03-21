@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml" spacing="20" styleClass="header" fx:controller="com.example.sportx.controller.abir.NavbarController">
+<VBox fx:id="profileDropdown" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml" spacing="20" styleClass="header" fx:controller="com.example.sportx.controller.abir.NavbarController">
     <stylesheets>
         <URL value="@/CommunityStyle.css"/>
     </stylesheets>
@@ -33,14 +33,20 @@
                     </ImageView>
                 </graphic>
             </Button>
-            <!-- Profile Icon -->
-            <Button styleClass="profile-icon-button">
+            <!-- Profile Icon with MenuButton -->
+            <MenuButton styleClass="profile-menu" text="" graphicTextGap="10.0">
                 <graphic>
                     <ImageView fitWidth="20" preserveRatio="true">
                         <Image url="profile_icon.png"/>
                     </ImageView>
                 </graphic>
-            </Button>
+                <items>
+                    <MenuItem text="Profile" styleClass="menu-item" onAction="#openProfile" />
+                    <MenuItem text="Settings" styleClass="menu-item" onAction="#openSettings" />
+                    <MenuItem text="Logout" styleClass="menu-item" onAction="#openLogout" />
+                </items>
+            </MenuButton>
+            <!-- Cart Icon -->
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openCart">
                 <image>
                     <Image url="@img/cart.png" />
@@ -48,5 +54,4 @@
             </ImageView>
         </HBox>
     </HBox>
-
 </VBox>

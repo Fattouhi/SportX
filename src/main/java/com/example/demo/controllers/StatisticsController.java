@@ -110,7 +110,7 @@ public class StatisticsController {
         // Instancier EventDAO pour appeler getAllEventRequests()
         EventDAO eventDAO = new EventDAO();
         // Récupérer tous les événements
-        List<EventRequest> events = eventDAO.getAllEventRequests();
+        List<EventRequest> events = eventDAO.getAllEvents();
         int totalEvents = events.size();
         LocalDate now = LocalDate.now();
 
@@ -160,7 +160,7 @@ public class StatisticsController {
         // Instancier EventDAO pour appeler getAllEventRequests()
         EventDAO eventDAO = new EventDAO();
         // Récupérer tous les événements
-        List<EventRequest> events = eventDAO.getAllEventRequests();
+        List<EventRequest> events = eventDAO.getAllEvents();
         int approvedCount = (int) events.stream().filter(event -> event.getStatus().equalsIgnoreCase("approved")).count();
         int rejectedCount = (int) events.stream().filter(event -> event.getStatus().equalsIgnoreCase("rejected")).count();
         int pendingCount = (int) events.stream().filter(event -> event.getStatus().equalsIgnoreCase("pending")).count();
