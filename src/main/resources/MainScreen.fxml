@@ -21,8 +21,8 @@
             <TextField fx:id="searchField" promptText="Rechercher une catégorie..." />
             <!-- Liste des catégories -->
             <ListView fx:id="categoryListView" />
-            <Button fx:id="homeButton" text="Accueil" style="-fx-font-size: 14px;" onAction="#goToHome"/>
-            <Button text="Live Scores" onAction="#goToLiveScores" style="-fx-font-size: 14px;" />
+            <Button fx:id="homeButton" text="Accueil" style="-fx-background-color: #EFBF04;" onAction="#goToHome"/>
+            <Button text="Live Scores" onAction="#goToLiveScores"  style="-fx-background-color: #EFBF04;" />
         </VBox>
     </left>
 

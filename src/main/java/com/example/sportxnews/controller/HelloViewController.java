@@ -48,7 +48,28 @@ public class HelloViewController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private Button chatbotButton; // Ajoutez cette ligne pour référencer le bouton chatbot
 
+    @FXML
+    private void gotoChatbot() {
+        try {
+            // Charger chatboot_interface.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chatboot_interface.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Stage stage = new Stage();
+            stage.setTitle("SportX - Chatbot");
+            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.show();
+
+            // Fermer la fenêtre actuelle (optionnel)
+            ((Stage) chatbotButton.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void gotoMarket() {
         try {
@@ -72,7 +93,7 @@ public class HelloViewController {
     private void initialize() {
         // Ajouter un gestionnaire d'événements pour le bouton des actualités
         if (actualitesButton != null) {
-            actualitesButton.setOnAction(event -> openMainScreen());
+            actualitesButton.setOnAction(event -> gotoActualite());
         } else {
             System.out.println("actualitesButton is null in initialize()");
         }
@@ -83,16 +104,21 @@ public class HelloViewController {
         } else {
             System.out.println("marketButton is null in initialize()");
         }
-// Ajouter un gestionnaire d'événements pour le bouton Messages
+
+        // Ajouter un gestionnaire d'événements pour le bouton Messages
         if (messagesButton != null) {
             messagesButton.setOnAction(event -> gotoMessages());
         } else {
             System.out.println("messagesButton is null in initialize()");
         }
-        // Charger les partenaires au démarrage
-        // loadPartenaires();
-    }
 
+        // Ajouter un gestionnaire d'événements pour le bouton Chatbot
+        if (chatbotButton != null) {
+            chatbotButton.setOnAction(event -> gotoChatbot());
+        } else {
+            System.out.println("chatbotButton is null in initialize()");
+        }
+    }
     /**
      * Charge les partenaires depuis la base de données et les affiche dans le VBox.
      */
