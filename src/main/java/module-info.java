@@ -47,5 +47,14 @@ module com.example.sportmarket {
 
     // Open if reflection access is needed
     opens com.example.demo to javafx.fxml;
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires java.sql; // Added for SQL access
+
+    requires org.controlsfx.controls;
+    requires org.kordamp.bootstrapfx.core;
+
+    opens com.example.demo1 to javafx.fxml;
+    exports com.example.demo1;
 
 }

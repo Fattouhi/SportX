@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="534.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AddUserController">
+   <children>
+      <ImageView fitHeight="536.0" fitWidth="774.0">
+         <image>
+            <Image url="@images/back.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="6.0" layoutY="6.0">
+         <image>
+            <Image url="@SportConnect-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Text fill="#faf8f8" layoutX="315.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to SportConnect" />
+      <TextField fx:id="nom" layoutX="130.0" layoutY="150.0" prefWidth="200.0" promptText="Nom" />
+      <TextField fx:id="prenom" layoutX="130.0" layoutY="200.0" prefWidth="200.0" promptText="Prenom" />
+      <TextField fx:id="mail" layoutX="130.0" layoutY="250.0" prefWidth="200.0" promptText="Mail" />
+      <PasswordField fx:id="passwd" layoutX="130.0" layoutY="300.0" prefWidth="200.0" promptText="Password" />
+      <PasswordField fx:id="confirmPasswd" layoutX="130.0" layoutY="350.0" prefWidth="200.0" promptText="Confirm Password" />
+      <TextField fx:id="telephone" layoutX="450.0" layoutY="150.0" prefWidth="200.0" promptText="Telephone" />
+      <TextField fx:id="pays" layoutX="450.0" layoutY="200.0" prefWidth="200.0" promptText="Pays" />
+      <ComboBox fx:id="genre" layoutX="450.0" layoutY="250.0" prefWidth="200.0" promptText="Genre" />
+      <DatePicker fx:id="dateNaissance" layoutX="450.0" layoutY="300.0" prefWidth="200.0" promptText="Date de Naissance" />
+      <TextField fx:id="besamee" layoutX="450.0" layoutY="350.0" prefWidth="200.0" promptText="Besamee" />
+      <CheckBox fx:id="termsCheckBox" layoutX="290.0" layoutY="400.0" text="J'accepte les termes et conditions" />
+      <Button fx:id="btnCreateAccount" layoutX="340.0" layoutY="450.0" onAction="#onCreateAccount" text="Create Account" />
+      <Label fx:id="errorLabel" layoutX="290.0" layoutY="480.0" text="" textFill="RED" />
+   </children>
+</AnchorPane>
