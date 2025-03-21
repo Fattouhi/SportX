@@ -23,7 +23,6 @@ module com.example.sportmarket {
     exports com.example.sportmarket;
 
     requires org.json;
-    requires mysql.connector.java;
     requires org.jsoup;
     requires org.slf4j;
     requires java.net.http;
@@ -40,4 +39,21 @@ module com.example.sportmarket {
     exports com.example.sportxnews.models;
     opens com.example.sportxnews.models to javafx.fxml;
 
+<<<<<<< HEAD
+
+
+    // Open if reflection access is needed
+    opens com.example.demo to javafx.fxml;
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires java.sql; // Added for SQL access
+
+    requires org.controlsfx.controls;
+    requires org.kordamp.bootstrapfx.core;
+
+    opens com.example.demo1 to javafx.fxml;
+    exports com.example.demo1;
+
+=======
+>>>>>>> fbf4d8e300ddbedfccb0f3131c41256d9d22e038
 }

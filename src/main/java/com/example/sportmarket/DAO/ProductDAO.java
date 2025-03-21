@@ -35,4 +35,22 @@ public class ProductDAO {
         }
         return products;
     }
+
+    public static void addProduct(Item item) {
+        String query = "INSERT INTO products (name, owner_id, type, thumbnail_image, description, price, stock_quantity, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, item.getName());
+            statement.setInt(2, item.getOwnerId());
+            statement.setString(3, item.getType());
+            statement.setString(4, item.getThumbnailImage()); // Save thumbnail path
+            statement.setString(5, item.getDescription());
+            statement.setDouble(6, item.getPrice());
+            statement.setInt(7, item.getStockQuantity());
+            statement.setString(8, item.getStatus());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

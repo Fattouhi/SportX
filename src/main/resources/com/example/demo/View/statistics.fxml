@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import java.net.URL?>
+<VBox prefHeight="620.0" prefWidth="1070.0" spacing="0" style="-fx-padding: 0; -fx-margin: 0;" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.StatisticsController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+    <!-- En-tête -->
+    <HBox prefHeight="60" style="-fx-background-color: #6982db; -fx-padding: 10; -fx-alignment: center-left; -fx-spacing: 20;">
+        <!-- Logo + Titre -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <!-- Logo SportX -->
+            <ImageView accessibleRole="BUTTON" fitHeight="42.0" fitWidth="63.0" onMouseClicked="#goToDashboard" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <javafx.scene.Cursor fx:constant="HAND" />
+                </cursor>
+                <image>
+                    <Image url="@../images/LogoSportX.png" />
+                </image>
+            </ImageView>
+            <!-- Titre de la page -->
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Statistiques SportX" />
+        </HBox>
+
+        <!-- Espace flexible -->
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <!-- Onglets pour organiser les statistiques -->
+    <TabPane prefHeight="500.0" prefWidth="1070.0" tabClosingPolicy="UNAVAILABLE">
+        <!-- Onglet Utilisateurs -->
+        <Tab text="Utilisateurs">
+            <content>
+                <VBox spacing="20" alignment="CENTER">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Statistiques des Utilisateurs" />
+                    <BarChart fx:id="userStatsChart" prefHeight="300.0" prefWidth="800.0">
+                        <xAxis>
+                            <CategoryAxis />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis />
+                        </yAxis>
+                    </BarChart>
+                    <TableView fx:id="userTable" prefHeight="150.0" prefWidth="800.0">
+                        <columns>
+                            <TableColumn fx:id="userTotalCol" text="Total Utilisateurs" prefWidth="200" />
+                            <TableColumn fx:id="userActiveCol" text="Utilisateurs Actifs" prefWidth="200" />
+                            <TableColumn fx:id="userBannedCol" text="Utilisateurs Bannis" prefWidth="200" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+
+        <!-- Onglet Événements -->
+        <Tab text="Événements">
+            <content>
+                <VBox spacing="20" alignment="CENTER">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Statistiques des Événements" />
+                    <BarChart fx:id="eventStatsChart" prefHeight="300.0" prefWidth="800.0">
+                        <xAxis>
+                            <CategoryAxis />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis />
+                        </yAxis>
+                    </BarChart>
+                    <TableView fx:id="eventTable" prefHeight="150.0" prefWidth="800.0">
+                        <columns>
+                            <TableColumn fx:id="eventTotalCol" text="Total Événements" prefWidth="120" />
+                            <TableColumn fx:id="eventFutureCol" text="Événements Futurs" prefWidth="120" />
+                            <TableColumn fx:id="eventPastApprovedCol" text="Passés (Approuvés)" prefWidth="120" />
+                            <TableColumn fx:id="eventPastPendingCol" text="Passés (En Attente)" prefWidth="120" />
+                            <TableColumn fx:id="eventPastRejectedCol" text="Passés (Refusés)" prefWidth="120" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+
+        <!-- Onglet Événements Approuvés/Refusés -->
+        <Tab text="Événements Approuvés/Refusés">
+            <content>
+                <VBox spacing="20" alignment="CENTER">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Statistiques des Événements Approuvés et Refusés" />
+                    <PieChart fx:id="eventApprovalChart" prefHeight="300.0" prefWidth="800.0" />
+                    <TableView fx:id="approvalTable" prefHeight="150.0" prefWidth="800.0">
+                        <columns>
+                            <TableColumn fx:id="statusCol" text="Statut" prefWidth="200" />
+                            <TableColumn fx:id="countCol" text="Nombre" prefWidth="200" />
+                            <TableColumn fx:id="percentageCol" text="Pourcentage" prefWidth="200" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </content>
+        </Tab>
+    </TabPane>
+
+    <!-- Bouton de rafraîchissement -->
+    <Button onAction="#refreshStatistics" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 10px 20px; -fx-background-radius: 5px;" text="🔄 Rafraîchir les Statistiques">
+        <cursor>
+            <javafx.scene.Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+
+    <!-- Label pour les notifications (invisible par défaut) -->
+    <Label fx:id="notificationLabel" visible="false" style="-fx-background-color: rgba(0, 0, 0, 0.7); -fx-text-fill: white; -fx-padding: 10px; -fx-background-radius: 5px;" />
+</VBox>
