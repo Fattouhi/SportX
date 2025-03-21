@@ -1,17 +1,16 @@
-package com.example.login.com.example;
-import UserDao.UserDAO;
+package com.example.demo1;
+import com.example.UserDao.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.User; // Assuming User model is in model package
+import com.example.model.User; // Assuming User model is in model package
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class AuthController {
 

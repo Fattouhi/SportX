@@ -1,7 +1,7 @@
-package com.example.login.com.example;
+package com.example.demo1;
 
 import javafx.collections.FXCollections;
-import UserDao.UserDAO;
+import com.example.UserDao.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

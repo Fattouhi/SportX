@@ -1,4 +1,4 @@
-package com.example.login.com.example; // Adjust to com.example.demo2 if that's your intended package
+package com.example.demo1; // Adjust to com.example.demo2 if that's your intended package
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

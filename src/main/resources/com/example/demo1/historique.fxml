@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.GetHistorique">
+    <top>
+        <fx:include source="../../../navbar.fxml" />
+    </top>
+    <left>
+        <fx:include source="../sportmarket/sidebar.fxml" fx:id="sidebar" />
+    </left>
+    <center>
+        <VBox prefHeight="622.0" prefWidth="594.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="622.0" fitWidth="647.0">
+                    <image>
+                        <Image url="@images/SportConnect (9).jpg" />
+                    </image>
+                </ImageView>
+                <ScrollPane fx:id="mainScrollPane" prefHeight="498.0" prefWidth="634.0" style="-fx-background-color: transparent;">
+                    <content>
+                        <VBox fx:id="scrollContent" style="-fx-background-color: transparent;">
+                            <VBox prefHeight="166.0" prefWidth="760.0" style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="March 16, 2021 | Order number 3014577620" />
+                                <Label style="-fx-font-size: 14px;" text="Microsoft Surface Duo" />
+                                <Label style="-fx-font-size: 14px;" text="hhhhh" />
+                                <Label style="-fx-font-size: 12px;" text="Total $1,399.99 | Paid with Mastercard = 6985" />
+                                <Label style="-fx-font-size: 12px;" text="In transit: Estimated delivery April 10, 2021" />
+                                <HBox spacing="10">
+                                    <Button style="-fx-background-color: lightblue;" text="Track order" />
+                                    <Button style="-fx-background-color: lightblue;" text="Request return" />
+                                </HBox>
+                                <Button style="-fx-background-color: lightgray;" text="Show details" />
+                            </VBox>
+                            <VBox style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="March 10, 2021 | Order number 3014577619" />
+                                <Label style="-fx-font-size: 14px;" text="Mafia City Exclusive Bundle" />
+                                <Label style="-fx-font-size: 14px;" text="hhhh" />
+                                <Label style="-fx-font-size: 12px;" text="Bundle includes:" />
+                                <Label style="-fx-font-size: 12px;" text="Total $499.99 | Paid with Mastercard = 6985" />
+                                <Label style="-fx-font-size: 12px;" text="Other than 1 month:" />
+                                <Label style="-fx-font-size: 12px;" text="Mafia Cart Edition 6 - $574.00" />
+                                <Label style="-fx-font-size: 12px;" text="Total $70.00 | Paid with Microsoft Account" />
+                                <Button style="-fx-background-color: lightgray;" text="Show details" />
+                            </VBox>
+                            <VBox style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Completed | Expires on March 12, 2022" />
+                                <Button style="-fx-background-color: lightblue;" text="Buy again" />
+                                <Button style="-fx-background-color: lightgray;" text="Show details" />
+                            </VBox>
+                            <VBox style="-fx-padding: 10px; -fx-border-color: lightgray; -fx-border-width: 1px;">
+                                <Label style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Completed | Continues on May 1, 2022" />
+                                <Button style="-fx-background-color: lightblue;" text="Buy again" />
+                                <Button style="-fx-background-color: lightgray;" text="Show details" />
+                            </VBox>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+                <Text fill="#fff8f8" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historique">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Text>
+                <ChoiceBox fx:id="filterChoiceBox" layoutY="35.0" prefHeight="20.0" prefWidth="90.0" />
+                <ChoiceBox fx:id="sortChoiceBox" layoutX="232.0" layoutY="35.0" prefHeight="16.0" prefWidth="89.0" />
+                <Text fill="WHITE" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All :" />
+                <Text fill="WHITE" layoutX="160.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Commandé dans :" />
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
