@@ -68,4 +68,18 @@ public class ProductDAO {
         }
         return 0; // Retourne 0 en cas d'erreur
     }
+
+    public boolean deleteProduct(String productName) {
+        String query = "DELETE FROM products WHERE name = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, productName);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

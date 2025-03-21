@@ -1,32 +1,57 @@
 package com.example.demo.model;
 
-public class GroupRequests { // Correction du nom de la classe
-    private final int id;
-    private final String groupName;
-    private final String category;
-    private final String creator;
-    private final String description;
-    private final String imagePath;
-    private final String status;
-    //private LocalDateTime createdAt;
+import java.time.LocalDateTime;
 
-    // Constructeur corrigé
-    public GroupRequests(int id, String groupName, String category, String creator, String description, String imagePath, String status) {
+public class GroupRequests {
+    private final int id;
+    private final String name;
+    private final String description;
+    private final String category;
+    private final String imageUrl;
+    private final int createdBy;
+    private final LocalDateTime createdAt;
+    private final String status;
+
+    public GroupRequests(int id, String name, String description, String category, String imageUrl, int createdBy, LocalDateTime createdAt, String status) {
         this.id = id;
-        this.groupName = groupName;
-        this.category = category;
-        this.creator = creator;
+        this.name = name;
         this.description = description;
-        this.imagePath = imagePath;
+        this.category = category;
+        this.imageUrl = imageUrl;
+        this.createdBy = createdBy;
+        this.createdAt = createdAt;
         this.status = status;
     }
 
-    // Getters
-    public int getId() { return id; }
-    public String getGroupName() { return groupName; }
-    public String getCategory() { return category; }
-    public String getCreator() { return creator; }
-    public String getDescription() { return description; }
-    public String getImagePath() { return imagePath; }
-    public String getStatus() { return status; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }

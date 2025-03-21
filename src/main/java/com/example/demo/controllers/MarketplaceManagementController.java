@@ -70,11 +70,17 @@ public class MarketplaceManagementController {
                 descriptionText.setText("Description: " + product.getDescription());
                 priceText.setText("Prix: " + product.getPrice() + " €");
                 sellerText.setText("Vendeur: " + product.getOwnerId());
-                requestStatusText.setText("Statut de la demande: " + product.getRequestStatus()); // Utilise requestStatus
+                requestStatusText.setText("Statut de la demande: " + product.getRequestStatus());
+
+                // Chargement de l'image depuis les ressources
+                String imagePath = product.getThumbnailImage(); // Ex: "/img/products/p1.png"
                 try {
-                    imageView.setImage(new Image(product.getThumbnailImage()));
+                    Image image = new Image(getClass().getResourceAsStream(imagePath));
+                    imageView.setImage(image);
                 } catch (Exception e) {
-                    imageView.setImage(null);
+                    System.err.println("Erreur lors du chargement de l'image : " + imagePath);
+                    e.printStackTrace();
+                    imageView.setImage(null); // Image par défaut ou null en cas d'échec
                 }
                 setGraphic(hbox);
             }
@@ -132,15 +138,16 @@ public class MarketplaceManagementController {
     private void rejectProduct() {
         if (selectedProduct != null) {
             ProductDAO productDAO = new ProductDAO();
-            boolean success = productDAO.updateProductStatus(selectedProduct.getName(), "rejected"); // Minuscule pour cohérence
+            boolean success = productDAO.deleteProduct(selectedProduct.getName()); // Suppression du produit
             showAlert(success ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR,
                     success ? "Succès" : "Erreur",
-                    success ? "Produit refusé : " + selectedProduct.getName() : "Échec du refus");
-            if (success) refreshList();
+                    success ? "Produit supprimé : " + selectedProduct.getName() : "Échec de la suppression");
+            if (success) refreshList(); // Rafraîchir la liste après suppression
         } else {
             showAlert(Alert.AlertType.WARNING, "Attention", "Sélectionnez un produit d'abord.");
         }
     }
+
 
     @FXML
     private void refreshList() {

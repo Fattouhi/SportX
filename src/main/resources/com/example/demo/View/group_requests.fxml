@@ -19,36 +19,36 @@
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.GroupRequestController">
     <!-- En-tête -->
     <top>
-        <!-- En-tête -->
         <HBox prefHeight="60" style="-fx-background-color:#6982db; -fx-padding: 10; -fx-alignment: center-left; -fx-spacing: 20;">
-        <!-- Logo + Titre -->
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <!-- Logo SportX -->
-            <ImageView accessibleRole="BUTTON" fitHeight="42.0" fitWidth="63.0" onMouseClicked="#goToDashboard" pickOnBounds="true" preserveRatio="true">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor>
-                <Image url="@../images/LogoSportX.png" />
-            </ImageView>
-            <!-- Titre de la page -->
-            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion demandes des évènement" />
-        </HBox>
+            <!-- Logo + Titre -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <!-- Logo SportX -->
+                <ImageView accessibleRole="BUTTON" fitHeight="42.0" fitWidth="63.0" onMouseClicked="#goToDashboard" pickOnBounds="true" preserveRatio="true">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <Image url="@../images/LogoSportX.png" />
+                </ImageView>
+                <!-- Titre de la page -->
+                <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion demandes des évènement" />
+            </HBox>
 
             <!-- Barre de recherche et filtrage -->
             <HBox spacing="10" style="-fx-padding: 10; -fx-alignment: center;" translateX="90.0">
-                <TextField fx:id="searchField" promptText="Rechercher un groupe (nom, créateur, catégorie)" />
+                <TextField fx:id="searchField" promptText="Rechercher un groupe (nom, créateur, catégorie, statut)" />
                 <Button onAction="#searchGroup" text="🔍">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
+                <Label style="-fx-text-fill: white;" text="Filtrer par statut :" />
                 <ChoiceBox fx:id="filterChoiceBox" onAction="#filterGroups">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Tous" />
-                            <String fx:value="Approved" /> <!-- Remplacez "Approuvé" par "Approved" si nécessaire -->
-                            <String fx:value="Pending" />  <!-- Remplacez "En attente" par "Pending" si nécessaire -->
-                            <String fx:value="Rejected" /> <!-- Remplacez "Rejeté" par "Rejected" si nécessaire -->
+                            <String fx:value="approved" /> <!-- Aligné avec le contrôleur -->
+                            <String fx:value="pending" />  <!-- Aligné avec le contrôleur -->
+                            <String fx:value="rejected" /> <!-- Aligné avec le contrôleur -->
                         </FXCollections>
                     </items>
                 </ChoiceBox>
@@ -63,25 +63,29 @@
             <VBox spacing="10">
                 <TableView fx:id="groupRequestTable" prefWidth="450">
                     <columns>
-                        <TableColumn fx:id="groupNameColumn" text="Nom du Groupe" />
-                        <TableColumn fx:id="categoryColumn" text="Catégorie" />
-                        <TableColumn fx:id="creatorColumn" text="Créateur" />
+                        <TableColumn fx:id="groupNameColumn" prefWidth="120.0" text="Nom du Groupe" />
+                        <TableColumn fx:id="categoryColumn" prefWidth="100.0" text="Catégorie" />
+                        <TableColumn fx:id="creatorColumn" prefWidth="80.0" text="Créateur" />
+                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Statut" /> <!-- Nouvelle colonne -->
                     </columns>
                 </TableView>
 
                 <HBox spacing="10">
                     <Button fx:id="approveButton" style="-fx-background-color: green; -fx-text-fill: white;" text="✅ Approuver">
-                  <cursor>
-                     <Cursor fx:constant="HAND" />
-                  </cursor></Button>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Button>
                     <Button fx:id="rejectButton" style="-fx-background-color: red; -fx-text-fill: white;" text="❌ Refuser">
-                  <cursor>
-                     <Cursor fx:constant="HAND" />
-                  </cursor></Button>
-                    <Button fx:id="refrechButton" onAction="#initialize" style="-fx-background-color: #3498DB; -fx-text-fill: white;" text="🔄rafraichir">
-                  <cursor>
-                     <Cursor fx:constant="HAND" />
-                  </cursor></Button>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Button>
+                    <Button fx:id="refrechButton" onAction="#initialize" style="-fx-background-color: #3498DB; -fx-text-fill: white;" text="🔄 Rafraîchir">
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </Button>
                 </HBox>
             </VBox>
 
@@ -89,7 +93,6 @@
             <VBox spacing="10">
                 <Label style="-fx-font-weight: bold;" text="Détails du Groupe :" />
                 <TextArea fx:id="descriptionArea" editable="false" prefHeight="100" wrapText="true" />
-
                 <ImageView fx:id="groupImageView" fitHeight="150" fitWidth="200" />
             </VBox>
         </HBox>

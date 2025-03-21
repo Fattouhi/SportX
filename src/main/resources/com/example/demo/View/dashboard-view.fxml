@@ -49,28 +49,27 @@
         </ImageView>
         <Label layoutX="80.0" layoutY="8.0" styleClass="sportx-label" text="SPORTX" />
 
-        <ImageView fx:id="profileIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="30.0" layoutX="1387.8" layoutY="5.0" onMouseClicked="#toggleProfileMenu" pickOnBounds="true" preserveRatio="true">
-            <cursor>
-                <javafx.scene.Cursor fx:constant="HAND" />
-            </cursor>
-            <image>
-                <Image url="@../images/Profile_User_Round_White_Icon_Symbol_PNG-removebg-preview.png" />
-            </image>
-        </ImageView>
-
+<!--        <ImageView fx:id="profileIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="30.0" layoutX="1387.8" layoutY="5.0" onMouseClicked="#toggleProfileMenu" pickOnBounds="true" preserveRatio="true">-->
+<!--            <cursor>-->
+<!--                <javafx.scene.Cursor fx:constant="HAND" />-->
+<!--            </cursor>-->
+<!--            <image>-->
+<!--                <Image url="@../images/Profile_User_Round_White_Icon_Symbol_PNG-removebg-preview.png" />-->
+<!--            </image>-->
+<!--        </ImageView>-->
     </Pane>
 
     <!--  profil menus -->
 
-    <VBox fx:id="profileMenu" layoutX="1350" layoutY="60" managed="false" prefWidth="170" spacing="10" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 5px; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);" visible="false">
-        <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Mon Profil" />
-        <Separator />
-        <Button styleClass="menu-item" text="👤 Voir le profil" />
-        <Button styleClass="menu-item" text="🔑 Changer de mot de passe" />
-        <Button styleClass="menu-item" text="⚙️ Paramètres" />
-        <Separator />
-        <Button style="-fx-text-fill: red;" text="🚪 Se déconnecter" />
-    </VBox>
+<!--    <VBox fx:id="profileMenu" layoutX="1350" layoutY="60" managed="false" prefWidth="170" spacing="10" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 5px; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);" visible="false">-->
+<!--        <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Mon Profil" />-->
+<!--        <Separator />-->
+<!--        <Button styleClass="menu-item" text="👤 Voir le profil" />-->
+<!--        <Button styleClass="menu-item" text="🔑 Changer de mot de passe" />-->
+<!--        <Button styleClass="menu-item" text="⚙️ Paramètres" />-->
+<!--        <Separator />-->
+<!--        <Button style="-fx-text-fill: red;" text="🚪 Se déconnecter" />-->
+<!--    </VBox>-->
 
     <!-- Main Content (Centre) -->
     <VBox layoutX="337.0" layoutY="114.0" prefHeight="268.0" prefWidth="649.0" spacing="20">

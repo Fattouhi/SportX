@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,18 +18,16 @@ public class GroupRequestController {
     @FXML private TableView<GroupRequests> groupRequestTable;
     @FXML private TableColumn<GroupRequests, String> groupNameColumn;
     @FXML private TableColumn<GroupRequests, String> categoryColumn;
-    @FXML private TableColumn<GroupRequests, String> creatorColumn;
-    @FXML private TextArea descriptionArea;
+    @FXML private TableColumn<GroupRequests, Integer> creatorColumn;
+    @FXML private TableColumn<GroupRequests, String> statusColumn;
+    @FXML private TextArea descriptionArea; // Changé de detailsTextArea à descriptionArea pour correspondre au FXML
     @FXML private ImageView groupImageView;
     @FXML private Button approveButton;
     @FXML private Button rejectButton;
+    @FXML private TextField searchField;
+    @FXML private ChoiceBox<String> filterChoiceBox;
 
     private GroupDAO groupDAO;
-    @FXML
-    private TextField searchField;
-
-    @FXML
-    private ChoiceBox<String> filterChoiceBox;
 
     public GroupRequestController() {
         // Constructeur par défaut obligatoire pour JavaFX
@@ -39,7 +36,7 @@ public class GroupRequestController {
     @FXML
     private void goToDashboard() {
         try {
-            Stage stage = (Stage) groupRequestTable.getScene().getWindow(); // Utilisez userTable pour obtenir la scène
+            Stage stage = (Stage) groupRequestTable.getScene().getWindow();
             stage.setScene(new javafx.scene.Scene(
                     javafx.fxml.FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/demo/View/dashboard-view.fxml")))
             ));
@@ -48,26 +45,25 @@ public class GroupRequestController {
         }
     }
 
-    // Recherche d'un groupe
     @FXML
     private void searchGroup() {
         String searchText = searchField.getText().toLowerCase();
-        List<GroupRequests> filteredList = groupDAO.getAllGroupRequests().stream() // Utilisez getAllGroupRequests()
-                .filter(g -> g.getGroupName().toLowerCase().contains(searchText) ||
-                        g.getCreator().toLowerCase().contains(searchText) ||
-                        g.getCategory().toLowerCase().contains(searchText))
+        List<GroupRequests> filteredList = groupDAO.getAllGroupRequests().stream()
+                .filter(g -> g.getName().toLowerCase().contains(searchText) ||
+                        String.valueOf(g.getCreatedBy()).contains(searchText) ||
+                        g.getCategory().toLowerCase().contains(searchText) ||
+                        g.getStatus().toLowerCase().contains(searchText))
                 .toList();
         groupRequestTable.getItems().setAll(filteredList);
     }
 
-    // Filtrer les groupes par statut
     @FXML
     private void filterGroups() {
         String filter = filterChoiceBox.getValue();
         List<GroupRequests> filteredList;
 
         if ("Tous".equals(filter)) {
-            filteredList = groupDAO.getAllGroupRequests(); // Utilisez getAllGroupRequests()
+            filteredList = groupDAO.getAllGroupRequests();
         } else {
             filteredList = groupDAO.getGroupRequestsByStatus(filter.toLowerCase());
         }
@@ -81,16 +77,24 @@ public class GroupRequestController {
                 groupDAO = new GroupDAO(DatabaseConnection.getConnection());
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // Affiche l'erreur dans la console
-            showAlert();
+            e.printStackTrace();
+            showAlert("Erreur de connexion", "Impossible de se connecter à la base de données.");
         }
 
-        groupNameColumn.setCellValueFactory(new PropertyValueFactory<>("groupName"));
+        // Configuration des colonnes
+        groupNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-        creatorColumn.setCellValueFactory(new PropertyValueFactory<>("creator"));
+        creatorColumn.setCellValueFactory(new PropertyValueFactory<>("createdBy"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        loadAllRequests(); // Charge toutes les demandes au lieu de seulement celles en attente
+        // Configuration du ChoiceBox pour le filtrage
+        filterChoiceBox.getItems().clear();
+        filterChoiceBox.getItems().addAll("Tous", "pending", "approved", "rejected");
+        filterChoiceBox.setValue("Tous");
+        filterChoiceBox.setOnAction(event -> filterGroups());
 
+        // Ajout des listeners
+        searchField.textProperty().addListener((obs, oldValue, newValue) -> searchGroup());
         groupRequestTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 showDetails(newSelection);
@@ -99,42 +103,78 @@ public class GroupRequestController {
 
         approveButton.setOnAction(event -> updateGroupStatus("approved"));
         rejectButton.setOnAction(event -> updateGroupStatus("rejected"));
+
+        // Chargement initial des données
+        loadAllRequests();
     }
 
-    // Fonction pour afficher une alerte en cas d'erreur
-    private void showAlert() {
+    private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur de connexion");
+        alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText("Impossible de se connecter à la base de données.");
+        alert.setContentText(content);
         alert.showAndWait();
     }
 
     private void loadAllRequests() {
-        List<GroupRequests> requests = groupDAO.getAllGroupRequests(); // Charge toutes les demandes
+        List<GroupRequests> requests = groupDAO.getAllGroupRequests();
         groupRequestTable.getItems().setAll(requests);
     }
 
-    private void showDetails(GroupRequests request) {
-        descriptionArea.setText(request.getDescription());
+    @FXML
+    private ImageView groupImage;
 
-        File file = new File(request.getImagePath());
-        if (file.exists()) {
-            groupImageView.setImage(new Image(file.toURI().toString()));
+    private void showDetails(GroupRequests group) {
+        if (group != null) {
+            // Afficher les détails du groupe, y compris la description
+            String description = group.getDescription() != null ? group.getDescription() : "Aucune description disponible";
+            descriptionArea.setText("Nom : " + group.getName() + "\n" +
+                    "Catégorie : " + group.getCategory() + "\n" +
+                    "Créateur : " + group.getCreatedBy() + "\n" +
+                    "Statut : " + group.getStatus() + "\n" +
+                    "Description : " + description);
+
+            // Charger l'image
+            String imageUrl = group.getImageUrl();
+            if (imageUrl != null && !imageUrl.isEmpty()) {
+                try {
+                    File file = new File(imageUrl);
+                    if (file.exists()) {
+                        Image image = new Image(file.toURI().toString());
+                        groupImage.setImage(image);
+                    } else {
+                        System.out.println("Image introuvable : " + imageUrl);
+                        groupImage.setImage(null);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erreur lors du chargement de l'image : " + imageUrl);
+                    e.printStackTrace();
+                    groupImage.setImage(null);
+                }
+            } else {
+                groupImage.setImage(null);
+            }
         } else {
-            groupImageView.setImage(null);
+            descriptionArea.setText("");
+            groupImage.setImage(null);
         }
     }
 
     private void updateGroupStatus(String status) {
         GroupRequests selectedRequest = groupRequestTable.getSelectionModel().getSelectedItem();
-        if (selectedRequest != null) {
-            boolean success = groupDAO.updateGroupStatus(selectedRequest.getId(), status);
-            if (success) {
-                groupRequestTable.getItems().remove(selectedRequest);
-                descriptionArea.clear();
-                groupImageView.setImage(null);
-            }
+        if (selectedRequest == null) {
+            showAlert("Aucune sélection", "Veuillez sélectionner une demande de groupe à " + (status.equals("approved") ? "approuver" : "rejeter") + ".");
+            return;
+        }
+
+        boolean success = groupDAO.updateGroupStatus(selectedRequest.getId(), status);
+        if (success) {
+            showAlert("Succès", "La demande de groupe a été " + (status.equals("approved") ? "approuvée" : "rejetée") + " avec succès.");
+            loadAllRequests();
+            descriptionArea.clear();
+            groupImageView.setImage(null);
+        } else {
+            showAlert("Erreur", "Échec de la mise à jour du statut de la demande.");
         }
     }
 }

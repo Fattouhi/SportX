@@ -1,73 +1,72 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.EventRequest;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventDAO {
-    private static final String SELECT_ALL_PENDING_EVENTS = "SELECT * FROM event_requests WHERE status = 'pending'";
-    private static final String SELECT_ALL_EVENTS = "SELECT * FROM event_requests";
+    private static final String SELECT_ALL_EVENTS = "SELECT * FROM events";
+    private static final String SELECT_EVENTS_BY_STATUS = "SELECT * FROM events WHERE status = 'pending'";
+    private static final String SELECT_EVENTS_BY_STATUS_FILTER = "SELECT * FROM events WHERE LOWER(status) = ?";
 
-    public List<EventRequest> getAllEventRequests() {
-        List<EventRequest> eventRequests = new ArrayList<>();
+    public List<EventRequest> getAllEvents() {
+        List<EventRequest> events = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(SELECT_ALL_EVENTS)) {
 
             while (rs.next()) {
-                String eventName = rs.getString("event_name");
-                String description = rs.getString("description");
-                //LocalDate eventDate = rs.getDate("event_date").toLocalDate();
-                LocalDate eventDate = rs.getTimestamp("event_date").toLocalDateTime().toLocalDate();
-                String organizer = rs.getString("organizer");
-                String status = rs.getString("status");
-                String address = rs.getString("address");
-
-                EventRequest event = new EventRequest(eventName, description, eventDate, organizer, status, address);
-                eventRequests.add(event);
+                EventRequest event = mapResultSetToEventRequest(rs);
+                events.add(event);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return eventRequests;
+        return events;
     }
 
-    public List<EventRequest> getEventRequestsByStatus(String status) {
-        List<EventRequest> eventRequests = new ArrayList<>();
-        String query = "SELECT * FROM event_requests WHERE LOWER(status) = ?";
-
+    public List<EventRequest> getPendingEvents() {
+        List<EventRequest> events = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, status.toLowerCase());
-            ResultSet rs = stmt.executeQuery();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(SELECT_EVENTS_BY_STATUS)) {
 
             while (rs.next()) {
-                String eventName = rs.getString("event_name");
-                String description = rs.getString("description");
-                LocalDate eventDate = rs.getDate("event_date").toLocalDate();
-                String organizer = rs.getString("organizer");
-                String eventStatus = rs.getString("status");
-                String address = rs.getString("address");
-
-                EventRequest event = new EventRequest(eventName, description, eventDate, organizer, eventStatus, address);
-                eventRequests.add(event);
+                EventRequest event = mapResultSetToEventRequest(rs);
+                events.add(event);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return eventRequests;
+        return events;
     }
 
-    public boolean updateEventStatus(String eventName, String status) {
-        String query = "UPDATE event_requests SET status = ? WHERE event_name = ?";
+    public List<EventRequest> getEventsByStatus(String status) {
+        List<EventRequest> events = new ArrayList<>();
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(SELECT_EVENTS_BY_STATUS_FILTER)) {
+
+            stmt.setString(1, status.toLowerCase());
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    EventRequest event = mapResultSetToEventRequest(rs);
+                    events.add(event);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+    public boolean updateEventStatus(String title, String status) {
+        String query = "UPDATE events SET status = ? WHERE title = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, status);
-            stmt.setString(2, eventName);
+            stmt.setString(2, title);
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
@@ -76,9 +75,8 @@ public class EventDAO {
         }
     }
 
-    // Nouvelle méthode pour compter le nombre total d'événements
     public static int getEventCount() {
-        String query = "SELECT COUNT(*) AS total FROM event_requests";
+        String query = "SELECT COUNT(*) AS total FROM events";
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -88,6 +86,18 @@ public class EventDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0; // Retourne 0 en cas d'erreur
+        return 0;
+    }
+
+    private EventRequest mapResultSetToEventRequest(ResultSet rs) throws SQLException {
+        return new EventRequest(
+                rs.getInt("id"),
+                rs.getString("title"),
+                rs.getString("sport"),
+                rs.getString("location"),
+                rs.getTimestamp("event_date").toLocalDateTime().toLocalDate(),
+                rs.getString("description"),
+                rs.getString("status")
+        );
     }
 }

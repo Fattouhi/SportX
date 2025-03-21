@@ -13,7 +13,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Hyperlink?>
@@ -32,12 +31,12 @@
                     <Image url="@../images/LogoSportX.png" />
                 </image>
             </ImageView>
-            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion des Demandes d'Événements" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Gestion des Événements" />
         </HBox>
 
         <!-- Barre de recherche et filtrage -->
         <HBox spacing="10" style="-fx-padding: 10; -fx-alignment: center;" translateX="90.0">
-            <TextField fx:id="searchField" promptText="Rechercher un événement (nom, description, organisateur, statut)" />
+            <TextField fx:id="searchField" promptText="Rechercher un événement (titre, sport, lieu, date, description, statut)" />
             <Button onAction="#searchEvent" text="🔍">
                 <cursor>
                     <Cursor fx:constant="HAND" />
@@ -47,9 +46,9 @@
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Tous" />
-                        <String fx:value="Approved" /> <!-- Remplacez "Approuvé" par "Approved" si nécessaire -->
-                        <String fx:value="Pending" />  <!-- Remplacez "En attente" par "Pending" si nécessaire -->
-                        <String fx:value="Rejected" /> <!-- Remplacez "Rejeté" par "Rejected" si nécessaire -->
+                        <String fx:value="pending" />
+                        <String fx:value="approved" />
+                        <String fx:value="rejected" />
                     </FXCollections>
                 </items>
             </ChoiceBox>
@@ -61,15 +60,16 @@
         </HBox>
     </HBox>
 
-    <!-- Tableau des demandes -->
+    <!-- Tableau des événements -->
     <TableView fx:id="eventRequestTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="colIndex" text="N°" />
-            <TableColumn fx:id="colEventName" text="Nom de l'événement" />
-            <TableColumn fx:id="colDescription" text="Description" />
+            <TableColumn fx:id="colEventName" text="Titre" />
+            <TableColumn fx:id="colSport" text="Sport" />
+            <TableColumn fx:id="colLocation" text="Lieu" />
             <TableColumn fx:id="colDate" text="Date" />
-            <TableColumn fx:id="colOrganizer" text="Organisateur" />
-            <TableColumn fx:id="addressField" text="Adresse de l'événement" />
+            <TableColumn fx:id="colDescription" text="Description" />
+            <TableColumn fx:id="colStatus" text="Statut" />
         </columns>
     </TableView>
 

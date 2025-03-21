@@ -5,6 +5,10 @@ module com.example.sportmarket {
     requires java.sql;
     requires javafx.web;
 
+
+
+
+
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
@@ -26,6 +30,10 @@ module com.example.sportmarket {
 
     opens com.example.demo.controllers to javafx.fxml, javafx.base; // Ouvre le package aux modules nécessaires
     exports com.example.demo; // Exporte le package principal si nécessaire
+
+    // Ouvre le package com.example.demo.model à javafx.base pour permettre l'accès par réflexion
+    opens com.example.demo.model to javafx.base;
+
 
     requires org.json;
     //requires mysql.connector.java;
