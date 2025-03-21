@@ -10,7 +10,9 @@
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.sportx.controller.abir.GroupMemberController" prefHeight="400.0" prefWidth="600.0">
     <!-- Add Navbar to the Top Section -->
     <top>
-        <fx:include source="navbar.fxml" fx:id="navbar"/>
+        <VBox style="-fx-padding: 0 0 20 0;"> <!-- Add padding directly in the FXML -->
+            <fx:include source="navbar.fxml" fx:id="navbar"/>
+        </VBox>
     </top>
 
     <!-- Existing Content in the Center Section -->

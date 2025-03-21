@@ -1,244 +1,212 @@
-/* General Styles */
-.root {
-    -fx-background-color: #181818;
-    -fx-text-fill: white;
-    -fx-font-family: 'Segoe UI', sans-serif;
+/* General Style */
+* {
+    -fx-font-family: 'Arial';
 }
 
-/* Header Styles */
-.header {
-    -fx-alignment: center;
-    -fx-padding: 0 0 60 0;
-}
-.header-content {
-    -fx-background-color: white;
-    -fx-padding: 0 20 10 0;
+/* Set the background of the entire AnchorPane (or BorderPane) to light gray */
+#AnchorPane, .root, .border-pane {
+    -fx-background-color: #F5F5F5; /* Light gray background */
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
 
-.Notification-icon-button {
-    -fx-background-color: transparent;
-    -fx-padding: 5;
-    -fx-border-width: 0;
-    -fx-shape: "M0,0 L1,0 L1,1 L0,1 Z";
-    -fx-min-width: 30px;
-    -fx-min-height: 30px;
-    position: relative;
-    -fx-effect: none; /* No effect initially */
-}
-
-.Notification-icon-button:hover {
-    -fx-background-color: transparent;
-    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
-    -fx-scale-x: 1.2; /* Enlarge horizontally on hover */
-    -fx-scale-y: 1.2; /* Enlarge vertically on hover */
-}
-
-.Notification-icon-button:pressed {
-    -fx-background-color: transparent; /* No background when pressed */
-    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Stronger blue shadow on click */
-    -fx-scale-x: 1; /* Reset scale to original on click */
-    -fx-scale-y: 1; /* Reset scale to original on click */
-}
-
-.messages-icon-button {
-    -fx-background-color: transparent;
-    -fx-padding: 5;
-    -fx-border-width: 0;
-    -fx-shape: "M0,0 L1,0 L1,1 L0,1 Z";
-    -fx-min-width: 30px;
-    -fx-min-height: 30px;
-    position: relative;
-    -fx-effect: none; /* No effect initially */
-}
-
-.messages-icon-button:hover {
-    -fx-background-color: transparent;
-    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
-    -fx-scale-x: 1.2; /* Enlarge horizontally on hover */
-    -fx-scale-y: 1.2; /* Enlarge vertically on hover */
-}
-
-.messages-icon-button:pressed {
-    -fx-background-color: transparent; /* No background when pressed */
-    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Stronger blue shadow on click */
-    -fx-scale-x: 1; /* Reset scale to original on click */
-    -fx-scale-y: 1; /* Reset scale to original on click */
-}
-
-.profile-icon-button {
-    -fx-background-color: transparent;
-    -fx-padding: 5;
-    -fx-border-width: 0;
-    -fx-shape: "M0,0 L1,0 L1,1 L0,1 Z";
-    -fx-min-width: 30px;
-    -fx-min-height: 30px;
-    position: relative;
-    -fx-effect: none; /* No effect initially */
-}
-
-.profile-icon-button:hover {
-    -fx-background-color: transparent;
-    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
-    -fx-scale-x: 1.2; /* Enlarge horizontally on hover */
-    -fx-scale-y: 1.2; /* Enlarge vertically on hover */
-}
-
-.profile-icon-button:pressed {
-    -fx-background-color: transparent; /* No background when pressed */
-    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Stronger blue shadow on click */
-    -fx-scale-x: 1; /* Reset scale to original on click */
-    -fx-scale-y: 1; /* Reset scale to original on click */
-}
-
-.logo {
-    -fx-font-size: 40px;
-    -fx-font-weight: bold;
-    -fx-alignment: left;
-    -fx-padding: 10px;
-}
-
+/* Main Title */
 .main-title {
-    -fx-font-size: 45px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-alignment: center;
-    -fx-text-fill: white;
+    -fx-text-fill: #333333; /* Dark gray text for contrast */
 }
 
+/* Search Bar */
 .search-bar {
-    -fx-background-color: #2E2E2E;
-    -fx-text-fill: #FFFFFF;
-    -fx-prompt-text-fill: #B0B0B0;
-    -fx-background-radius: 5px;
-    -fx-border-color: #ffffff;
-    -fx-border-radius: 5px;
-    -fx-padding: 10px;
-    -fx-alignment: BASELINE_LEFT;
-}
-.search-bar:hover {
-    -fx-background-color: #2E2E2E;
-    -fx-text-fill: #FFFFFF;
-    -fx-prompt-text-fill: #B0B0B0;
-    -fx-background-radius: 5px;
-    -fx-border-color: #ffffff;
-    -fx-border-radius: 5px;
-    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for hover effect */
-    -fx-scale-x: 1.1; /* Enlarge horizontally on hover */
-    -fx-scale-y: 1.1; /* Enlarge vertically on hover */
+    -fx-border-color: #CCCCCC;
+    -fx-background-color: #FFFFFF; /* White background for the search bar */
+    -fx-border-radius: 8px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
 }
 
-.search-bar:pressed {
-    -fx-background-color: #2E2E2E;
-    -fx-text-fill: #FFFFFF;
-    -fx-prompt-text-fill: #B0B0B0;
-    -fx-background-radius: 5px;
-    -fx-border-color: #ffffff;
-    -fx-border-radius: 5px;
-    -fx-effect: dropshadow(gaussian, black, 5, 0, 0, 0); /* Blue shadow for pressed effect */
-    -fx-scale-x: 1.1; /* Enlarge horizontally when pressed */
-    -fx-scale-y: 1.1; /* Enlarge vertically when pressed */
-}
-
-/* Sidebar Styles */
-.sidebar {
-    -fx-pref-width: 300px;
-    -fx-padding: 20 20 20 80;
-}
-
-.category-button {
-    -fx-background-color: #2E2E2E;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-radius: 5px;
-    -fx-border-color: #3A3A3A;
-    -fx-border-radius: 5px;
-    -fx-padding: 10px;
-    -fx-cursor: hand;
-    -fx-font-size: 18px;
-    -fx-pref-width: 180px; /* Adjust based on desired button width */
-    -fx-max-width: Double.MAX_VALUE; /* Allows button to grow and fill VBox width */
-    -fx-alignment: CENTER; /* Centers text within the button */
-}
-
-.category-button:hover {
-    -fx-background-color: #3A3A3A;
-}
-
-/* Start Your Community link */
+/* Start Community Link */
 .start-community-link {
-    -fx-text-fill: #3498db;
+    -fx-text-fill: #1A73E8; /* Blue link color */
+    -fx-underline: true;
+    -fx-font-size: 12px;
 }
 
 .start-community-link:hover {
-    -fx-background-color: #3A3A3A;
+    -fx-text-fill: #FF6D00; /* Accent orange on hover */
 }
 
-/* Content Styles */
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #F5F5F5; /* Light gray background */
+    -fx-padding: 10px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 15, 0, 0, 5);
+}
+
+/* ComboBox in Sidebar */
+.sidebar .combo-box {
+    -fx-background-color: #F5F5F5; /* Light gray background */
+    -fx-text-fill: #333333; /* Dark gray text */
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.sidebar .combo-box .arrow-button {
+    -fx-background-color: #F5F5F5; /* Light gray background for the arrow button */
+}
+
+.sidebar .combo-box .arrow {
+    -fx-background-color: #333333; /* Dark gray arrow */
+}
+
+.sidebar .combo-box:hover {
+    -fx-background-color: #E0E0E0; /* Slightly darker gray on hover */
+}
+
+.sidebar .combo-box:pressed {
+    -fx-background-color: #CCCCCC; /* Even darker gray when pressed */
+    -fx-border-color: #1A73E8; /* Blue border */
+    -fx-translate-y: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 12, 0, 0, 5);
+}
+
+/* Content (TilePane for community cards) */
 .content {
     -fx-padding: 20px;
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 2, 2);
 }
 
+/* Community Cards */
 .card {
-    -fx-background-color: #2E2E2E;
-    -fx-background-radius: 10px;
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-border-color: #CCCCCC; /* Light gray border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px; /* Rounded corners for the border */
+    -fx-background-radius: 15px; /* Rounded corners for the background */
     -fx-padding: 15px;
-    -fx-spacing: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 2, 2);
+    -fx-spacing: 10px; /* Space between elements inside the card */
+    -fx-pref-width: 300px; /* Fixed width for each card */
+    -fx-pref-height: 200px; /* Fixed height for each card */
 }
 
-.community-image {
-    -fx-background-radius: 5px;
+.card:hover {
+    -fx-background-color: #F5F5F5; /* Light gray background on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 4, 4);
+    -fx-cursor: hand;
 }
 
+/* Community Card Title */
 .card-title {
-    -fx-font-size: 20px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #333333; /* Dark gray text for contrast */
 }
 
+/* Community Card Description */
 .card-description {
-    -fx-text-fill: #B0B0B0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #666666; /* Medium gray text for description */
 }
 
-.community-stats {
-    -fx-spacing: 15px;
+/* Community Card Image */
+.community-image {
+    -fx-fit-width: 100px; /* Fixed width for the image */
+    -fx-fit-height: 100px; /* Fixed height for the image */
+    -fx-preserve-ratio: false;
+    -fx-border-radius: 15px; /* Rounded corners for the image */
+    -fx-background-radius: 15px; /* Rounded corners for the image background */
+    -fx-background-color: transparent; /* Transparent background */
 }
 
-.community-stats > Label {
-    -fx-text-fill: #B0B0B0;
+/* Join Button */
+.button {
+    -fx-background-color: #1A73E8; /* Blue background */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-font-weight: bold;
+    -fx-border-radius: 15px; /* Rounded corners for the button */
+    -fx-background-radius: 15px; /* Rounded corners for the button background */
+    -fx-padding: 5px 10px;
 }
 
-/* Accent Colors */
-.accent-red {
-    -fx-background-color: #E53935;
+.button:hover {
+    -fx-background-color: #1565C0; /* Darker blue on hover */
 }
 
-.accent-green {
-    -fx-background-color: #4CAF50;
+.button:pressed {
+    -fx-background-color: #0D47A1; /* Even darker blue when pressed */
 }
 
-.accent-blue {
-    -fx-background-color: #2196F3;
+/* Welcome Label */
+#welcomeLabel {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark gray text for contrast */
 }
 
-.accent-orange {
-    -fx-background-color: #FF9800;
-}
-
-.accent-pink {
-    -fx-background-color: #F06292;
-}
-
-.accent-purple {
-    -fx-background-color: #9C27B0;
-}
-
-/* Footer Styles */
-.footer {
-    -fx-background-color: #202020;
-    -fx-padding: 10px;
-    -fx-alignment: center;
-}
-
-.footer-text {
-    -fx-text-fill: #B0B0B0;
+/* Hyperlink */
+.hyperlink {
+    -fx-text-fill: #1A73E8; /* Blue link color */
+    -fx-underline: true;
     -fx-font-size: 12px;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #FF6D00; /* Accent orange on hover */
+}
+
+/* Navbar Styling */
+.navbar {
+    -fx-background-color: #F5F5F5; /* Light gray background */
+    -fx-padding: 20px; /* Increase padding to make the navbar taller */
+    -fx-pref-height: 80px; /* Set a preferred height for the navbar */
+    -fx-alignment: center; /* Center the content vertically */
+}
+
+/* Navbar Title */
+.navbar-title {
+    -fx-font-size: 24px; /* Increase font size for the title */
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark gray text for contrast */
+}
+
+/* Navbar Buttons */
+.navbar-button {
+    -fx-background-color: #1A73E8; /* Blue background for buttons */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-font-size: 16px; /* Increase font size for buttons */
+    -fx-padding: 10px 20px; /* Increase padding to make buttons bigger */
+    -fx-border-radius: 8px; /* Rounded corners for buttons */
+    -fx-background-radius: 8px; /* Rounded corners for button background */
+}
+
+.navbar-button:hover {
+    -fx-background-color: #1565C0; /* Darker blue on hover */
+}
+
+.navbar-button:pressed {
+    -fx-background-color: #0D47A1; /* Even darker blue when pressed */
+}
+
+/* Navbar Links */
+.navbar-link {
+    -fx-text-fill: #1A73E8; /* Blue link color */
+    -fx-font-size: 16px; /* Increase font size for links */
+    -fx-underline: true; /* Underline for links */
+}
+
+.navbar-link:hover {
+    -fx-text-fill: #FF6D00; /* Accent orange on hover */
+}
+
+/* Navbar Icons */
+.navbar .image-view {
+    -fx-background-color: transparent; /* Transparent background for icons */
 }

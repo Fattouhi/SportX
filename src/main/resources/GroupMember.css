@@ -27,30 +27,17 @@
     -fx-font-weight: bold;
 }
 
-/* ListView (Group List) */
-.list-view {
+/* TextField (Username Input) */
+.text-field {
+    -fx-font-size: 14px;
     -fx-background-color: #FFFFFF; /* White background */
     -fx-border-color: #CCCCCC; /* Light gray border */
     -fx-border-radius: 5px;
-    -fx-padding: 10px; /* Padding inside the list view */
+    -fx-padding: 10px; /* Padding inside the text field */
 }
 
-.list-view .list-cell {
-    -fx-background-color: transparent; /* Transparent background for list cells */
-    -fx-padding: 5px; /* Padding for each cell */
-}
-
-.list-view .list-cell:filled:hover {
-    -fx-background-color: #F5F5F5; /* Light gray background on hover */
-}
-
-.list-view .list-cell:filled:selected {
-    -fx-background-color: #1A73E8; /* Blue background for selected cells */
-    -fx-text-fill: #FFFFFF; /* White text for selected cells */
-}
-
-/* Button (Join Group) */
-.button-join {
+/* Button (Remove Member) */
+.button-remove {
     -fx-font-size: 14px;
     -fx-background-color: #1A73E8; /* Blue background */
     -fx-text-fill: #FFFFFF; /* White text */
@@ -59,10 +46,10 @@
     -fx-padding: 10px 20px; /* Padding inside the button */
 }
 
-.button-join:hover {
+.button-remove:hover {
     -fx-background-color: #1565C0; /* Darker blue on hover */
 }
 
-.button-join:pressed {
+.button-remove:pressed {
     -fx-background-color: #0D47A1; /* Even darker blue when pressed */
 }

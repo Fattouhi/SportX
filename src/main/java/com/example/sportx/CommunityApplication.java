@@ -20,9 +20,9 @@ public class CommunityApplication extends Application {
 
         // Load the FXML and start the JavaFX application
         //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/LoginView.fxml")));
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/chatboot_interface.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/community-view.fxml")));
         primaryStage.setTitle("Discover your next community");
-        primaryStage.setScene(new Scene(root, 1350, 750));
+        primaryStage.setScene(new Scene(root, 900, 750));
         primaryStage.show();
     }
 

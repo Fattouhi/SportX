@@ -4,7 +4,7 @@ public class User {
     private int id;
     private String username;
     private String email;
-    private String password; // Stored as hash
+    private String password;
     private String createdAt;
     private String status;
 

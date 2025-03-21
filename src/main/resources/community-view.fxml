@@ -14,15 +14,18 @@
 
     <!-- Include Navbar and sidebar -->
     <top>
-        <fx:include source="navbar.fxml" fx:id="navbar"/>
+        <VBox style="-fx-padding: 0 0 20 0;"> <!-- Add padding directly in the FXML -->
+            <fx:include source="navbar.fxml" fx:id="navbar"/>
+        </VBox>
     </top>
     <left>
-        <fx:include source="com/example/sportmarket/sidebar.fxml" fx:id="sidebar"/>
+        <fx:include source="sidebar.fxml" fx:id="sidebar"/>
     </left>
 
 
     <!-- Main Content in the Center -->
     <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
         <VBox spacing="10" alignment="TOP_CENTER">
             <!-- Title -->
             <Label styleClass="main-title" text="Discover your next community"/>
@@ -61,5 +64,6 @@
                 <!-- Group cards will be dynamically added here by the controller -->
             </TilePane>
         </VBox>
+        </ScrollPane>
     </center>
 </BorderPane>

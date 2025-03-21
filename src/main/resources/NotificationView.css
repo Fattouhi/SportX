@@ -27,7 +27,7 @@
     -fx-font-weight: bold;
 }
 
-/* ListView (Group List) */
+/* ListView (Notification List) */
 .list-view {
     -fx-background-color: #FFFFFF; /* White background */
     -fx-border-color: #CCCCCC; /* Light gray border */
@@ -47,22 +47,4 @@
 .list-view .list-cell:filled:selected {
     -fx-background-color: #1A73E8; /* Blue background for selected cells */
     -fx-text-fill: #FFFFFF; /* White text for selected cells */
-}
-
-/* Button (Join Group) */
-.button-join {
-    -fx-font-size: 14px;
-    -fx-background-color: #1A73E8; /* Blue background */
-    -fx-text-fill: #FFFFFF; /* White text */
-    -fx-font-weight: bold;
-    -fx-border-radius: 5px; /* Rounded corners */
-    -fx-padding: 10px 20px; /* Padding inside the button */
-}
-
-.button-join:hover {
-    -fx-background-color: #1565C0; /* Darker blue on hover */
-}
-
-.button-join:pressed {
-    -fx-background-color: #0D47A1; /* Even darker blue when pressed */
 }
