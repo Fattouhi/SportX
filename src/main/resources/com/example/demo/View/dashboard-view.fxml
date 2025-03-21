@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1433.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.DashboardController">
+
+    <!-- Sidebar -->
+    <AnchorPane layoutY="74.0" prefHeight="550.0" prefWidth="220.0" styleClass="sidebar">
+        <Rectangle arcHeight="20" arcWidth="20" fill="#a3e3eb80" height="812.0" layoutY="-74.0" width="240" />
+        <AnchorPane layoutX="27.0" layoutY="159.0" prefHeight="543.0" prefWidth="200.0">
+            <Button fx:id="btnUserManagement" onAction="#goToUserManagement" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="👤 Gestion utilisateurs">
+                <stylesheets>
+                    <URL value="@style.css" />
+                </stylesheets>
+            </Button>
+            <Button fx:id="btnGroupManagement" layoutY="77.8" onAction="#goToGroupManagement" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="💬 Gestion groupes" />
+            <Button fx:id="btnEventManagement" layoutY="154.6" onAction="#goToEventManagement" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="🎉 Gestion événements" />
+            <Button fx:id="btnContentManagement" layoutY="227.4" onAction="#goToReportManagement" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="📜 Gestion contenu" />
+            <Button fx:id="btnMarketplaceManagement" layoutY="299.2" onAction="#goToMarketplaceManagement" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="🛒 Gestion MarketPlace" />
+            <Button fx:id="btnStatistics" layoutY="375.0" onAction="#goToStatistics" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="📊 Statistiques" />
+            <Button layoutY="448.0" onAction="#goToPartenairesManagement" prefHeight="50.0" prefWidth="180.0" styleClass="sidebar-button" text="🤝 Gérer les Partenaires">
+                <cursor>
+                    <javafx.scene.Cursor fx:constant="HAND" />
+                </cursor>
+            </Button>
+        </AnchorPane>
+        <Label layoutX="54.0" layoutY="102.4" styleClass="sidebar-title" text="Dashboard Admin" textFill="#333333" />
+        <ImageView fitHeight="86.0" fitWidth="82.0" layoutX="72.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/Global_admin_icon_color_outline_vector-removebg-preview.png" />
+            </image>
+        </ImageView>
+    </AnchorPane>
+
+    <!-- Header -->
+    <Pane layoutX="-2.0" layoutY="16.0" prefHeight="50.0" prefWidth="1433.0">
+        <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="10.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <javafx.scene.Cursor fx:constant="DEFAULT" />
+            </cursor>
+            <image>
+                <Image url="@../images/LogoSportX.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="80.0" layoutY="8.0" styleClass="sportx-label" text="SPORTX" />
+
+        <ImageView fx:id="profileIcon" accessibleRole="BUTTON" fitHeight="30.0" fitWidth="30.0" layoutX="1387.8" layoutY="5.0" onMouseClicked="#toggleProfileMenu" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <javafx.scene.Cursor fx:constant="HAND" />
+            </cursor>
+            <image>
+                <Image url="@../images/Profile_User_Round_White_Icon_Symbol_PNG-removebg-preview.png" />
+            </image>
+        </ImageView>
+
+    </Pane>
+
+    <!--  profil menus -->
+
+    <VBox fx:id="profileMenu" layoutX="1350" layoutY="60" managed="false" prefWidth="170" spacing="10" style="-fx-background-color: white; -fx-border-color: #CCCCCC; -fx-border-radius: 5px; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);" visible="false">
+        <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Mon Profil" />
+        <Separator />
+        <Button styleClass="menu-item" text="👤 Voir le profil" />
+        <Button styleClass="menu-item" text="🔑 Changer de mot de passe" />
+        <Button styleClass="menu-item" text="⚙️ Paramètres" />
+        <Separator />
+        <Button style="-fx-text-fill: red;" text="🚪 Se déconnecter" />
+    </VBox>
+
+    <!-- Main Content (Centre) -->
+    <VBox layoutX="337.0" layoutY="114.0" prefHeight="268.0" prefWidth="649.0" spacing="20">
+        <Label style="-fx-font-size: 24px;" text="Modération" textFill="#333333" />
+        <Label style="-fx-font-size: 14px;" text="Accès rapide" textFill="#666666" />
+        <HBox spacing="20">
+            <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="👤 Gestion utilisateurs" />
+                <Button layoutX="50" layoutY="60" onAction="#goToUserManagement" styleClass="quick-access-button" text="Gérer">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+            </AnchorPane>
+            <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="📊 Statistiques" />
+                <Button layoutX="50" layoutY="60" onAction="#goToStatistics" styleClass="quick-access-button" text="Analyser">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+            </AnchorPane>
+            <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="📅 Événements" />
+                <Button layoutX="50" layoutY="60" onAction="#goToEventManagement" styleClass="quick-access-button" text="Contrôler">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+            </AnchorPane>
+            <AnchorPane prefHeight="100" prefWidth="180" styleClass="quick-access">
+                <Label layoutX="30" layoutY="30" styleClass="quick-access-title" text="🤝 Gestion partenariats" />
+                <Button layoutX="50" layoutY="60" onAction="#goToPartenairesManagement" styleClass="quick-access-button" text="Gérer">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </AnchorPane>
+        </HBox>
+        <StackPane fx:id="mainContent" prefHeight="500" prefWidth="700">
+            <children>
+
+                <!-- Right Panel (Zone opposée à la sidebar) avec lien météo amélioré -->
+                <VBox prefHeight="182.0" prefWidth="650.0" spacing="15" styleClass="sidebar-like-panel">
+                    <Label styleClass="sidebar-title" text="Outils Utiles" textFill="#FFFFFF" />
+
+                    <!-- Section Météo améliorée -->
+                    <VBox spacing="10" styleClass="weather-section-sidebar">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/weather_sunny.png" /> <!-- Icône météo, ajustez selon votre besoin -->
+                                </image>
+                            </ImageView>
+                            <VBox alignment="CENTER_LEFT">
+                                <Label styleClass="sidebar-label" text="Météo à Tunis" textFill="#FFFFFF" />
+                                <Label styleClass="sidebar-label secondary" text=" Météo d'aujourd'hui ! " textFill="#E0E0E0" />
+                            </VBox>
+                        </HBox>
+                        <Hyperlink fx:id="weatherLink" onAction="#openWeather" styleClass="sidebar-hyperlink" text="Voir les prévisions">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Hyperlink>
+                    </VBox>
+
+                    <!-- Section Calendrier des événements -->
+                    <VBox spacing="10" styleClass="weather-section-sidebar">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/Calender.png" />
+                                </image>
+                            </ImageView>
+                            <VBox alignment="CENTER_LEFT">
+                                <Label styleClass="sidebar-label" text="Calendrier des événements" textFill="#FFFFFF" />
+                                <Label styleClass="sidebar-label secondary" text="Notez vos évenements !" textFill="#E0E0E0" />
+                            </VBox>
+                        </HBox>
+                        <Hyperlink fx:id="calendarLink" onAction="#openCalendar" styleClass="sidebar-hyperlink" text="Voir le calendrier">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Hyperlink>
+                    </VBox>
+
+                </VBox>
+            </children></StackPane>
+    </VBox>
+</AnchorPane>

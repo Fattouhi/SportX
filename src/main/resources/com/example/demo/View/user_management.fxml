@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="620.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.UserManageController">
+    <!-- En-tête -->
+    <HBox prefHeight="60" style="-fx-background-color: #6982db; -fx-padding: 10; -fx-alignment: center-left; -fx-spacing: 20;">
+        <!-- Logo + Titre -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <!-- Logo SportX -->
+            <ImageView accessibleRole="BUTTON" fitHeight="42.0" fitWidth="63.0" onMouseClicked="#goToDashboard" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <Image url="@../images/LogoSportX.png"/>
+            </ImageView>
+            <!-- Titre de la page -->
+            <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Modération des Utilisateurs"/>
+        </HBox>
+
+        <!-- Espace flexible -->
+        <Region HBox.hgrow="ALWAYS"/>
+
+    </HBox>
+
+    <!-- Barre de recherche et filtre -->
+    <HBox spacing="10" style="-fx-padding: 10;">
+        <TextField fx:id="searchField" promptText="Rechercher un utilisateur (username, prénom, nom, email)"/>
+        <Button onAction="#searchUsers" text="🔍 Rechercher">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+
+        <!-- Filtre par statut -->
+        <ChoiceBox fx:id="statusFilterChoiceBox" prefWidth="120" onAction="#filterUsersByStatus" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Tous"/>
+                    <String fx:value="Active"/>
+                    <String fx:value="Banned"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+    </HBox>
+
+    <!-- Tableau des utilisateurs -->
+    <TableView fx:id="userTable">
+        <columns>
+            <TableColumn fx:id="colFirstName" text="Prénom" prefWidth="150"/>
+            <TableColumn fx:id="colLastName" text="Nom" prefWidth="150"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="colPhone" text="Téléphone" prefWidth="150"/>
+            <TableColumn fx:id="colCountry" text="Pays" prefWidth="150"/>
+            <TableColumn fx:id="colGender" text="Genre" prefWidth="100"/> <!-- Ajout de la colonne Gender -->
+            <TableColumn fx:id="colBan" text="Action" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <!-- Boutons d’action -->
+    <HBox spacing="10" style="-fx-padding: 10;">
+        <Button onAction="#addUser" text="➕ Ajouter">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button onAction="#editUser" text="📝 Modifier">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button onAction="#deleteUser" text="❌ Supprimer">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <!-- Icône de rafraîchissement -->
+        <Button onAction="#initialize" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-background-radius: 5px;" text="🔄"/>
+    </HBox>
+</VBox>
