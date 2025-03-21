@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.demo.dao.DatabaseConnection.connection;
+
 public class UserDAO {
     private static final String DB_URL = "jdbc:mysql://mysql-196aef4e-esprim-b42e.b.aivencloud.com:21836/defaultdb";
     private static final String DB_USER = "avnadmin";
@@ -121,5 +123,29 @@ public class UserDAO {
             }
         }
         return null;
+    }
+
+    public String getUsernameById(int userId) throws SQLException {
+        String query = "SELECT username FROM user WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("username");
+            }
+        }
+        return null; // Return null if no user is found
+    }
+
+    public int getUserIdByUsername(String username) throws SQLException {
+        String query = "SELECT id FROM user WHERE username = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        }
+        return -1; // Return -1 if no user is found
     }
 }

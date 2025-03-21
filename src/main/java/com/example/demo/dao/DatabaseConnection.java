@@ -9,7 +9,7 @@ public class DatabaseConnection {
     private static final String USER = "avnadmin"; // Mets ton utilisateur MySQL
     private static final String PASSWORD = "AVNS_DIenDKhRpZUhC8F0A1M"; // Mets ton mot de passe MySQL
 
-    private static Connection connection;
+    public static Connection connection;
 
 // Ouvre une nouvelle connexion à chaque appel
 public static Connection getConnection() throws SQLException {

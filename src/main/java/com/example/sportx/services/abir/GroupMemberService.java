@@ -1,11 +1,9 @@
 package com.example.sportx.services.abir;
 
 import com.example.sportx.DAO.abir.GroupMemberDAO;
-import com.example.sportx.DAO.abir.UserDAO;
 import com.example.sportx.models.abir.Group;
 import com.example.sportx.models.abir.GroupMember;
 import com.example.sportx.utils.abir.DatabaseConnection;
-import com.example.sportx.services.abir.NotificationService ;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -30,18 +30,7 @@ public class UserController {
     @FXML
     private TilePane communityContainer;
 
-    public void handleRegister(ActionEvent event) {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String email = emailField.getText();
 
-        try {
-            userService.registerUser(username, email, password);
-            communityContainer.getChildren().add(new Label("User registered successfully!"));
-        } catch (SQLException e) {
-            showErrorAlert("Error", "Registration failed", "Please try again later.");
-        }
-    }
 
     public void handleLogin(ActionEvent event) {
         String username = usernameField.getText();

@@ -90,7 +90,7 @@ public class HelloController {
     }
 
     private void loadAccScene() throws IOException {
-        String fxmlPath = "/com/example/demo2/Acc.fxml";
+        String fxmlPath = "/com/example/demo1/Acc.fxml";
         System.out.println("Attempting to load: " + fxmlPath);
         java.net.URL resourceUrl = getClass().getResource(fxmlPath);
         if (resourceUrl == null) {

@@ -1,7 +1,7 @@
 package com.example.sportx.controller.abir;
 
+import com.example.model.User;
 import com.example.sportx.models.abir.Group;
-import com.example.sportx.models.abir.User;
 import com.example.sportx.services.abir.GroupService;
 import com.example.sportx.services.abir.NotificationService;
 import com.example.sportx.services.abir.ServiceFactory;

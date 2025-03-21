@@ -1,17 +1,13 @@
 package com.example.sportx.controller.abir;
 
-import com.example.sportx.models.abir.User;
+import com.example.model.User;
 import com.example.sportx.services.abir.UserService;
 import com.example.sportx.utils.abir.ApplicationContext;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -106,4 +106,8 @@ public class User {
     public void setBesamee(String besamee) {
         this.besamee = besamee;
     }
+
+    public String getUsername() {
+        return nom;
+    }
 }
