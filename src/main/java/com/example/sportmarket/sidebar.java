@@ -110,4 +110,24 @@ public class sidebar {
         }
     }
 
+    @FXML
+    private void gotoEvents() {
+        try {
+            // Charger store-view.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appli/fxml/EvenementInterface.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Stage stage = new Stage();
+            stage.setTitle("SportX - Event");
+            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.show();
+
+            // Fermer la fenêtre actuelle (optionnel)
+            ((Stage) marketButton.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

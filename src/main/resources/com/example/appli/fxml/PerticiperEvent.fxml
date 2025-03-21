@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appli.controller.PerticiperEventController">
+    <TextField fx:id="nomField" promptText="Nom" />
+    <TextField fx:id="prenomField" promptText="Prénom" />
+    <SplitMenuButton fx:id="genreMenu" text="Homme">
+        <items>
+            <MenuItem text="Homme" />
+            <MenuItem text="Femme" />
+        </items>
+    </SplitMenuButton>
+    <DatePicker fx:id="dateNaissance" promptText="Date de naissance" />
+    <CheckBox fx:id="checkAutorisation" text="Autorisation" />
+    <Button fx:id="Authentfier" text="Participer" onAction="#handleSubmitParticipation" style="-fx-background-color: #FFFF00;" />
+    <Button fx:id="Authentfier1" text="Ajouter un événement" onAction="#handleAddEvent" style="-fx-background-color: #FFF324;" />
+</VBox>

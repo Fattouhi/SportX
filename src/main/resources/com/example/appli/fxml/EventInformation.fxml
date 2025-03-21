@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<ScrollPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appli.controller.EventInformationController">
+    <content>
+        <VBox prefWidth="900.0" spacing="10" alignment="TOP_CENTER">
+            <!-- Barre de navigation -->
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #FFFFFF;" prefHeight="62.0">
+                <Button fx:id="submit11" text="Retour aux événements" />
+            </HBox>
+            <!-- Détails de l'événement -->
+            <Text fx:id="eventTitle" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+            <Text fx:id="eventDetails" />
+            <TitledPane fx:id="infoPane" text="Informations supplémentaires">
+                <content>
+                    <VBox spacing="10" />
+                </content>
+            </TitledPane>
+            <Button fx:id="Authentfier" text="Participer" />
+            <ImageView fx:id="refrech" fitHeight="20.0" fitWidth="20.0" />
+        </VBox>
+    </content>
+</ScrollPane>

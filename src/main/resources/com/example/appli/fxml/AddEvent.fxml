@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appli.controller.AddEventController">
+    <Text text="Ajouter un Événement" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <TextField fx:id="titleField" promptText="Titre de l'événement" />
+    <TextField fx:id="sportField" promptText="Sport" />
+    <TextField fx:id="locationField" promptText="Lieu" />
+    <DatePicker fx:id="datePicker" promptText="Date de l'événement" />
+    <TextArea fx:id="descriptionField" promptText="Description" prefHeight="100" />
+    <TextField fx:id="statusField" promptText="Statut (ex: Open, Closed)" />
+    <TextField fx:id="imageUrlField" promptText="URL de l'image" /> <!-- Nouveau champ -->
+    <Button fx:id="submitButton" text="Ajouter" onAction="#handleAddEvent" style="-fx-background-color: #FFFF00;" />
+</VBox>

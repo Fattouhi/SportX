@@ -39,6 +39,12 @@ module com.example.sportmarket {
     exports com.example.sportxnews.models;
     opens com.example.sportxnews.models to javafx.fxml;
 
+
+    opens com.example.appli to javafx.fxml;
+    exports com.example.appli;
+    exports com.example.appli.controller;
+    opens com.example.appli.controller to javafx.fxml;
+
     opens com.example.demo1 to javafx.fxml;
     exports com.example.demo1;
 

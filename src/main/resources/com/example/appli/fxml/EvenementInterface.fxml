@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appli.controller.EvenementInterfaceController">
+    <!-- Navbar at the top -->
+    <top>
+        <fx:include source="../../../../navbar.fxml" />
+    </top>
+
+    <!-- Sidebar on the left -->
+    <left>
+        <fx:include source="../../sportmarket/sidebar.fxml" fx:id="sidebar"/>
+    </left>
+
+    <!-- Main content in the center -->
+    <center>
+        <VBox alignment="TOP_CENTER" fillWidth="false" focusTraversable="true" spacing="10" BorderPane.alignment="CENTER">
+            <!-- Top bar with navigation buttons -->
+            <HBox accessibleRole="MENU_BAR" alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="620.0" spacing="10" style="-fx-background-color: #FFFFFF; -fx-padding: 5;">
+                <Button fx:id="submit112" onAction="#handleShowEvents" style="-fx-background-color: #66000000;" text="Evénements" />
+                <Region HBox.hgrow="ALWAYS" /> <!-- Spacer -->
+                <Button fx:id="Authentfier1" onAction="#handleAddEvent" style="-fx-background-color: #FFF324;" text="Ajoutez votre évènement" />
+            </HBox>
+
+            <!-- Search bar and filters -->
+            <HBox alignment="CENTER" spacing="10">
+                <SplitMenuButton fx:id="sportMenu" text="Sport" />
+                <TextField fx:id="searchField" prefWidth="300" promptText="Rechercher un événement" />
+                <Button fx:id="submitButton" style="-fx-background-color: #FFFFFF;" text="Rechercher" onAction="#handleSearch" />
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="10">
+                <SplitMenuButton fx:id="lieuMenu" text="Lieu" />
+                <DatePicker fx:id="datePicker" promptText="Sélectionner une date" />
+            </HBox>
+
+            <!-- Title -->
+            <Text fx:id="title" text="Calendrier : événements sportifs 2025 - 2026">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Text>
+
+            <!-- ScrollPane pour les événements -->
+            <ScrollPane fx:id="scrollPane" prefHeight="400.0" prefWidth="620.0">
+                <content>
+                    <GridPane fx:id="eventGrid" alignment="CENTER" hgap="10" vgap="10">
+                        <!-- Les événements seront ajoutés dynamiquement ici -->
+                    </GridPane>
+                </content>
+            </ScrollPane>
+
+            <!-- Ensure the VBox grows to fill available space -->
+            <VBox.vgrow>
+                <Priority fx:constant="ALWAYS" />
+            </VBox.vgrow>
+        </VBox>
+    </center>
+</BorderPane>

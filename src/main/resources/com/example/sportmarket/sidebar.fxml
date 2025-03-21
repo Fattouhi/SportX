@@ -9,7 +9,7 @@
         <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="accueil" onAction="#goToHome"/>
         <Button fx:id="actualitesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Actualités" onAction="#gotoActualite" />
         <Button fx:id="marketButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Market" onAction="#gotoMarket" />
-        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Événements" />
+        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Événements" onAction="#gotoEvents"/>
         <Button fx:id="messagesButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="Messages" onAction="#gotoMessages" />
         <Button fx:id="chatbotButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" style="-fx-background-color: #EFBF04;" text="chatbot" onAction="#gotoChatbot" />
     </children>
