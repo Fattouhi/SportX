@@ -25,34 +25,92 @@ public class Controller implements Initializable {
     @FXML
     private GridPane itemContainer;
     @FXML
-    private Button actualitesButton; // Bouton pour les actualités
+    private Button actualitesButton;
     @FXML
     private Button homeButton;
     @FXML
-    private VBox partenairesContainer; // Conteneur pour afficher les partenaires
+    private VBox partenairesContainer;
     @FXML
-    private Button marketButton; // Ajoutez cette ligne pour référencer le bouton Market
+    private Button marketButton;
     @FXML
-    private Button messagesButton; // Ajoutez cette ligne pour référencer le bouton Messages
+    private Button messagesButton;
+
+    private List<Item> recentlyAdded;
+    private List<Item> products;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        recentlyAdded = ProductDAO.getAllProducts();
+        products = ProductDAO.getAllProducts();
+
+        itemContainer.getChildren().clear();
+        itemContainer.getRowConstraints().clear();
+        itemContainer.getColumnConstraints().clear();
+
+        int columns = 0;
+        int rows = 0;
+        try {
+            for (Item item : recentlyAdded) {
+                if (item != null) { // Null check
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("cart-view.fxml"));
+                    HBox cardBox = fxmlLoader.load();
+                    CartController cartController = fxmlLoader.getController();
+                    cartController.setItem(item); // Line 58
+                    cardLayout.getChildren().add(cardBox);
+                }
+            }
+            for (Item item : products) {
+                if (item != null) { // Null check
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product.fxml"));
+                    VBox productBox = fxmlLoader.load();
+                    ProductController productController = fxmlLoader.getController();
+                    productController.setData(item);
+
+                    GridPane.setConstraints(productBox, columns, rows);
+                    GridPane.setMargin(productBox, new Insets(10));
+                    itemContainer.getChildren().add(productBox);
+
+                    columns++;
+                    if (columns == 6) {
+                        columns = 0;
+                        rows++;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToAddProduct() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sportmarket/add-product.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) cardLayout.getScene().getWindow();
+            stage.setScene(new Scene(root, 1280, 800));
+            stage.setTitle("SportX - Add Product");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void gotoMessages() {
         try {
-            // Charger community-view.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/community-view.fxml"));
             Parent root = loader.load();
-
-            // Créer une nouvelle scène
             Stage stage = new Stage();
             stage.setTitle("SportX - Messages");
-            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
-
-            // Fermer la fenêtre actuelle (optionnel)
             ((Stage) messagesButton.getScene().getWindow()).close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void goToHome() {
         try {
@@ -66,84 +124,18 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void gotoMarket() {
         try {
-            // Charger store-view.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sportmarket/store-view.fxml"));
             Parent root = loader.load();
-
-            // Créer une nouvelle scène
             Stage stage = new Stage();
             stage.setTitle("SportX - Market");
-            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
-
-            // Fermer la fenêtre actuelle (optionnel)
             ((Stage) marketButton.getScene().getWindow()).close();
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private List<Item> recentlyAdded;
-    private List<Item> products;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        recentlyAdded = ProductDAO.getAllProducts(); // Fetch all products
-        products = ProductDAO.getAllProducts(); // Fetch all products
-
-        itemContainer.getChildren().clear();
-        itemContainer.getRowConstraints().clear();
-        itemContainer.getColumnConstraints().clear();
-
-        int columns = 0;
-        int rows = 0;
-        try {
-            for (Item item : recentlyAdded) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("cart-view.fxml"));
-                HBox cardBox = fxmlLoader.load();
-                CartController cartController = fxmlLoader.getController();
-                cartController.setItem(item);
-                cardLayout.getChildren().add(cardBox);
-            }
-            for (Item item : products) {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product.fxml"));
-                VBox productBox = fxmlLoader.load();
-                ProductController productController = fxmlLoader.getController();
-                productController.setData(item);
-
-                GridPane.setConstraints(productBox, columns, rows);
-                GridPane.setMargin(productBox, new Insets(10));
-                itemContainer.getChildren().add(productBox);
-
-                columns++;
-                if (columns == 6) {
-                    columns = 0;
-                    rows++;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private void openMainScreen() {
-        try {
-            // Charger MainScreen.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreen.fxml"));
-            Parent root = loader.load();
-
-            // Créer une nouvelle scène
-            Stage stage = new Stage();
-            stage.setTitle("SportX - Actualités");
-            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
-            stage.show();
-
-            // Fermer la fenêtre actuelle (optionnel)
-            ((Stage) actualitesButton.getScene().getWindow()).close();
-        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -151,21 +143,29 @@ public class Controller implements Initializable {
     @FXML
     private void gotoActualite() {
         try {
-            // Charger MainScreen.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreen.fxml"));
             Parent root = loader.load();
-
-            // Créer une nouvelle scène
             Stage stage = new Stage();
             stage.setTitle("SportX - Actualités");
-            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
-
-            // Fermer la fenêtre actuelle (optionnel)
             ((Stage) actualitesButton.getScene().getWindow()).close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void openMainScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainScreen.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("SportX - Actualités");
+            stage.setScene(new Scene(root, 800, 600));
+            stage.show();
+            ((Stage) actualitesButton.getScene().getWindow()).close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

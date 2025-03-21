@@ -41,6 +41,24 @@ public class sidebar {
         }
     }
     @FXML
+    private void gotoChatbot() {
+        try {
+            // Charger chatboot_interface.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/chatboot_interface.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Stage stage = new Stage();
+            stage.setTitle("SportX - Chatbot");
+            stage.setScene(new Scene(root, 800, 600)); // Ajustez la taille selon vos besoins
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
     private void goToHome() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hello-view.fxml"));

@@ -5,10 +5,6 @@ module com.example.sportmarket {
     requires java.sql;
     requires javafx.web;
 
-
-
-
-
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
@@ -28,12 +24,17 @@ module com.example.sportmarket {
     opens com.example.sportmarket.DAO to javafx.fxml;
     exports com.example.sportmarket;
 
-    opens com.example.demo.controllers to javafx.fxml, javafx.base; // Ouvre le package aux modules nécessaires
-    exports com.example.demo; // Exporte le package principal si nécessaire
-
-    // Ouvre le package com.example.demo.model à javafx.base pour permettre l'accès par réflexion
+    // Open the com.example.demo.model package to javafx.base for reflective access
     opens com.example.demo.model to javafx.base;
 
+    // Open the controllers package to javafx.fxml for FXML loading
+    opens com.example.demo.controllers to javafx.fxml;
+
+    // Export the main package (if needed)
+    exports com.example.demo;
+
+    // Open if reflection access is needed
+    opens com.example.demo to javafx.fxml;
 
     requires org.json;
     //requires mysql.connector.java;
@@ -53,7 +54,6 @@ module com.example.sportmarket {
 
 
 
-    // Open if reflection access is needed
-    opens com.example.demo to javafx.fxml;
+
 
 }
